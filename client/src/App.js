@@ -1,10 +1,11 @@
 import React from "react";
+import Main from "./components/Main";
 
 function App() {
   return (
     <div>
       <div className="jumbotron">
-        <h1 className="display-4">PROFOLIO</h1>
+        <Main />
       </div>
     </div>
   );
