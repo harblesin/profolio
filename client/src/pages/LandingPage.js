@@ -1,9 +1,12 @@
 import React, { Component } from "react";
+import LandingPage from "../components/LandingPage/LandingPage"
 
-class Login extends Component {
+class LandingPages extends Component {
   render() {
-    return <div />;
+    return (
+      <LandingPage />
+    )
   }
 }
 
-export default Login;
+export default LandingPages;
