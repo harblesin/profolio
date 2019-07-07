@@ -1,6 +1,6 @@
 import React from "react";
 
-function Main() {
+function LandingPage() {
   return (
     <div>
       <h1 className="jumbotron">PROFOLIO</h1>
@@ -8,4 +8,4 @@ function Main() {
   );
 }
 
-export default Main;
+export default LandingPage;
