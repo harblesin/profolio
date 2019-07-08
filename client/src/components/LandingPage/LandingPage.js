@@ -1,13 +1,3 @@
-<<<<<<< HEAD:client/src/components/LandingPage/LandingPage.js
-import React from "react";
-
-function LandingPage() {
-  return (
-    <div>
-      <h1 className="jumbotron">PROFOLIO</h1>
-    </div>
-  );
-=======
 import React, { Component } from "react";
 import API from "../utils/API";
 
@@ -53,7 +43,6 @@ class Main extends Component {
       </div>
     );
   }
->>>>>>> 16f5943ca3b1459ee8202171e63dad1a4b852630:client/src/components/Main.js
 }
 
 export default LandingPage;
