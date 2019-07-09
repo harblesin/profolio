@@ -25,21 +25,21 @@ class LandingPage extends Component {
   };
 
   grabIt = () => {
-    API.getUsers({}).then(data => {
+    API.getUsers().then(data => {
       console.log(data);
-      this.setState({ users: data });
+      this.setState({ users: data.data });
     });
   };
 
   componentDidMount() {
-    //this.grabIt();
+    this.grabIt();
   }
 
   render() {
     return (
       <div>
         <h1 className="jumbotron">PROFOLIO</h1>
-        <div>{this.state.users}</div>
+        <div />
         <input
           name="email"
           value={this.state.email}
