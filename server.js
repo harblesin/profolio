@@ -1,14 +1,34 @@
+require("dotenv").config();
 const express = require("express");
+const bodyParser = require("body-parser");
+var db = require("./models");
+
+const router = require("./routes");
 
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+app.use(router);
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static("gapp/build"));
+  app.use(express.static("client/build"));
 }
 
-app.listen(PORT, function() {
-  console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
+var syncOptions = { force: false };
+
+if (process.env.NODE_ENV === "test") {
+  syncOptions.force = true;
+}
+
+db.sequelize.sync(syncOptions).then(function() {
+  app.listen(PORT, function() {
+    console.log(
+      "==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.",
+      PORT,
+      PORT
+    );
+  });
 });
+
+module.exports = app;
