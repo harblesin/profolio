@@ -3,7 +3,7 @@ import React from "react";
 function LoginButton(props) {
     return(
         <div>
-            <span className="ogin-btn btn btn-primary" {...props} role="button">
+            <span className="login-btn btn btn-primary" {...props} role="button">
                 Login
             </span>
         </div>
