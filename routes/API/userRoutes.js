@@ -2,11 +2,12 @@ const router = require("express").Router();
 const passport = require("passport");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const keys = require("../authSetup");
+const keys = require("../keys/secret");
 const userController = require("../../controllers/controller");
 const User = require("../../models/User");
 
-router.post("/register", async (req, res) => {
+router.route("/register")
+.post(async (req, res) => {
   const { username, password } = req.body;
 
   const hashCost = 10;
@@ -24,8 +25,8 @@ router.post("/register", async (req, res) => {
   }
 });
 
-router.route("/register").post(userController.saveUser);
-router.post("/login");
+//router.route("/register").post(userController.saveUser);
+
 
 router.route("/").get(userController.findAll);
 

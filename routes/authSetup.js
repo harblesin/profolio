@@ -4,7 +4,7 @@ const passportJWT = require("passport-jwt");
 const JWTStrategy = passportJWT.Strategy;
 const bcrypt = require('bcrypt');
 
-const { secret } = require("./keys");
+const { secret } = require("./keys/secret");
 
 const UserModel = require("./models/user");
 

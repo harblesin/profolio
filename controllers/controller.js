@@ -1,4 +1,9 @@
 const db = require("../models");
+const router = require("express").Router();
+const passport = require("passport");
+const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
+
 
 module.exports = {
   findAll: function(req, res) {
@@ -8,16 +13,16 @@ module.exports = {
   saveUser: function(req, res) {
     console.log(req.body);
     async (req, res) => {
-      const { username, password } = req.body;
+      const { email, password } = req.body;
 
       const hashCost = 10;
 
       try {
         const passwordHash = await bcrypt.hash(password, hashCost);
-        const userDocument = new UserModel({ username, passwordHash });
+        const userDocument = new UserModel({ email, passwordHash });
         await userDocument.save();
 
-        db.User.create({ username }).then(data => res.json(data));
+        db.User.create({ email }).then(data => res.json(data));
         //res.status(200).send({ username });
       } catch (error) {
         res.status(400).send({
