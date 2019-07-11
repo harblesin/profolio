@@ -1,7 +1,15 @@
 //This is devoid of correct syntax or sequalize and is wholly incomplete
-bookModel = new Schema({
-  name,
-  password
-});
+module.exports = (sequelize, DataTypes) => {
+  var User = sequelize.define("User", {
+    email: DataTypes.STRING,
+    password: DataTypes.STRING
+  });
 
-module.exports = Book;
+  User.associate = function(models) {
+    User.hasMany(models.Details, {
+      onDelete: "cascade"
+    });
+  };
+
+  return User;
+};

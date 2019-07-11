@@ -2,12 +2,18 @@
   "name": "profolio",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:3001/",
   "dependencies": {
+
+    "axios": "^0.19.0",
+    "express": "^4.17.1",
+
     "@fortawesome/fontawesome-svg-core": "^1.2.19",
     "@fortawesome/free-solid-svg-icons": "^5.9.0",
     "@fortawesome/react-fontawesome": "^0.1.4",
     "bootstrap": "^4.3.1",
     "font-awesome": "^4.7.0",
+
     "mysql2": "^1.6.5",
     "react": "^16.8.6",
     "react-bootstrap": "^1.0.0-beta.9",

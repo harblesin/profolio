@@ -1,9 +1,14 @@
 import axios from "axios";
 
-// all axios calls to get, post, delete, and save to db
 
 export default {
+  getUsers: function() {
+    return axios.get("/api/users");
+  },
 
-  
+  saveUser: function(userInfo) {
+    return axios.post("/api/users", userInfo);
+  }
+
 
 };
