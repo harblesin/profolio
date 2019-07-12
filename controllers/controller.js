@@ -3,6 +3,8 @@ const router = require("express").Router();
 const passport = require("passport");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const UserModel = require("../models/User");
+//const keys = require("./routes/keys")
 
 
 module.exports = {
@@ -10,26 +12,68 @@ module.exports = {
     db.User.findAll().then(data => res.json(data));
   },
 
-  saveUser: function(req, res) {
-    console.log(req.body);
+  saveUser: 
+    
     async (req, res) => {
+      console.log(req.body);
+      
       const { email, password } = req.body;
-
+        console.log("here i am")
+        console.log(email)
       const hashCost = 10;
 
       try {
-        const passwordHash = await bcrypt.hash(password, hashCost);
-        const userDocument = new UserModel({ email, passwordHash });
-        await userDocument.save();
 
-        db.User.create({ email }).then(data => res.json(data));
-        //res.status(200).send({ username });
+        //Using a little bittle a different method a more straight object injection, this chunk of code
+        //is working and hashing the password into the db along with the username
+        //I left the commented out stuff in for now in case it needs referencing
+
+
+        console.log("here i am")
+        const passwordHash = await bcrypt.hash(password, hashCost);
+        //const userDocument = new UserModel({ email, passwordHash });
+        await db.User.create({ email: email, password: passwordHash })//.then(data => res.json(data));//userDocument.save();
+
+        res.status(200).send({ email });
       } catch (error) {
         res.status(400).send({
+          
           error: "req.body isnt taking the form data"
         });
       }
-    };
+    },
+
+
+   //This is what I am currently working on, after checking the user is valid in the db,
+   // passes them a JSON token 
+  loginUser: (req, res) => {
+    passport.authenticate(
+      'local',
+      { session: false },
+      (error, user) => {
+  
+        if (error || !user) {
+          res.status(400).json({ error });
+        }
+  
+        const payload = {
+          username: user.username,
+          expires: Date.now() + parseInt(process.env.JWT_EXPIRATION_MS),
+        };
+  
+        req.login(payload, {session: false}, (error) => {
+          if (error) {
+            res.status(400).send({ error });
+          }
+  
+          const token = jwt.sign(JSON.stringify(payload), keys.secret);
+  
+          res.cookie('jwt', jwt, { httpOnly: true, secure: true });
+          res.status(200).send({ username });
+        });
+      },
+    )(req, res);
   }
+  
   // db.Details.create(req.body).then(data => res.json(data));
 };
