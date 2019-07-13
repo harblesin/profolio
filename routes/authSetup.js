@@ -14,7 +14,7 @@ passport.use( new LocalStrategy({
     passwordField: password
 }, async (username, password, done) => {
     try {
-        const userDocument = await UserModel.findOne({username: username}).exec();
+        const userDocument = await UserModel.findOne({email: username}).exec();
         const passwordsMatch = await bcrypt.compare(password, userDocument.passwordHash);
 
         if(passwordsMatch) {
