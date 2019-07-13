@@ -1,7 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const bodyParser = require("body-parser");
-const passport = require("passport")
+const passport = require("passport");
 var db = require("./models");
 
 const router = require("./routes");
@@ -22,6 +22,8 @@ var syncOptions = { force: false };
 if (process.env.NODE_ENV === "test") {
   syncOptions.force = true;
 }
+
+require("./config/authSetup.js")(passport, db.User);
 
 db.sequelize.sync(syncOptions).then(function() {
   app.listen(PORT, function() {

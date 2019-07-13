@@ -4,79 +4,70 @@ const passport = require("passport");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 //const UserModel = require("../models/User");
-const keys = require("../routes/keys/secret")
-
+const keys = require("../routes/keys/secret");
 
 module.exports = {
   findAll: function(req, res) {
     db.User.findAll().then(data => res.json(data));
   },
 
-  saveUser: 
-    
-    async (req, res) => {
-      console.log(req.body);
-      
-      const { email, password } = req.body;
-        console.log("here i am")
-        console.log(email)
-      const hashCost = 10;
+  saveUser: async (req, res) => {
+    console.log(req.body);
 
-      try {
+    const { email, password } = req.body;
+    console.log("here i am");
+    console.log(email);
+    const hashCost = 10;
 
-        //Using a little bittle a different method a more straight object injection, this chunk of code
-        //is working and hashing the password into the db along with the username
-        //I left the commented out stuff in for now in case it needs referencing
+    try {
+      //Using a little bittle a different method a more straight object injection, this chunk of code
+      //is working and hashing the password into the db along with the username
+      //I left the commented out stuff in for now in case it needs referencing
 
+      console.log("here i am");
+      const passwordHash = await bcrypt.hash(password, hashCost);
+      //const userDocument = new UserModel({ email, passwordHash });
+      await db.User.create({ email: email, password: passwordHash }).then(
+        data => res.json(data)
+      ); //userDocument.save();
 
-        console.log("here i am")
-        const passwordHash = await bcrypt.hash(password, hashCost);
-        //const userDocument = new UserModel({ email, passwordHash });
-        await db.User.create({ email: email, password: passwordHash }).then(data => res.json(data));//userDocument.save();
+      //res.status(200).send({ email });
+    } catch (error) {
+      res.status(400).send({
+        error: "req.body isnt taking the form data"
+      });
+    }
+  },
 
-        //res.status(200).send({ email });
-      } catch (error) {
-        res.status(400).send({
-          
-          error: "req.body isnt taking the form data"
-        });
+  //This is what I am currently working on, after checking the user is valid in the db,
+  // passes them a JSON token
+
+  //sends back error that next is not a function, and from what i can gather is an issue with
+  //the custom callback,working on resolve
+  loginUser: function auth(req, res, next) {
+    passport.authenticate("local", { session: false }, (error, user) => {
+      if (error || !user) {
+        res.status(400).json({ error });
       }
-    },
+      console.log(user);
 
+      const payload = {
+        username: user.email,
+        expires: Date.now() + parseInt(process.env.JWT_EXPIRATION_MS)
+      };
 
-   //This is what I am currently working on, after checking the user is valid in the db,
-   // passes them a JSON token 
-
-   //sends back error that next is not a function, and from what i can gather is an issue with
-   //the custom callback,working on resolve
-  loginUser: (req, res) => {
-    passport.authenticate(
-      'local',
-      { session: false },
-      (error, user) => {
-  
-        if (error || !user) {
-          res.status(400).json({ error });
+      req.login(payload, { session: false }, error => {
+        if (error) {
+          res.status(400).send({ error });
         }
-  
-        const payload = {
-          username: user.username,
-          expires: Date.now() + parseInt(process.env.JWT_EXPIRATION_MS),
-        };
-  
-        req.login(payload, {session: false}, (error) => {
-          if (error) {
-            res.status(400).send({ error });
-          }
-  
-          const token = jwt.sign(JSON.stringify(payload), keys.secret);
-  
-          res.cookie('jwt', jwt, { httpOnly: true, secure: true });
-          res.status(200).send({ username });
-        });
-      },
-    )//(req, res);
+
+        const token = jwt.sign(JSON.stringify(payload), process.env.SECRET);
+
+        res.cookie("jwt", jwt, { httpOnly: true, secure: true });
+        res.status(200).send({ email });
+      });
+    })(req, res, next);
   }
-  
+
   // db.Details.create(req.body).then(data => res.json(data));
 };
