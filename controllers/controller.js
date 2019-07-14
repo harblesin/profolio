@@ -11,17 +11,17 @@ module.exports = {
 
   findAll:
   
-    passport.authenticate('jwt', {sessions: false}),
-    function(req,res){
-      console.log(req);
-    },
+    passport.authenticate('jwt', {session: false}),
+    // function(req,res){
+    //   console.log(req);
+    // },
       
     
-  // function(req, res) {
-    
-    // const { email } = req;
+  function(req, res) {
+    console.log("this")
+    const { email } = req;
 
-    // res.status(200).send({email})
+    res.status(200).send({email})},
     
     //db.User.findAll().then(data => res.json(data));
 
@@ -76,7 +76,7 @@ module.exports = {
 
       const payload = {
         email: user.email,
-        expires: Date.now() + parseInt(10)
+        expires: Date.now() + parseInt(100000000)
       };
 
       req.login(payload, { session: false }, error => {
@@ -88,7 +88,7 @@ module.exports = {
         console.log(token)
         console.log(payload)
 
-        res.cookie("jwt", token, { httpOnly: true, secure: true });
+        res.cookie("jwt", token, { secure: false });
         res.status(200).send({ user });
       });
     })(req, res,next);

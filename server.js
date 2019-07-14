@@ -2,6 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const bodyParser = require("body-parser");
 const passport = require("passport");
+const cookies = require("cookie-parser");
 var db = require("./models");
 
 const router = require("./routes");
@@ -13,6 +14,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(passport.initialize());
 require("./config/authSetup.js")(passport, db.User);
+app.use(cookies())
 app.use(router);
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
