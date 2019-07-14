@@ -8,14 +8,26 @@ const keys = require("../routes/keys/secret");
 //require("../config/authSetup.js")(passport, db.User);
 
 module.exports = {
-  findAll: 
-  passport.authenticate('jwt', {sessions: false}),
-  function(req, res) {
-    const { user } = req;
 
-    db.User.findAll().then(data => res.json(data));
+  findAll:
+  
+    passport.authenticate('jwt', {sessions: false}),
+    function(req,res){
+      console.log(req);
+    },
+      
     
-  },
+  // function(req, res) {
+    
+    // const { email } = req;
+
+    // res.status(200).send({email})
+    
+    //db.User.findAll().then(data => res.json(data));
+
+  
+  
+  
 
   saveUser: async (req, res) => {
     console.log(req.body);
@@ -63,8 +75,8 @@ module.exports = {
       }
 
       const payload = {
-        email: user,
-        expires: Date.now() + parseInt(process.env.JWT_EXPIRATION_MS)
+        email: user.email,
+        expires: Date.now() + parseInt(10)
       };
 
       req.login(payload, { session: false }, error => {
@@ -73,8 +85,10 @@ module.exports = {
         }
 
         const token = jwt.sign(JSON.stringify(payload), process.env.SECRET);
+        console.log(token)
+        console.log(payload)
 
-        res.cookie("jwt", jwt, { httpOnly: true, secure: true });
+        res.cookie("jwt", token, { httpOnly: true, secure: true });
         res.status(200).send({ user });
       });
     })(req, res,next);
