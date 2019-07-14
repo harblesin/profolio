@@ -12,6 +12,7 @@ const PORT = process.env.PORT || 3001;
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(passport.initialize());
+require("./config/authSetup.js")(passport, db.User);
 app.use(router);
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
@@ -22,8 +23,6 @@ var syncOptions = { force: false };
 if (process.env.NODE_ENV === "test") {
   syncOptions.force = true;
 }
-
-require("./config/authSetup.js")(passport, db.User);
 
 db.sequelize.sync(syncOptions).then(function() {
   app.listen(PORT, function() {

@@ -14,4 +14,6 @@ router.route("/login")
 
 router.route("/").get(userController.findAll);
 
+
+
 module.exports = router;

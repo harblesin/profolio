@@ -1,14 +1,20 @@
 const db = require("../models");
-//const router = require("express").Router();
+const router = require("express").Router();
 const passport = require("passport");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 //const UserModel = require("../models/User");
 const keys = require("../routes/keys/secret");
+//require("../config/authSetup.js")(passport, db.User);
 
 module.exports = {
-  findAll: function(req, res) {
+  findAll: 
+  passport.authenticate('jwt', {sessions: false}),
+  function(req, res) {
+    const { user } = req;
+
     db.User.findAll().then(data => res.json(data));
+    
   },
 
   saveUser: async (req, res) => {
@@ -27,11 +33,11 @@ module.exports = {
       console.log("here i am");
       const passwordHash = await bcrypt.hash(password, hashCost);
       //const userDocument = new UserModel({ email, passwordHash });
-      await db.User.create({ email: email, password: passwordHash }).then(
-        data => res.json(data)
-      ); //userDocument.save();
+      await db.User.create({ email: email, password: passwordHash })//.then(
+       // data => res.json(data)
+      //); //userDocument.save();
 
-      //res.status(200).send({ email });
+      res.status(200).send({ email });
     } catch (error) {
       res.status(400).send({
         error: "req.body isnt taking the form data"
@@ -44,15 +50,20 @@ module.exports = {
 
   //sends back error that next is not a function, and from what i can gather is an issue with
   //the custom callback,working on resolve
-  loginUser: function auth(req, res, next) {
-    passport.authenticate("local", { session: false }, (error, user) => {
+  loginUser: (req, res,next) => {
+    
+    passport.authenticate("local", 
+    { session: false }, (error, user, info) => {
+      console.log(error)
+      console.log(user)
+      console.log(info)
+      
       if (error || !user) {
         res.status(400).json({ error });
       }
-      console.log(user);
 
       const payload = {
-        username: user.email,
+        email: user,
         expires: Date.now() + parseInt(process.env.JWT_EXPIRATION_MS)
       };
 
@@ -64,10 +75,10 @@ module.exports = {
         const token = jwt.sign(JSON.stringify(payload), process.env.SECRET);
 
         res.cookie("jwt", jwt, { httpOnly: true, secure: true });
-        res.status(200).send({ email });
+        res.status(200).send({ user });
       });
-    })(req, res, next);
-  }
+    })(req, res,next);
+}
 
   // db.Details.create(req.body).then(data => res.json(data));
 };

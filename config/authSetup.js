@@ -1,30 +1,29 @@
 const passport = require("passport");
-const LocalStrategy = require("passport-local").Strategy;
+
 const passportJWT = require("passport-jwt");
 const JWTStrategy = passportJWT.Strategy;
 const bcrypt = require("bcrypt");
 
-const { secret } = require("../routes/keys/secret");
-
-//const UserModel = require("../models/User");
-
 module.exports = function(passport, user) {
   const UserModel = user;
+  const LocalStrategy = require("passport-local").Strategy;
 
   passport.use(
     new LocalStrategy(
       {
-        userNameField: "email",
+        usernameField: "email",
         passwordField: "password"
       },
       async (email, password, done) => {
+        
         try {
-          const userDocument = await UserModel.findOne({
+          const userDocument = await UserModel.findOne({where:{
             email: email
-          }).exec();
+          }
+          })
           const passwordsMatch = await bcrypt.compare(
             password,
-            userDocument.passwordHash
+            userDocument.password
           );
 
           if (passwordsMatch) {
@@ -34,8 +33,7 @@ module.exports = function(passport, user) {
           }
         } catch (error) {
           done(error);
-        }
-      }
+        }}
     )
   );
 
