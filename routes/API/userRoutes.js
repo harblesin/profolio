@@ -6,14 +6,15 @@ const keys = require("../keys/secret");
 const userController = require("../../controllers/controller");
 const User = require("../../models/User");
 
-router.route("/register")
-.post(userController.saveUser);
+router.route("/register").post(userController.saveUser);
 
-router.route("/login")
-.post(userController.loginUser)
+router.route("/login").post(userController.loginUser);
 
-router.route("/").get(userController.findAll);
-
-
+router
+  .route("/")
+  .get(
+    passport.authenticate("jwt", { session: false }),
+    userController.findAll
+  );
 
 module.exports = router;
