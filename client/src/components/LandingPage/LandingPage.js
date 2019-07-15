@@ -1,18 +1,18 @@
 import React from "react";
 import { Row, Container } from "../Grid/Grid";
-import Email from "../SubComponents/Email/Email";
-import Password from "../SubComponents/Password/Password";
+import DropDownNavbar from "../SubComponents/DropDownNavbar/DropDownNavbar";
+
 
 
 function LandingPage() {
   return (
     <div>
+      <DropDownNavbar />
       <h1 className="jumbotron">PROFOLIO</h1>
       <div>
         <Container>
           <Row>
-            <Email />
-            <Password />
+            
           </Row>
         </Container>
       </div>

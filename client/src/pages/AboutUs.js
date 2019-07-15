@@ -2,6 +2,7 @@ import React, { Component } from "react";
 // components that are imported to this page
 import AboutUs from "../components/AboutUs/AboutUs";
 import { Col, Row, Container } from "../components/Grid/Grid";
+
 class About extends Component {
 
     render() {
