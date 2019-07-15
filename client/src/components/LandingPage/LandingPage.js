@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 import API from "../../utils/API";
+import Button from "../SubComponents/Button/Button"
+import Form from "../SubComponents/Form/Form"
+import LargeLogo from "../SubComponents/Logo/LargeLogo"
 
 class LandingPage extends Component {
   state = {
@@ -37,22 +40,33 @@ class LandingPage extends Component {
 
   render() {
     return (
-      <div>
-        <h1 className="jumbotron">PROFOLIO</h1>
-        <div />
-        <input
-          name="email"
-          value={this.state.email}
-          onChange={this.handleInput}
-        />
-        <input
-          name="password"
-          value={this.state.password}
-          onChange={this.handleInput}
-        />
-        <button className="btn btn-danger" onClick={this.sendIt}>
-          Click to Test
-        </button>
+      <div className="backG">
+        <LargeLogo />
+        <br/>
+        <div className="card w-25 m-auto silver rounded-lg">
+          <div className="card-body">
+            <Form
+              id="userName"
+              placeholder="User"
+            />
+            <Form
+              id="password"
+              placeholder="Password"
+            />
+            <Button
+            text="New User?"
+            type="button"
+            onClick={() => { }}
+            className="float-left medium danger btn"
+            />
+            <Button
+              text="Login"
+              type="button"
+              onClick={() => { }}
+              className="float-right medium primary btn"
+            />
+          </div>
+        </div>
       </div>
     );
   }
