@@ -20,10 +20,10 @@ module.exports = {
   function(req, res) {
     console.log("this")
     const { email } = req;
-
+    //db.User.findAll().then(data => res.json(data));
     res.status(200).send({email})},
     
-    //db.User.findAll().then(data => res.json(data));
+    
 
   
   
