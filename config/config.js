@@ -16,7 +16,7 @@ module.exports = {
   test: {
     username: "root",
     password: "123",
-    database: "project_db",
+    database: "profolio",
     host: "localhost",
     dialect: "mysql",
     logging: false

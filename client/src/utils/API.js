@@ -7,7 +7,7 @@ export default {
   },
 
   saveUser: function(userInfo) {
-    return axios.post("/api/users", userInfo);
+    return axios.post("/api/users/register", userInfo);
   }
 
 
