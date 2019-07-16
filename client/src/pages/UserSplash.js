@@ -1,13 +1,15 @@
 import React, { Component } from "react";
+import UserSplash from "../components/UserSplash/UserSplash";
 
-class UserSplash extends Component {
+class UserSplashs extends Component {
 
     render() {
         return (
             <div>
+                <UserSplash />
             </div>
         )
     };
 };
 
-export default UserSplash;
+export default UserSplashs;

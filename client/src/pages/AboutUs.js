@@ -1,26 +1,26 @@
 import React, { Component } from "react";
-// components that are imported to this page
 import AboutUs from "../components/AboutUs/AboutUs";
-import { Col, Row, Container } from "../components/Grid/Grid";
+import { Container } from "../components/Grid/Grid";
+import LargeLogo from "../components/SubComponents/Logo/LargeLogo";
 
 class About extends Component {
-
-    render() {
-        return (
-            <div>
-                <Row>
-                    <Col size="lg-12">
-                        <div>
-                            <h1 className="jumbotron">About Us</h1>
-                        </div>
-                    </Col>
-                </Row>
-                <Container fluid>
-                        <AboutUs />
-                </Container>
-            </div>
-        )
-    };
-};
+  render() {
+    return (
+      <div className="backG">
+        <LargeLogo />
+        <br />
+        <br />
+        <div>
+          <h1 className="text-center">Meet the Team</h1>
+        </div>
+        <br />
+        <br />
+        <Container fluid>
+          <AboutUs />
+        </Container>
+      </div>
+    );
+  }
+}
 
 export default About;

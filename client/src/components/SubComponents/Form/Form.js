@@ -1,18 +1,14 @@
 import React from "react";
 
-function Form ({label, id, placeholder}) {
+function Form(props) {
 
-    return (
-        <form>
-            <div className="form-group">
-                <label> {label} </label>
-                <input type="text"
-                className="form-control"
-                id={id}
-                placeholder={placeholder}/>
-            </div>
-        </form>
-    )
+   return (
+       <form>
+           <div className="form-group">
+               <input type="text" {...props} />
+           </div>
+       </form>
+   )
 }
 
 export default Form;
