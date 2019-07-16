@@ -1,15 +1,17 @@
 import React, { Component } from "react";
-// all imported components on this page
+import NewUser from "../components/NewUser/NewUser";
 
 
-class NewUser extends Component {
+class NewUsers extends Component {
 
     render() {
         return (
             <div>
+            <NewUser>
+            </ NewUser>
             </div>
         )
     };
 };
 
-export default NewUser;
+export default NewUsers;

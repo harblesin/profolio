@@ -87,3 +87,11 @@ img {
   border: solid;
   border-color: grey;
 }
+
+.opacity {
+  opacity: 0.5;
+}
+
+.teal {
+  background-color: #38b2ac;;
+}
