@@ -3,7 +3,6 @@ import API from "../../utils/API";
 import Button from "../SubComponents/Button/Button";
 import Form from "../SubComponents/Form/Form";
 import LargeLogo from "../SubComponents/Logo/LargeLogo";
-import { Container, Row, Col } from "../Grid/Grid";
 
 function LandingPage() {
   return (
