@@ -5,6 +5,7 @@ class PortfoliosCreated extends Component {
     render() {
         return (
             <div>
+                <PortfoliosCreated/>
             </div>
         )
     };

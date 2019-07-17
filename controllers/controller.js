@@ -66,6 +66,11 @@ module.exports = {
         res.status(200).send({ user });
       });
     })(req, res, next);
+  },
+
+  check: (req, res) => {
+    console.log("this is here")
+    res.status(200).send(true);
   }
 
   // db.Details.create(req.body).then(data => res.json(data));

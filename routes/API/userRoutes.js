@@ -17,4 +17,8 @@ router
     userController.findAll
   );
 
+router
+  .route("/check")
+  .get(passport.authenticate("jwt", { session: false }), userController.check);
+
 module.exports = router;

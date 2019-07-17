@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import { Redirect } from "react-router-dom";
 import API from "../../utils/API"
 import Button from "../SubComponents/Button/Button";
 import Form from "../SubComponents/Form/Form";
@@ -8,7 +9,14 @@ class LandingPage extends Component {
 
   state ={
     email: "",
-    password: ""
+    password: "",
+    redirect: false
+  }
+
+  renderRedirect = () => {
+    if(this.state.redirect){
+      return <Redirect to ='/usersplash' />
+    }
   }
 
   handleInputChange = event => {
@@ -29,11 +37,21 @@ class LandingPage extends Component {
      console.log(userInfo)
       API.loginUser(userInfo).then(() => {
         alert("Welcome back "+this.state.email +"!")
+        this.setState({redirect:true})
       });
     }else{
       alert("Must enter both a username and password")
     }
   };
+
+  componentDidMount(){
+    API.authCheck().then((data)=>{
+      console.log("here i am")
+      console.log(data)
+      this.setState({redirect:true})
+      
+    })
+  }
 
   render(){
     return (
@@ -70,6 +88,7 @@ class LandingPage extends Component {
                 onClick={this.login}
                 className="float-right medium teal btn"
               />
+              {this.renderRedirect()}
             </div>
           </div>
     </div>
