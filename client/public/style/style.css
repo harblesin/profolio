@@ -95,3 +95,22 @@ img {
 .teal {
   background-color: #38b2ac;;
 }
+
+.footerStyle {
+  background-color: #8b74bd;
+  padding: 10px;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  height: 300px;
+  width: 100%;
+  overflow: auto;
+}
+
+.text {
+  height: 150px;
+}
+
+.smallLogo {
+  height: 45px;
+}
