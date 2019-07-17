@@ -8,6 +8,14 @@ export default {
 
   saveUser: function(userInfo) {
     return axios.post("/api/users/register", userInfo);
+  },
+
+  loginUser: function(userInfo) {
+    return axios.post("/api/users/login", userInfo)
+  },
+
+  authCheck: function() {
+    return axios.get("/api/users/check");
   }
 
 
