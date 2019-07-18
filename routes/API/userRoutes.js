@@ -13,8 +13,7 @@ router.route("/login").post(userController.loginUser);
 router
   .route("/")
   .get(
-    passport.authenticate("jwt", { session: false }),
-    userController.findAll
+    userController.findOne
   );
 
 router
