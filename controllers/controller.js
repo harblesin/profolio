@@ -6,16 +6,16 @@ const jwt = require("jsonwebtoken");
 const keys = require("../routes/keys/secret");
 
 module.exports = {
-  findAll: (req, res) => {
-    // passport.authenticate("jwt", { session: false },
-    db.User.findAll().then(data => res.json(data));
+  findOne: (req, res) => {
+    console.log(req.body.email)
+    db.User.findOne({where:{email: req.body.email}}).then(data => res.json(data));
   },
 
-  function(req, res) {
-    console.log("this");
-    const { email } = req;
-    res.status(200).send({ email });
-  },
+  // function(req, res) {
+  //   console.log("this");
+  //   const { email } = req;
+  //   res.status(200).send({ email });
+  // },
 
   saveUser: async (req, res) => {
     console.log(req.body);
@@ -50,7 +50,7 @@ module.exports = {
 
       const payload = {
         email: user.email,
-        expires: Date.now() + parseInt(100000000)
+        expires: Date.now() + parseInt(36000)
       };
 
       req.login(payload, { session: false }, error => {
@@ -66,6 +66,11 @@ module.exports = {
         res.status(200).send({ user });
       });
     })(req, res, next);
+  },
+
+  check: (req, res) => {
+    console.log("this is here")
+    res.status(200).send(true);
   }
 
   // db.Details.create(req.body).then(data => res.json(data));

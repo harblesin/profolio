@@ -11,16 +11,22 @@ export function Footer1() {
     <div>
       <div className="footerStyle">
         <Container>
-          <Form
-            className="opacity form-control border border-dark"
-            id="firstName"
-            placeholder="Full Name"
-          />
-          <Form
-            className="opacity form-control border border-dark"
-            id="firstName"
-            placeholder="This will be the area will self image will be uploaded and stored to the db for portfolio. need to figure out how to do so"
-          />
+          <Row>
+            <Col>
+              <Form
+                className="opacity form-control border border-dark"
+                id="firstName"
+                placeholder="Full Name"
+              />
+            </Col>
+            <Col>
+              <Form
+                className="opacity form-control border border-dark"
+                id="firstName"
+                placeholder="Profile Picture"
+              />
+            </Col>
+          </Row>
           <InputGroup>
             <FormControl
               as="textarea"
@@ -33,7 +39,7 @@ export function Footer1() {
           <Row>
             <Col>
               <Button
-                text="Previous"
+                text="Portfolio's"
                 type="button"
                 onClick={() => {}}
                 className="float-left medium teal btn"
