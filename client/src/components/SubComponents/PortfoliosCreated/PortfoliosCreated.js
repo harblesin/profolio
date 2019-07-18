@@ -1,14 +1,13 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
-import API from "../../../utils/API"
+import API from "../../../utils/API";
 import Button from "../Button/Button";
 import { Table } from "react-bootstrap";
 
 class PortfoliosCreated extends Component {
-
-  state={
-    redirect:false
-  }
+  state = {
+    redirect: false
+  };
 
   renderRedirect = () => {
     if (this.state.redirect) {
@@ -16,15 +15,14 @@ class PortfoliosCreated extends Component {
     }
   };
 
-  componentDidMount(){
-    API.authCheck().then((data)=>{
-      console.log(data)
-      this.setState({redirect:true})
-      
-    })
+  componentDidMount() {
+    API.authCheck().then(data => {
+      console.log(data);
+      this.setState({ redirect: true });
+    });
   }
 
-  render({ children }) {
+  render(children) {
     return (
       <div>
         <div className="card-body list-overflow-container">

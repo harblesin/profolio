@@ -10,14 +10,16 @@ router.route("/register").post(userController.saveUser);
 
 router.route("/login").post(userController.loginUser);
 
-router
-  .route("/")
-  .get(
-    userController.findOne
-  );
+router.route("/").get(userController.findOne);
 
-router
-  .route("/check")
-  .get(passport.authenticate("jwt", { session: false }), userController.check);
+router.route("/check").get(
+  passport.authenticate(
+    "jwt",
+    { session: false }
+    //,
+    //{ failureRedirect: "/nowhere" }
+  ),
+  userController.check
+);
 
 module.exports = router;

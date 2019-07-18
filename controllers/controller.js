@@ -7,8 +7,10 @@ const keys = require("../routes/keys/secret");
 
 module.exports = {
   findOne: (req, res) => {
-    console.log(req.body.email)
-    db.User.findOne({where:{email: req.body.email}}).then(data => res.json(data));
+    console.log(req.body.email);
+    db.User.findOne({ where: { email: req.body.email } }).then(data =>
+      res.json(data)
+    );
   },
 
   // function(req, res) {
@@ -39,37 +41,41 @@ module.exports = {
   },
 
   loginUser: (req, res, next) => {
-    passport.authenticate("local", { session: false }, (error, user, info) => {
-      console.log(error);
-      console.log(user);
-      console.log(info);
+    passport.authenticate(
+      "local",
+      { session: false, failureRedirect: "/nowhere" },
+      (error, user, info) => {
+        console.log(error);
+        console.log(user);
+        console.log(info);
 
-      if (error || !user) {
-        res.status(400).json({ error });
-      }
-
-      const payload = {
-        email: user.email,
-        expires: Date.now() + parseInt(36000)
-      };
-
-      req.login(payload, { session: false }, error => {
-        if (error) {
-          res.status(400).send({ error });
+        if (error || !user) {
+          res.status(400).json({ error });
         }
 
-        const token = jwt.sign(JSON.stringify(payload), process.env.SECRET);
-        console.log(token);
-        console.log(payload);
+        const payload = {
+          email: user.email,
+          expires: Date.now() + parseInt(36000)
+        };
 
-        res.cookie("jwt", token, { secure: false });
-        res.status(200).send({ user });
-      });
-    })(req, res, next);
+        req.login(payload, { session: false }, error => {
+          if (error) {
+            res.status(400).send({ error });
+          }
+
+          const token = jwt.sign(JSON.stringify(payload), process.env.SECRET);
+          console.log(token);
+          console.log(payload);
+
+          res.cookie("jwt", token, { secure: false });
+          res.status(200).send({ user });
+        });
+      }
+    )(req, res, next);
   },
 
   check: (req, res) => {
-    console.log("this is here")
+    console.log("this is here");
     res.status(200).send(true);
   }
 
