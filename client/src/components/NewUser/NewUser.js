@@ -14,10 +14,10 @@ class NewUser extends Component {
   };
 
   renderRedirect = () => {
-    if(this.state.redirect){
-      return <Redirect to ='/' />
+    if (this.state.redirect) {
+      return <Redirect to="/" />;
     }
-  }
+  };
 
   handleInputChange = event => {
     const { name, value } = event.target;
@@ -26,21 +26,40 @@ class NewUser extends Component {
     });
   };
 
-  register = event => {
+  register = async event => {
     event.preventDefault();
     if (this.state.email && this.state.password && this.state.passwordConfirm) {
       if (this.state.password === this.state.passwordConfirm) {
-        let userInfo = {
+        const userInfo = {
           email: this.state.email,
           password: this.state.password
         };
 
-        API.saveUser(userInfo).then(() => {
-          alert("Welcome " + this.state.email + "!");
-          
-          this.setState({redirect:true})
-          this.renderRedirect()
-        });
+
+        //logic put on pause for checking first if the user is requesting registration with
+        //an email that i already in use
+
+        // console.log(userInfo)
+        //  await API.getUser(userInfo).then(res => {
+        //   if (res === null) {
+        //     console.log(res);
+        //     alert("User with this email already exists!");
+        //   } else {
+            //console.log(res);
+
+
+            API.saveUser(userInfo).then(() => {
+              alert("Welcome " + this.state.email + "!");
+
+              this.setState({ redirect: true });
+              this.renderRedirect();
+            });
+
+
+        //   }
+        // });
+
+        
       } else {
         alert("Passwords do not match!");
       }
