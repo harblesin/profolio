@@ -5,16 +5,13 @@ const jwt = require("jsonwebtoken");
 const keys = require("../keys/secret");
 const userController = require("../../controllers/controller");
 const User = require("../../models/User");
+const Details = require("../../models/Details");
 
 router.route("/register").post(userController.saveUser);
 
 router.route("/login").post(userController.loginUser);
 
-router
-  .route("/")
-  .get(
-    userController.findOne
-  );
+router.route("/").get(userController.findOne);
 
 router
   .route("/check")

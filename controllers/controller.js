@@ -7,8 +7,10 @@ const keys = require("../routes/keys/secret");
 
 module.exports = {
   findOne: (req, res) => {
-    console.log(req.body.email)
-    db.User.findOne({where:{email: req.body.email}}).then(data => res.json(data));
+    console.log(req.body.email);
+    db.User.findOne({ where: { email: req.body.email } }).then(data =>
+      res.json(data)
+    );
   },
 
   // function(req, res) {
@@ -69,8 +71,8 @@ module.exports = {
   },
 
   check: (req, res) => {
-    console.log("this is here")
-    res.status(200).send(true);
+    console.log("this is here");
+    res.status(200).send();
   }
 
   // db.Details.create(req.body).then(data => res.json(data));
