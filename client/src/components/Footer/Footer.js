@@ -1,101 +1,105 @@
 import React from "react";
 import Form from "../SubComponents/Form/Form";
 import Button from "../SubComponents/Button/Button";
-import { InputGroup, FormControl, Container } from "react-bootstrap";
-import { Row, Col } from "react-bootstrap";
+import { Row, Col, Dropdown } from "react-bootstrap";
 import SmallLogo from "../SubComponents/Logo/SmallLogo";
 
-export function Footer1() {
+export function ButtonFooter() {
+  return (
+    <div>
+      <Row>
+        <Col className="text-center">
+          <Button
+            text="Next"
+            type="button"
+            onClick={() => {}}
+            className="large teal btn"
+          />
+          <br />
+          <br />
+          <br />
+          <Button
+            text="Previous"
+            type="button"
+            onClick={() => {}}
+            className="large teal btn"
+          />
+          <br />
+        </Col>
+      </Row>
+    </div>
+  );
+}
+
+export const Footer1 = props => {
   // full name, image, description of yourself
   return (
     <div>
       <div className="footerStyle">
-        <Container>
-          <Row>
-            <Col>
-              <Form
-                className="opacity form-control border border-dark"
-                id="firstName"
-                placeholder="Full Name"
-              />
-            </Col>
-            <Col>
-              <Form
-                className="opacity form-control border border-dark"
-                id="firstName"
-                placeholder="Profile Picture"
-              />
-            </Col>
-          </Row>
-          <InputGroup>
-            <FormControl
-              as="textarea"
-              aria-label="With textarea"
-              placeholder="Description"
-              className="opacity border border-dark"
+        <Row>
+          <Col className="text-center">
+            <Form
+              className="opacity form-control border border-dark"
+              id="firstName"
+              placeholder="Full Name"
+              name="fullName"
+              value={props.fullName}
+              onChange={props.onChange}
             />
-          </InputGroup>
-          <br />
-          <Row>
-            <Col>
-              <Button
-                text="Portfolio's"
-                type="button"
-                onClick={() => {}}
-                className="float-left medium teal btn"
-              />
-            </Col>
-            <Col>
-              <SmallLogo className="smallLogo" />
-            </Col>
-            <Col>
-              <Button
-                text="Next"
-                type="button"
-                onClick={() => {}}
-                className="float-right medium teal btn"
-              />
-            </Col>
-          </Row>
-        </Container>
+            <br />
+            <Form
+              className="opacity form-control border border-dark"
+              id="profilePicture"
+              placeholder="Profile Picture (URL/PNG)"
+            />
+            <Button
+              text="Upload Picture"
+              type="button"
+              onClick={() => {}}
+              className="medium teal btn"
+            />
+          </Col>
+          <Col>
+            <textarea
+              placeholder="About Me"
+              rows="5"
+              cols="60"
+              className="opacity border border-dark rounded rounded-lg"
+              name="aboutMe"
+              value={props.aboutMe}
+              onChange={props.onChange}
+            />
+          </Col>
+          <Col>
+            <ButtonFooter />
+          </Col>
+          <Col>
+            <SmallLogo className="smallLogo" />
+          </Col>
+        </Row>
       </div>
     </div>
   );
-}
+};
 
 export function Footer2() {
   // dropdown list of all developer skills(ex. html, css, jquery, etc), ability to add there own with a picture
   return (
     <div>
       <div className="footerStyle">
-        <Container>
-          <Form
-            className="opacity form-control border border-dark"
-            id="firstName"
-            placeholder="First Name"
-          />
-          <Row>
-            <Col>
-              <Button
-                text="Previous"
-                type="button"
-                onClick={() => {}}
-                className="float-left medium teal btn"
-              />
-            </Col>
-            <Col>
-              <SmallLogo className="smallLogo" />
-            </Col>
-            <Col>
-              <Button
-                text="Next"
-                type="button"
-                onClick={() => {}}
-                className="float-right medium teal btn"
-              />
-            </Col>
-          </Row>
-        </Container>
+        <Row>
+          <Col className="text-center">
+            {/* form for skills */}
+          </Col>
+          <Col>
+          </Col>
+          <Col>
+            <ButtonFooter />
+          </Col>
+          <Col>
+            <SmallLogo className="smallLogo" />
+          </Col>
+        </Row>
       </div>
     </div>
   );
@@ -106,137 +110,84 @@ export function Footer3() {
   return (
     <div>
       <div className="footerStyle">
-        <Container>
-          <Row>
-            <Col>
-              <Form
-                className="opacity form-control border border-dark"
-                id="projectPicture"
-                placeholder="Project Picture"
-              />
-            </Col>
-            <Col>
-              <Form
-                className="opacity form-control border border-dark"
-                id="lastName"
-                placeholder="Project Title"
-              />
-            </Col>
-          </Row>
-          {/* where input fields will go with github and deployed links */}
-          <Row>
-            <Col>
-              <Form
-                className="opacity form-control border border-dark"
-                id="projectPicture"
-                placeholder="Deployed Link"
-              />
-            </Col>
-            <Col>
-              <Form
-                className="opacity form-control border border-dark"
-                id="lastName"
-                placeholder="GitHub Link"
-              />
-            </Col>
-          </Row>
-          <InputGroup>
-            <FormControl
-              as="textarea"
-              aria-label="With textarea"
-              placeholder="Project Summary"
-              className="textArea opacity border border-dark"
+        <Row>
+          <Col className="text-center">
+            <Form
+              className="opacity form-control border border-dark"
+              id="firstName"
+              placeholder="Project Title"
             />
-          </InputGroup>
-          <br />
-          <Row>
-            <Col>
-              <Button
-                text="Previous"
-                type="button"
-                onClick={() => {}}
-                className="float-left medium teal btn"
-              />
-            </Col>
-            <Col>
-              <SmallLogo className="smallLogo" />
-            </Col>
-            <Col>
-              <Button
-                text="Next"
-                type="button"
-                onClick={() => {}}
-                className="float-right medium teal btn"
-              />
-            </Col>
-          </Row>
-        </Container>
+            <Form
+              className="opacity form-control border border-dark"
+              id="profilePicture"
+              placeholder="Project Picture (URL/PNG)"
+            />
+            <Button
+              text="Upload Picture"
+              type="button"
+              onClick={() => {}}
+              className="medium teal btn"
+            />
+          </Col>
+          <Col>
+            <Form
+              className="opacity form-control border border-dark"
+              id="profilePicture"
+              placeholder="Github Link"
+            />
+            <Form
+              className="opacity form-control border border-dark"
+              id="profilePicture"
+              placeholder="Deployed Link"
+            />
+          </Col>
+          <Col>
+            <textarea
+              placeholder="Project Description"
+              rows="5"
+              cols="60"
+              className="opacity border border-dark rounded rounded-lg"
+            />
+          </Col>
+          <Col>
+            <ButtonFooter />
+          </Col>
+          <Col>
+            <SmallLogo className="smallLogo" />
+          </Col>
+        </Row>
       </div>
     </div>
   );
 }
 
-export function Footer4() {
+export const Footer4 = props => {
   // name, email, subject line, email body
   return (
     <div>
       <div className="footerStyle">
-        <Container>
-          <div>
-            <Row>
-              <Col>
-                <Form
-                  className="opacity form-control border border-dark col"
-                  id="firstName"
-                  placeholder="Name"
-                />
-              </Col>
-              <Col>
-                <Form
-                  className="opacity form-control border border-dark col"
-                  id="lastName"
-                  placeholder="Email"
-                />
-              </Col>
-            </Row>
-          </div>
-          <Form
-            className="opacity form-control border border-dark"
-            id="userName"
-            placeholder="Subject"
-          />
-          <InputGroup>
-            <FormControl
-              as="textarea"
-              aria-label="With textarea"
-              placeholder="Body"
-              className="textArea opacity border border-dark"
+        <Row>
+          <Col className="text-center">
+            <Form
+              className="opacity form-control border border-dark"
+              id="firstName"
+              placeholder="Contact Number"
+              name="contactNumber"
+              value={props.contactNumber}
+              onChange={props.onChange}
             />
-          </InputGroup>
-          <br />
-          <Row>
-            <Col>
-              <Button
-                text="Previous"
-                type="button"
-                onClick={() => {}}
-                className="float-left medium teal btn"
-              />
-            </Col>
-            <Col>
-              <SmallLogo className="smallLogo" />
-            </Col>
-            <Col>
-              <Button
-                text="Next"
-                type="button"
-                onClick={() => {}}
-                className="float-right medium teal btn"
-              />
-            </Col>
-          </Row>
-        </Container>
+          </Col>
+          <Col>
+
+          </Col>
+          <Col>
+            <ButtonFooter />
+          </Col>
+          <Col>
+            <SmallLogo className="smallLogo" />
+          </Col>
+        </Row>
       </div>
     </div>
   );
-}
+};

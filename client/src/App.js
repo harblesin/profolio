@@ -20,7 +20,7 @@ function App() {
           <Route exact path="/" component={LandingPage} />
           <Route exact path="/aboutus" component={AboutUs} />
           <Route exact path="/newuser" component={NewUser} />
-          <Route exact path="/portoliocreation" component={PortfolioCreation} />
+          <Route exact path="/portfoliocreation" component={PortfolioCreation} />
           <Route exact path="/portfolioscreated" component={PortfoliosCreated} />
           <Route exact path="/preview" component={Preview} />
           <Route exact path="/usersplash" component={UserSplash} />
