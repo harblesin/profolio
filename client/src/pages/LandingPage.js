@@ -1,13 +1,13 @@
 import React, { Component } from "react";
-import LandingPage from "../components/LandingPage/LandingPage"
+import LandingPage1 from "../components/LandingPage/LandingPage1"
 
 class LandingPages extends Component {
 
   render() {
     return (
       <div className="m-auto">
-        <LandingPage>
-        </LandingPage>
+        <LandingPage1>
+        </LandingPage1>
       </div>
     )
   };
