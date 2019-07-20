@@ -9,7 +9,6 @@ import PortfolioCreation from "./pages/PortfolioCreation";
 import PortfoliosCreated from "./pages/PortfoliosCreated";
 import Preview from "./pages/Preview";
 import UserSplash from "./pages/UserSplash";
-import Template1 from "./pages/Template1";
 
 
 function App() {
@@ -24,7 +23,6 @@ function App() {
           <Route exact path="/portfolioscreated" component={PortfoliosCreated} />
           <Route exact path="/preview" component={Preview} />
           <Route exact path="/usersplash" component={UserSplash} />
-          <Route exact path="/template1" component={Template1} />
         </Switch>
       </div>
     </Router>
