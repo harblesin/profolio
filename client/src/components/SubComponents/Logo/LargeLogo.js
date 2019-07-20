@@ -3,7 +3,7 @@ import React from "react";
 function LargeLogo () {
 
     return (
-        <img alt="Profolio Logo" src="../images/profolio-large.png"/>
+        <img className="largeLogo" alt="Profolio Logo" src="../images/profolio-large.png" />
     )
 }
 

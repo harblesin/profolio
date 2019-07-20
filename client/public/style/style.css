@@ -78,7 +78,7 @@ img {
 }
 
 .backG {
-  background-color: #8b74bd;
+  background-color: #8b74bdb7;
   overflow: visible;
 }
 
@@ -94,4 +94,55 @@ img {
 
 .teal {
   background-color: #38b2ac;;
+}
+
+.footerStyle {
+  background-color: #8b74bd;
+  padding: 10px;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  height: 200px;
+  width: 100%;
+}
+
+.text {
+  height: 150px;
+}
+
+.smallLogo {
+  padding-top: 30px;
+  height: 120px;
+  width: 240px;
+}
+
+.largeLogo {
+  max-width: 500px;
+  max-height: 200px
+}
+
+.loginBox {
+  min-width: 300px;
+  max-width: 300px;
+}
+
+.borderSplash {
+  border-style: inset;
+  border-color: silver;
+  border-width: thick;
+}
+
+.backgroundHead {
+  background: url(../images/test5.jpg) no-repeat center center fixed;;
+  background-size: cover;
+  background-repeat: no-repeat;
+  box-shadow: inset 2000px 2000px 0 rgba(139,116,189, 0.6);
+}
+
+.test {
+  height: 100vh;
+}
+
+.test2 {
+  vertical-align: middle;
 }
