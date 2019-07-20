@@ -122,3 +122,7 @@ img {
 .test {
   height: 100vh;
 }
+
+.test2 {
+  vertical-align: middle;
+}
