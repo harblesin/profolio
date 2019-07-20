@@ -71,9 +71,40 @@ module.exports = {
   },
 
   check: (req, res) => {
-    console.log(req)
+    console.log(req);
     console.log("this is here");
     res.status(200).send();
+  },
+
+  test: (req, res) => {
+    stuff = {
+      firstName: req.body.one,
+      lastName: req.body.two,
+      title: req.body.three,
+      UserId: 20
+    };
+    db.Details.create(stuff).then(data => res.send(data));
+  },
+
+  test2: (req, res) => {
+    db.Profolio.findAll({
+      where: { id: req.body.id },
+
+      include: [
+        {
+          model: db.Bio,
+          where: {
+            ProfolioId: req.body.id
+          }
+        },
+        {
+          model: db.Skill,
+          where: {
+            ProfolioId: req.body.id
+          }
+        }
+      ]
+    }).then(data => res.json(data));
   }
 
   // db.Details.create(req.body).then(data => res.json(data));

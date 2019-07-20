@@ -10,7 +10,7 @@ import PortfoliosCreated from "./pages/PortfoliosCreated";
 import Preview from "./pages/Preview";
 import UserSplash from "./pages/UserSplash";
 import Template1 from "./pages/Template1";
-
+import Test from "./pages/Test";
 
 function App() {
   return (
@@ -21,10 +21,15 @@ function App() {
           <Route exact path="/aboutus" component={AboutUs} />
           <Route exact path="/newuser" component={NewUser} />
           <Route exact path="/portoliocreation" component={PortfolioCreation} />
-          <Route exact path="/portfolioscreated" component={PortfoliosCreated} />
+          <Route
+            exact
+            path="/portfolioscreated"
+            component={PortfoliosCreated}
+          />
           <Route exact path="/preview" component={Preview} />
           <Route exact path="/usersplash" component={UserSplash} />
           <Route exact path="/template1" component={Template1} />
+          <Route exact path="/test" component={Test} />
         </Switch>
       </div>
     </Router>

@@ -1,6 +1,6 @@
 //This is devoid of correct syntax or sequalize and is wholly incomplete
 module.exports = (sequelize, DataTypes) => {
-  var Details = sequelize.define("Details", {
+  var Bio = sequelize.define("Bio", {
     firstName: DataTypes.STRING,
     lastName: DataTypes.STRING,
     title: DataTypes.STRING,
@@ -10,11 +10,11 @@ module.exports = (sequelize, DataTypes) => {
     photo: DataTypes.STRING
   });
 
-  Details.associate = function(models) {
-    Details.belongsTo(models.User, {
+  Bio.associate = function(models) {
+    Bio.belongsTo(models.Profolio, {
       onDelete: "cascade"
     });
   };
 
-  return Details;
+  return Bio;
 };

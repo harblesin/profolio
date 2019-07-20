@@ -1,6 +1,5 @@
 import axios from "axios";
 
-
 export default {
   getUser: function(userInfo) {
     return axios.get("/api/users", userInfo);
@@ -11,12 +10,14 @@ export default {
   },
 
   loginUser: function(userInfo) {
-    return axios.post("/api/users/login", userInfo)
+    return axios.post("/api/users/login", userInfo);
   },
 
   authCheck: function() {
     return axios.get("/api/users/check");
+  },
+
+  test: function() {
+    return axios.post("/api/users/test");
   }
-
-
 };
