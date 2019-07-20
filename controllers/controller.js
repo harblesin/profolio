@@ -71,6 +71,7 @@ module.exports = {
   },
 
   check: (req, res) => {
+    console.log(req)
     console.log("this is here");
     res.status(200).send();
   }

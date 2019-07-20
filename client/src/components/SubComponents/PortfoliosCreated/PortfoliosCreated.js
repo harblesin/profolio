@@ -20,9 +20,9 @@ class PortfoliosCreated extends Component {
       console.log("logging: " + data);
       //this.setState({ redirect: true });
     });
-    API.grabPorts().then(data => {
-      console.log(data);
-    });
+    // API.grabPorts().then(data => {
+    //   console.log(data);
+    // });
   }
 
   render(children) {
