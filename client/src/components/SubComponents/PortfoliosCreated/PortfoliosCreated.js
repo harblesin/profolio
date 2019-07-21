@@ -24,7 +24,7 @@ class PortfoliosCreated extends Component {
     console.log()
     API.grabProfiles().then(data=>{
       this.setState({profiles:data})
-      console.log(data)
+      //console.log(data)
     })
     // API.grabPorts().then(data => {
     //   console.log(data);

@@ -8,6 +8,7 @@ const User = require("../../models/User");
 
 const authenticate = function(req, res) {
   return passport.authenticate("jwt", function(err, user, info) {
+    
     console.log(req);
     console.log("this" + user);
     console.log(info);

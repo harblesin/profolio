@@ -42,9 +42,9 @@ module.exports = {
 
   loginUser: (req, res, next) => {
     passport.authenticate("local", { session: false }, (error, user, info) => {
-      console.log(error);
+      //console.log(error);
       console.log(user);
-      console.log(info);
+      //console.log(info);
 
       if (error || !user) {
         res.status(400).json({ error });
@@ -52,7 +52,7 @@ module.exports = {
 
       const payload = {
         email: user.email,
-        expires: Date.now() + parseInt(36000)
+        expires: Date.now() + parseInt(360000)
       };
 
       req.login(payload, { session: false }, error => {
@@ -91,23 +91,24 @@ module.exports = {
   },
 
   loadProfiles: (req, res) => {
-    db.Profolio.findAll({
-      where: { UserId: req.body.id },
-      include: [
-        {
-          model: db.Bio,
-          where: {
-            ProfolioId: req.body.id
-          }
-        },
-        {
-          model: db.Skill,
-          where: {
-            ProfolioId: req.body.id
-          }
-        }
-      ]
-    }).then(data => res.json(data));
+    //console.log(req )
+    // db.Profolio.findAll({
+    //   where: { UserId: req.body.id },
+    //   include: [
+    //     {
+    //       model: db.Bio,
+    //       where: {
+    //         ProfolioId: req.body.id
+    //       }
+    //     },
+    //     {
+    //       model: db.Skill,
+    //       where: {
+    //         ProfolioId: req.body.id
+    //       }
+    //     }
+    //   ]
+    // }).then(data => res.json(data));
   }
 
   // db.Details.create(req.body).then(data => res.json(data));
