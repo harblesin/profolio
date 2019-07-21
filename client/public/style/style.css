@@ -95,6 +95,26 @@ img {
   background-color: #38b2ac;;
 }
 
+.footerStyle {
+  background-color: #8b74bd;
+  padding: 10px;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  height: 200px;
+  width: 100%;
+}
+
+.text {
+  height: 150px;
+}
+
+.smallLogo {
+  padding-top: 30px;
+  height: 120px;
+  width: 240px;
+}
+
 .largeLogo {
   max-width: 500px;
   max-height: 200px
