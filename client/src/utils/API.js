@@ -19,5 +19,9 @@ export default {
 
   test: function() {
     return axios.post("/api/users/test");
+  },
+
+  grabProfiles: function(user){
+    return axios.get("/api/users/test", user)
   }
 };

@@ -6,7 +6,8 @@ import { Table } from "react-bootstrap";
 
 class PortfoliosCreated extends Component {
   state = {
-    redirect: false
+    redirect: false,
+    profiles: []
   };
 
   renderRedirect = () => {
@@ -20,6 +21,11 @@ class PortfoliosCreated extends Component {
       console.log("logging: " + data);
       //this.setState({ redirect: true });
     });
+    console.log()
+    API.grabProfiles().then(data=>{
+      this.setState({profiles:data})
+      console.log(data)
+    })
     // API.grabPorts().then(data => {
     //   console.log(data);
     // });

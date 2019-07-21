@@ -37,6 +37,6 @@ router.route("/check").get(authenticate, userController.check);
 router
   .route("/test")
   .post(userController.test)
-  .get(userController.test2);
+  .get(userController.loadProfiles);
 
 module.exports = router;

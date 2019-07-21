@@ -70,6 +70,10 @@ module.exports = {
     })(req, res, next);
   },
 
+  // loadProfiles: (req,res)=>{
+  //   db.findAll
+  // },
+
   check: (req, res) => {
     console.log(req);
     console.log("this is here");
@@ -86,9 +90,9 @@ module.exports = {
     db.Details.create(stuff).then(data => res.send(data));
   },
 
-  test2: (req, res) => {
+  loadProfiles: (req, res) => {
     db.Profolio.findAll({
-      where: { id: req.body.id },
+      where: { UserId: req.body.id },
       include: [
         {
           model: db.Bio,
