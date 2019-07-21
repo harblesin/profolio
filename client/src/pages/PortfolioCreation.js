@@ -23,6 +23,10 @@ class PortfolioCreation extends Component {
     });
   };
 
+  // handleClick = event => {
+
+  // };
+
   render() {
     return (
       <div>

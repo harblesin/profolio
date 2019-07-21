@@ -82,7 +82,7 @@ export const Footer1 = props => {
   );
 };
 
-export function Footer2() {
+export const Footer2= props => {
   // dropdown list of all developer skills(ex. html, css, jquery, etc), ability to add there own with a picture
   return (
     <div>
@@ -105,7 +105,7 @@ export function Footer2() {
   );
 }
 
-export function Footer3() {
+export const Footer3 = props => {
   // project picture, project title, project summary, github project link, deployed link(project picture and title)
   return (
     <div>
