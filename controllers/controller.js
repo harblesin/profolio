@@ -90,26 +90,33 @@ module.exports = {
     db.Details.create(stuff).then(data => res.send(data));
   },
 
-  loadProfiles: (req, res) => {
-    //console.log(req )
-    // db.Profolio.findAll({
-    //   where: { UserId: req.body.id },
-    //   include: [
-    //     {
-    //       model: db.Bio,
-    //       where: {
-    //         ProfolioId: req.body.id
-    //       }
-    //     },
-    //     {
-    //       model: db.Skill,
-    //       where: {
-    //         ProfolioId: req.body.id
-    //       }
-    //     }
-    //   ]
-    // }).then(data => res.json(data));
+  loadProfiles: (req,res)=>{
+    db.Profolio.findAll({where:{UserId: 1}}).then((data)=>
+    res.json(data))
+  },
+
+  loadFinishedProfiles:(req, res) => {
+    console.log(req )
+    db.Profolio.findOne({
+      where: { UserId: 1 },
+      include: [
+        {
+          model: db.Bio,
+          where: {
+            ProfolioId: 1
+          }
+        },
+        {
+          model: db.Skill,
+          where: {
+            ProfolioId: 1
+          }
+        }
+      ]
+    }).then(data => res.json(data));
   }
+
+
 
   // db.Details.create(req.body).then(data => res.json(data));
 };

@@ -8,7 +8,7 @@ const User = require("../../models/User");
 
 const authenticate = function(req, res) {
   return passport.authenticate("jwt", function(err, user, info) {
-    
+
     console.log(req);
     console.log("this" + user);
     console.log(info);
@@ -33,7 +33,7 @@ router.route("/login").post(userController.loginUser);
 
 router.route("/").get(userController.findOne);
 
-router.route("/check").get(authenticate, userController.check);
+router.route("/check").get(authenticate)//, userController.check);
 
 router
   .route("/test")

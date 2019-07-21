@@ -3,6 +3,7 @@ import { Redirect } from "react-router-dom";
 import API from "../../../utils/API";
 import Button from "../Button/Button";
 import { Table } from "react-bootstrap";
+import UserProject from "../UserProjects/UserProjects"
 
 class PortfoliosCreated extends Component {
   state = {
@@ -23,15 +24,13 @@ class PortfoliosCreated extends Component {
     });
     console.log()
     API.grabProfiles().then(data=>{
-      this.setState({profiles:data})
+      this.setState({profiles:data.data})
       //console.log(data)
     })
-    // API.grabPorts().then(data => {
-    //   console.log(data);
-    // });
+    
   }
 
-  render(children) {
+  render() {
     return (
       <div>
         <div className="card-body list-overflow-container">
@@ -45,7 +44,12 @@ class PortfoliosCreated extends Component {
             </thead>
             <tbody>
               <tr>
-                {children}
+                ({this.state.profiles}?
+                {this.state.profiles.map(profile=>(
+                  <UserProject name={profile.name} />
+                ))}:
+                <UserProject></UserProject>
+                
                 <Button
                   text="Delete"
                   type="button"
@@ -57,7 +61,7 @@ class PortfoliosCreated extends Component {
                   type="button"
                   onClick={() => {}}
                   className="float-right medium warning btn active"
-                />
+                />)
               </tr>
             </tbody>
           </Table>
