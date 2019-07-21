@@ -3,12 +3,15 @@ import { Redirect } from "react-router-dom";
 import API from "../../../utils/API";
 import Button from "../Button/Button";
 import { Table } from "react-bootstrap";
-import UserProject from "../UserProjects/UserProjects"
+import UserProject from "../UserProjects/UserProjects";
 
 class PortfoliosCreated extends Component {
   state = {
     redirect: false,
-    profiles: []
+    profiles: [
+      "Nothing here bubs!"
+    ],
+    port: ""
   };
 
   renderRedirect = () => {
@@ -17,20 +20,32 @@ class PortfoliosCreated extends Component {
     }
   };
 
+  // showProfiles = () => {
+  //   if(this.state.profiles){
+  //     
+  //   }else{
+  //    return <UserProject>Nothing here bub</UserProject>
+  //   }
+
+  // }
+
   componentDidMount() {
     API.authCheck().then(data => {
       console.log("logging: " + data);
       //this.setState({ redirect: true });
     });
-    console.log()
-    API.grabProfiles().then(data=>{
-      this.setState({profiles:data.data})
+    console.log();
+    API.grabProfiles().then(data => {
+      console.log(data);
+      console.log(data.data);
+      this.setState({ profiles: data.data });
       //console.log(data)
-    })
-    
+    });
   }
 
   render() {
+    
+
     return (
       <div>
         <div className="card-body list-overflow-container">
@@ -44,12 +59,12 @@ class PortfoliosCreated extends Component {
             </thead>
             <tbody>
               <tr>
-                ({this.state.profiles}?
-                {this.state.profiles.map(profile=>(
-                  <UserProject name={profile.name} />
-                ))}:
-                <UserProject></UserProject>
-                
+              {this.state.profiles.map(profile=>(
+              <UserProject
+                  name={profile.name}
+                  key={profile.id} 
+                  onClick={profile.link}
+                  />))}
                 <Button
                   text="Delete"
                   type="button"
@@ -61,7 +76,8 @@ class PortfoliosCreated extends Component {
                   type="button"
                   onClick={() => {}}
                   className="float-right medium warning btn active"
-                />)
+                />
+                
               </tr>
             </tbody>
           </Table>
