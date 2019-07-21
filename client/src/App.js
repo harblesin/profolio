@@ -15,7 +15,6 @@ import Test from "./pages/Test";
 function App() {
   return (
     <Router>
-      <div>
         <Switch>
           <Route exact path="/" component={LandingPage} />
           <Route exact path="/aboutus" component={AboutUs} />
@@ -26,7 +25,6 @@ function App() {
           <Route exact path="/usersplash" component={UserSplash} />
           <Route exact path="/test" component={Test} />
         </Switch>
-      </div>
     </Router>
   );
 }
