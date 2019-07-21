@@ -58,7 +58,7 @@ class PortfoliosCreated extends Component {
           <Button
             text="Create New"
             type="button"
-            href="/template1"
+            href="/portfoliocreation"
             onClick={() => {}}
             className="float-right medium btn-dark btn"
           />

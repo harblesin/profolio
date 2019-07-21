@@ -89,7 +89,6 @@ module.exports = {
   test2: (req, res) => {
     db.Profolio.findAll({
       where: { id: req.body.id },
-
       include: [
         {
           model: db.Bio,
