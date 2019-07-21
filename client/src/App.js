@@ -14,7 +14,6 @@ import UserSplash from "./pages/UserSplash";
 function App() {
   return (
     <Router>
-      <div>
         <Switch>
           <Route exact path="/" component={LandingPage} />
           <Route exact path="/aboutus" component={AboutUs} />
@@ -24,7 +23,6 @@ function App() {
           <Route exact path="/preview" component={Preview} />
           <Route exact path="/usersplash" component={UserSplash} />
         </Switch>
-      </div>
     </Router>
   );
 }
