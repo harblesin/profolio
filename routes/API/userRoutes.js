@@ -27,20 +27,19 @@ const authenticate = function(req, res) {
   });
 };
 
-const checkToken = (req, res, user, next) => {
-  const header = req.header["authorization"];
+// const checkToken = (req, res, next) => {
+//   const header = req.header["authorization"];
 
-  if(typeof header !== "undefined"){
-    const bearer = header.split(' ');
-    const token = bearer[1];
+//   if(typeof header !== "undefined"){
+//     const bearer = header.split(' ');
+//     const token = bearer[1];
 
-    req.token = token;
-    next();
-  }else{
-    //res.redirect("/")
-    res.sendStatus(403);
-  }
-}
+//     req.token = token;
+//     next();
+//   }else{
+//     res.sendStatus(403);
+//   }
+// }
 
 router.route("/register").post(userController.saveUser);
 
@@ -53,6 +52,6 @@ router.route("/check").get(authenticate)//, userController.check);
 router
   .route("/test")
   .post(userController.test)
-  .get(checkToken, userController.loadProfiles);
+  .get(userController.loadProfiles);
 
 module.exports = router;

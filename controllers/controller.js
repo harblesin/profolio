@@ -91,23 +91,25 @@ module.exports = {
   },
 
   loadProfiles: (req,res)=>{
-    jwt.verify(req.token, process.env.SECRET, (err, authorizedData)=>{
-      if(err){
-        console.log("ERROR: Could not connect to the protected route");
-        //res.redirect("/")
-      }else{
-        res.json({
-          message: "Success",
-          authorizedData
-        });
-        console.log("successful connection")
-      }
-    })
-
-    // console.log("separater")
-    // console.log(req.user)
-    // db.Profolio.findAll({where:{UserId: 1}}).then((data)=>
-    // res.json(data))
+    console.log("here i am")
+    console.log(req.headers)
+   //console.log(headers.cookie)
+    if(req.headers && req.headers.cookie){
+      console.log("this is here")
+      const token = req.headers.cookie
+      const authorizaton = token.split(' ');
+      
+      //try{
+        decoded = jwt.verify('jwt', process.env.SECRET);
+        console.log(decoded)
+      //} catch (err){
+      //   return res.status(401).send("UNATH");
+      // }
+      var userId = decoded.id
+      db.Profolio.findAll({where:{UserId: userId}}).then((data)=>
+        res.json(data))
+    }
+    
   },
 
   loadFinishedProfiles:(req, res) => {

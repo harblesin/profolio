@@ -8,9 +8,9 @@ import UserProject from "../UserProjects/UserProjects";
 class PortfoliosCreated extends Component {
   state = {
     redirect: false,
-    profiles: [
-      "Nothing here bubs!"
-    ],
+    profiles: [{
+      name: "Nothing here bubs!"
+    }],
     port: ""
   };
 
