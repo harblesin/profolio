@@ -146,7 +146,23 @@ img {
   vertical-align: middle;
 }
 
-/* Icons */
+.buttonFont {
+  font-weight: bolder;
+}
+
+.buttonColor {
+  background-color: #4AA837;
+}
+
+.buttonColor2 {
+  background-color: #ECA336;
+}
+
+.buttonColor3 {
+  background-color: #BEC624;
+}
+
+/* Social Icons */
 
 .icon {
 	text-decoration: none;
@@ -307,3 +323,6 @@ ul.social li a:hover:before {
 .icon>.label {
 	display: none;
 }
+
+/* Table Changes */
+
