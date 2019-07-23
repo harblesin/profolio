@@ -90,25 +90,29 @@ module.exports = {
     db.Details.create(stuff).then(data => res.send(data));
   },
 
-  loadProfiles: (req,res)=>{
-    console.log("here i am")
-    console.log(req.headers)
+  loadProfiles: (req,res,next)=>{
+    passport.authenticate("jwt", function(err,user,info){
+      console.log(JSON.stringify(req.signedCookies))
+    })(req,res,next)
+    //console.log(req.user)
+     console.log("here i am")
+    // console.log(req.headers)
    //console.log(headers.cookie)
-    if(req.headers && req.headers.cookie){
-      console.log("this is here")
-      const token = req.headers.cookie
-      const authorizaton = token.split(' ');
+    // if(req.headers && req.headers.cookie){
+    //   console.log("this is here")
+    //   const token = req.headers.cookie
+    //   const authorizaton = token.split(' ');
       
-      //try{
-        decoded = jwt.verify('jwt', process.env.SECRET);
-        console.log(decoded)
-      //} catch (err){
-      //   return res.status(401).send("UNATH");
-      // }
-      var userId = decoded.id
-      db.Profolio.findAll({where:{UserId: userId}}).then((data)=>
-        res.json(data))
-    }
+    //   //try{
+    //     decoded = jwt.verify('jwt', process.env.SECRET);
+    //     console.log(decoded)
+    //   //} catch (err){
+    //   //   return res.status(401).send("UNATH");
+    //   // }
+    //   var userId = decoded.id
+    //   db.Profolio.findAll({where:{UserId: userId}}).then((data)=>
+    //     res.json(data))
+    // }
     
   },
 

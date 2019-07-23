@@ -46,9 +46,10 @@ module.exports = function(passport, user) {
       (jwtPayload, done) => {
         if (Date.now() > jwtPayload.expires) {
           console.log(jwtPayload)
+          console.log("bitch")
           return done("jwt expired");
         }
-
+        console.log("bitch2")
         return done(null, jwtPayload);
       }
     )
