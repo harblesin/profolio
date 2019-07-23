@@ -1,9 +1,47 @@
 import React, { Component } from "react";
 import SmallLogo from "./../components/SubComponents/Logo/SmallLogo";
 import { Link, animateScroll as scroll } from "react-scroll";
+import Slider from "react-slick";
 
 export const Template1 = props => {
   require("./../components/SubComponents/Nav/main.css");
+
+  const settings = {
+    dots: false,
+    infinite: true,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    autoplay: true,
+    speed: 2000,
+    autoplaySpeed: 2000,
+    cssEase: "linear",
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: true
+        }
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          initialSlide: 2
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }
+    ]
+  }
 
   return (
     <div>
@@ -90,8 +128,16 @@ export const Template1 = props => {
                   {props.aboutMe}
                 </span>
               </p>
-              <a href="#work" className="button large scrolly">
-                Learn about what I can do
+              <a href="#skills" className="button large scrolly">
+                <Link
+                  activeClass="active"
+                  to="skills"
+                  spy={true}
+                  smooth={true}
+                  duration={500}
+                >
+                  Learn about what I can do
+                </Link>
               </a>
             </div>
           </div>
@@ -105,42 +151,35 @@ export const Template1 = props => {
             <h2>Here's all the stuff I do.</h2>
             <p>Odio turpis amet sed consequat eget posuere consequat.</p>
           </header>
-          <div className="row aln-center">
-            <div className="col-4 col-6-medium col-12-small">
-              <section className="box style1">
-                <span className="icon featured fa-comments-o" />
-                <h3>Consequat lorem</h3>
-                <p>
-                  Ornare nulla proin odio consequat sapien vestibulum ipsum
-                  primis sed amet consequat lorem dolore.
-                </p>
-              </section>
+          <Slider {...settings}>
+            <div>
+              <img src="./images/template1/ajax.png" alt="Ajax" />
             </div>
-            <div className="col-4 col-6-medium col-12-small">
-              <section className="box style1">
-                <span className="icon featured fa-camera-retro" />
-                <h3>Lorem dolor tempus</h3>
-                <p>
-                  Ornare nulla proin odio consequat sapien vestibulum ipsum
-                  primis sed amet consequat lorem dolore.
-                </p>
-              </section>
+            <div>
+              <img src="./images/template1/api.png" alt="API" />
             </div>
-            <div className="col-4 col-6-medium col-12-small">
-              <section className="box style1">
-                <span className="icon featured fa-thumbs-o-up" />
-                <h3>Feugiat posuere</h3>
-                <p>
-                  Ornare nulla proin odio consequat sapien vestibulum ipsum
-                  primis sed amet consequat lorem dolore.
-                </p>
-              </section>
+            <div>
+              <img src="./images/template1/bootstrap.png" alt="Bootstrap" />
             </div>
-          </div>
+            <div>
+              <img src="./images/template1/css2.png" alt="CSS" />
+            </div>
+            <div>
+              <img src="./images/template1/express.png" alt="Express" />
+            </div>
+          </Slider>
           <footer>
             <p>Lorem ipsum dolor sit sapien vestibulum ipsum primis?</p>
             <a href="#portfolio" className="button large scrolly">
-              See some of my recent work
+              <Link
+                activeClass="active"
+                to="portfolio"
+                spy={true}
+                smooth={true}
+                duration={500}
+              >
+                See some of my recent work
+              </Link>
             </a>
           </footer>
         </div>
@@ -163,9 +202,9 @@ export const Template1 = props => {
                   <img src="images/pic01.jpg" alt="" />
                 </a>
                 <h3>
-                  <a href=" ">Magna feugiat</a>
+                  <a href=" ">{props.projectTitle}</a>
                 </h3>
-                <p>Ornare nulla proin odio consequat.</p>
+                <p>{props.aboutProject}</p>
               </article>
             </div>
             <div className="col-4 col-6-medium col-12-small">
@@ -227,7 +266,15 @@ export const Template1 = props => {
           <footer>
             <p>Lorem ipsum dolor sit sapien vestibulum ipsum primis?</p>
             <a href="#contact" className="button large scrolly">
-              Get in touch with me
+              <Link
+                activeClass="active"
+                to="contact"
+                spy={true}
+                smooth={true}
+                duration={500}
+              >
+                Get in touch with me
+              </Link>
             </a>
           </footer>
         </div>
@@ -297,22 +344,20 @@ export const Template1 = props => {
               <hr />
               <h3>Find me on ...</h3>
               <ul className="social">
-                {/* <li><a href="#" className="icon fa-twitter"><span className="label">Twitter</span></a></li>
-                                    <li><a href="#" className="icon fa-facebook"><span className="label">Facebook</span></a></li>
-                                    <li><a href="#" className="icon fa-dribbble"><span className="label">Dribbble</span></a></li>
-                                    <li><a href="#" className="icon fa-linkedin"><span className="label">LinkedIn</span></a></li>
-                                    <li><a href="#" className="icon fa-tumblr"><span className="label">Tumblr</span></a></li>
-                                    <li><a href="#" className="icon fa-google-plus"><span className="label">Google+</span></a></li>
-                                    <li><a href="#" className="icon fa-github"><span className="label">Github</span></a></li>
-                                    <li><a href="#" className="icon fa-rss"><span>RSS</span></a></li>
-                                    <li><a href="#" className="icon fa-instagram"><span>Instagram</span></a></li>
-                                    <li><a href="#" className="icon fa-foursquare"><span>Foursquare</span></a></li>
-                                    <li><a href="#" className="icon fa-skype"><span>Skype</span></a></li>
-                                    <li><a href="#" className="icon fa-soundcloud"><span>Soundcloud</span></a></li>
-                                    <li><a href="#" className="icon fa-youtube"><span>YouTube</span></a></li>
-                                    <li><a href="#" className="icon fa-blogger"><span>Blogger</span></a></li>
-                                    <li><a href="#" className="icon fa-flickr"><span>Flickr</span></a></li>
-                                    <li><a href="#" className="icon fa-vimeo"><span>Vimeo</span></a></li> */}
+                {/* <li><a href=" " className="icon fab fa-twitter"><span className="label">Twitter</span></a></li>
+                <li><a href=" " className="icon fab fa-facebook"><span className="label">Facebook</span></a></li>
+                <li><a href=" " className="icon fab fa-dribbble"><span className="label">Dribbble</span></a></li>
+                <li><a href=" " className="icon fab fa-linkedin"><span className="label">LinkedIn</span></a></li>
+                <li><a href=" " className="icon fab fa-tumblr"><span className="label">Tumblr</span></a></li>
+                <li><a href=" " className="icon fab fa-github"><span className="label">Github</span></a></li>
+                <li><a href=" " className="icon fab fa-instagram"><span>Instagram</span></a></li>
+                <li><a href=" " className="icon fab fa-foursquare"><span>Foursquare</span></a></li>
+                <li><a href=" " className="icon fab fa-skype"><span>Skype</span></a></li>
+                <li><a href=" " className="icon fab fa-soundcloud"><span>Soundcloud</span></a></li>
+                <li><a href=" " className="icon fab fa-youtube"><span>YouTube</span></a></li>
+                <li><a href=" " className="icon fab fa-blogger"><span>Blogger</span></a></li>
+                <li><a href=" " className="icon fab fa-flickr"><span>Flickr</span></a></li>
+                <li><a href=" " className="icon fab fa-vimeo"><span>Vimeo</span></a></li> */}
               </ul>
               <hr />
             </div>

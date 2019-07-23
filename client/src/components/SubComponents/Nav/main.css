@@ -1344,9 +1344,9 @@ table.default thead {
 
 /* Section/Article */
 
-section, article {
+/* section, article {
 	margin-bottom: 3em;
-}
+} */
 
 section> :last-child, article> :last-child, section:last-child, article:last-child {
 	margin-bottom: 0;
@@ -1649,7 +1649,6 @@ ul.actions li:first-child {
 
 .icon:before {
 	display: inline-block;
-	font-family: FontAwesome;
 	font-size: 1.25em;
 	text-decoration: none;
 	font-style: normal;
