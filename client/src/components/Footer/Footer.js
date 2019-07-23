@@ -1,35 +1,8 @@
 import React from "react";
 import Form from "../SubComponents/Form/Form";
 import Button from "../SubComponents/Button/Button";
-import { Row, Col, Dropdown } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
 import SmallLogo from "../SubComponents/Logo/SmallLogo";
-
-export function ButtonFooter() {
-  return (
-    <div>
-      <Row>
-        <Col className="text-center">
-          <Button
-            text="Next"
-            type="button"
-            onClick={() => {}}
-            className="large teal btn"
-          />
-          <br />
-          <br />
-          <br />
-          <Button
-            text="Previous"
-            type="button"
-            onClick={() => {}}
-            className="large teal btn"
-          />
-          <br />
-        </Col>
-      </Row>
-    </div>
-  );
-}
 
 export const Footer1 = props => {
   // full name, image, description of yourself
@@ -71,7 +44,17 @@ export const Footer1 = props => {
             />
           </Col>
           <Col>
-            <ButtonFooter />
+            <Row>
+              <Col className="text-center">
+                <Button
+                  text="Next"
+                  type="button"
+                  className="large teal btn"
+                  name="footer"
+                  onClick={() => props.nextClick()}
+                />
+              </Col>
+            </Row>
           </Col>
           <Col>
             <SmallLogo className="smallLogo" />
@@ -82,7 +65,7 @@ export const Footer1 = props => {
   );
 };
 
-export function Footer2() {
+export const Footer2 = props => {
   // dropdown list of all developer skills(ex. html, css, jquery, etc), ability to add there own with a picture
   return (
     <div>
@@ -91,10 +74,29 @@ export function Footer2() {
           <Col className="text-center">
             {/* form for skills */}
           </Col>
+          <Col />
           <Col>
-          </Col>
-          <Col>
-            <ButtonFooter />
+            <Row>
+              <Col className="text-center">
+                <Button
+                  text="Next"
+                  type="button"
+                  className="large teal btn"
+                  name="footer"
+                  onClick={() => props.nextClick()}
+                />
+                <br />
+                <br />
+                <Button
+                  text="Previous"
+                  type="button"
+                  className="large teal btn"
+                  name="footer"
+                  onClick={() => props.previousClick()}
+                />
+                <br />
+              </Col>
+            </Row>
           </Col>
           <Col>
             <SmallLogo className="smallLogo" />
@@ -103,9 +105,9 @@ export function Footer2() {
       </div>
     </div>
   );
-}
+};
 
-export function Footer3() {
+export const Footer3 = props => {
   // project picture, project title, project summary, github project link, deployed link(project picture and title)
   return (
     <div>
@@ -116,6 +118,9 @@ export function Footer3() {
               className="opacity form-control border border-dark"
               id="firstName"
               placeholder="Project Title"
+              name="projectTitle"
+              value={props.projectTitle}
+              onChange={props.onChange}
             />
             <Form
               className="opacity form-control border border-dark"
@@ -144,13 +149,41 @@ export function Footer3() {
           <Col>
             <textarea
               placeholder="Project Description"
-              rows="5"
+              rows="4"
               cols="60"
               className="opacity border border-dark rounded rounded-lg"
+              name="aboutProject"
+              value={props.aboutProject}
+              onChange={props.onChange}
+            />
+            <Button
+              text="Add Project"
+              type="button"
+              className="medium teal btn float-right"
             />
           </Col>
           <Col>
-            <ButtonFooter />
+            <Row>
+              <Col className="text-center">
+                <Button
+                  text="Next"
+                  type="button"
+                  className="large teal btn"
+                  name="footer"
+                  onClick={() => props.nextClick()}
+                />
+                <br />
+                <br />
+                <Button
+                  text="Previous"
+                  type="button"
+                  className="large teal btn"
+                  name="footer"
+                  onClick={() => props.previousClick()}
+                />
+                <br />
+              </Col>
+            </Row>
           </Col>
           <Col>
             <SmallLogo className="smallLogo" />
@@ -159,7 +192,7 @@ export function Footer3() {
       </div>
     </div>
   );
-}
+};
 
 export const Footer4 = props => {
   // name, email, subject line, email body
@@ -177,11 +210,29 @@ export const Footer4 = props => {
               onChange={props.onChange}
             />
           </Col>
+          <Col />
           <Col>
-
-          </Col>
-          <Col>
-            <ButtonFooter />
+            <Row>
+              <Col className="text-center">
+                <Button
+                  text="Preview"
+                  type="button"
+                  className="large teal btn"
+                  name="footer"
+                  onClick={() => props.nextClick()}
+                />
+                <br />
+                <br />
+                <Button
+                  text="Previous"
+                  type="button"
+                  className="large teal btn"
+                  name="footer"
+                  onClick={() => props.previousClick()}
+                />
+                <br />
+              </Col>
+            </Row>
           </Col>
           <Col>
             <SmallLogo className="smallLogo" />
