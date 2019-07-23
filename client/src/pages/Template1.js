@@ -163,9 +163,9 @@ export const Template1 = props => {
                   <img src="images/pic01.jpg" alt="" />
                 </a>
                 <h3>
-                  <a href=" ">Magna feugiat</a>
+                  <a href=" ">{props.projectTitle}</a>
                 </h3>
-                <p>Ornare nulla proin odio consequat.</p>
+                <p>{props.aboutProject}</p>
               </article>
             </div>
             <div className="col-4 col-6-medium col-12-small">

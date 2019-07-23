@@ -24,7 +24,7 @@ class PortfoliosCreated extends Component {
     })
   }
 
-  render({ children }) {
+  render( children ) {
     return (
       <div>
         <div className="card-body list-overflow-container">

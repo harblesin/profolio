@@ -12,6 +12,9 @@ class PortfolioCreation extends Component {
     fullName: "Full Name",
     aboutMe: "About Me",
     contactNumber: "Phone Number",
+    projectTitle: "Project Title",
+    aboutProject: "About Project",
+    footer: 0,
   };
 
   handleInputChange = event => {
@@ -23,19 +26,70 @@ class PortfolioCreation extends Component {
     });
   };
 
-  // handleClick = event => {
+  nextClick = () => {
+    let footer = this.state.footer;
+    footer += 1;
+    this.setState({
+      footer,
+    });
+    this.handleFooterChange();
+    console.log(this.state.footer);
+  };
 
-  // };
+  previousClick = () => {
+    let footer = this.state.footer;
+    footer -= 1;
+    this.setState({
+      footer,
+    });
+    this.handleFooterChange();
+    console.log(this.state.footer);
+  };
+
+  handleFooterChange = () => {
+    if (this.state.footer === 0) {
+      return (
+        <Footer1 onChange={this.handleInputChange} nextClick={this.nextClick} />
+      );
+    }
+    if (this.state.footer === 1) {
+      return (
+        <Footer2
+          onChange={this.handleInputChange}
+          nextClick={this.nextClick}
+          previousClick={this.previousClick}
+        />
+      );
+    }
+    if (this.state.footer === 2) {
+      return (
+        <Footer3
+          onChange={this.handleInputChange}
+          nextClick={this.nextClick}
+          previousClick={this.previousClick}
+        />
+      );
+    }
+    if (this.state.footer === 3) {
+      return (
+        <Footer4
+          onChange={this.handleInputChange}
+          nextClick={this.nextClick}
+          previousClick={this.previousClick}
+        />
+      );
+    }
+  };
 
   render() {
     return (
       <div>
         <Template1 {...this.state} />
 
-        <Footer1 onChange={this.handleInputChange} type="text" />
-        {/* <Footer2 onChange={this.handleInputChange} type="text" /> */}
-        {/* <Footer3 onChange={this.handleInputChange} type="text" /> */}
-        {/* <Footer4 onChange={this.handleInputChange} type="text" /> */}
+        {this.state.footer}
+        {this.handleFooterChange()}
+        {console.log(this.state.footer)}
+        
       </div>
     );
   }
