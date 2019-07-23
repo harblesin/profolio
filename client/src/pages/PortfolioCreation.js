@@ -14,6 +14,8 @@ class PortfolioCreation extends Component {
     contactNumber: "Phone Number",
     projectTitle: "Project Title",
     aboutProject: "About Project",
+    githubLink: "Github Link",
+    deployedLink: "Deployed Link",
     footer: 0,
   };
 
@@ -89,7 +91,6 @@ class PortfolioCreation extends Component {
         {this.state.footer}
         {this.handleFooterChange()}
         {console.log(this.state.footer)}
-        
       </div>
     );
   }

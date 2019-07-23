@@ -26,8 +26,8 @@ class About extends Component {
                   Cur igitur, cum de re conveniat, non malumus usitate loqui?
                 </p>
                 <ul className="social text-center">
-                  <li><a href=" " className="fab fa-linkedin icon"><span className="label">LinkedIn</span></a></li>
-                  <li><a href=" " className="icon fab fa-github"><span className="label">Github</span></a></li>
+                  <li><a href="https://www.linkedin.com/in/harrison-fales-419585b0/" className="fab fa-linkedin icon"><span className="label">LinkedIn</span></a></li>
+                  <li><a href="https://github.com/harblesin" className="icon fab fa-github"><span className="label">Github</span></a></li>
                 </ul>
               </div>
             </div>
@@ -60,8 +60,8 @@ class About extends Component {
                   Cur igitur, cum de re conveniat, non malumus usitate loqui?
                 </p>
                 <ul className="social text-center">
-                  <li><a href=" " className="fab fa-linkedin icon"><span className="label">LinkedIn</span></a></li>
-                  <li><a href=" " className="icon fab fa-github"><span className="label">Github</span></a></li>
+                  <li><a href="https://www.linkedin.com/in/jamesrader14/" className="fab fa-linkedin icon"><span className="label">LinkedIn</span></a></li>
+                  <li><a href="https://github.com/jamesrader" className="icon fab fa-github"><span className="label">Github</span></a></li>
                 </ul>
               </div>
             </div>
@@ -77,8 +77,8 @@ class About extends Component {
                   Cur igitur, cum de re conveniat, non malumus usitate loqui?
                 </p>
                 <ul className="social text-center">
-                  <li><a href=" " className="fab fa-linkedin icon"><span className="label">LinkedIn</span></a></li>
-                  <li><a href=" " className="icon fab fa-github"><span className="label">Github</span></a></li>
+                  <li><a href="https://www.linkedin.com/in/jonathan-sherman-39090184/" className="fab fa-linkedin icon"><span className="label">LinkedIn</span></a></li>
+                  <li><a href="https://github.com/sherman0513" className="icon fab fa-github"><span className="label">Github</span></a></li>
                 </ul>
               </div>
             </div>

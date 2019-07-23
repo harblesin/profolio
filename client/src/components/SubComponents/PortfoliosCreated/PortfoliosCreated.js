@@ -20,8 +20,7 @@ class PortfoliosCreated extends Component {
   componentDidMount() {
     API.authCheck().then((data) => {
       console.log(data)
-      this.setState({ redirect: true })
-
+      // this.setState({ redirect: true })
     })
   }
 
@@ -64,7 +63,7 @@ class PortfoliosCreated extends Component {
               <Button
                 text="Create New"
                 type="button"
-                href="/template1"
+                href="/portfoliocreation"
                 onClick={() => { }}
                 className="float-right medium btn buttonColor buttonFont"
               />
