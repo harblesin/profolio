@@ -9,13 +9,8 @@ import PortfolioCreation from "./pages/PortfolioCreation";
 import PortfoliosCreated from "./pages/PortfoliosCreated";
 import Preview from "./pages/Preview";
 import UserSplash from "./pages/UserSplash";
-<<<<<<< HEAD
-import Template1 from "./pages/Template1";
-import Test from "./pages/Test";
-=======
 import Template1 from "./pages/Template1"
 
->>>>>>> d428a4c1a264e115515c2c08ac0584af717a43df
 
 function App() {
   return (
@@ -28,11 +23,7 @@ function App() {
           <Route exact path="/portfolioscreated" component={PortfoliosCreated} />
           <Route exact path="/preview" component={Preview} />
           <Route exact path="/usersplash" component={UserSplash} />
-<<<<<<< HEAD
-          <Route exact path="/test" component={Test} />
-=======
           <Route exact path="/template1" component={Template1} />
->>>>>>> d428a4c1a264e115515c2c08ac0584af717a43df
         </Switch>
     </Router>
   );
