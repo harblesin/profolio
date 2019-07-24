@@ -20,14 +20,6 @@ class PortfoliosCreated extends Component {
     }
   };
 
-  // showProfiles = () => {
-  //   if(this.state.profiles){
-  //     
-  //   }else{
-  //    return <UserProject>Nothing here bub</UserProject>
-  //   }
-
-  // }
 
   componentDidMount() {
     API.authCheck().then(data => {
@@ -59,12 +51,13 @@ class PortfoliosCreated extends Component {
             </thead>
             <tbody>
               <tr>
-              {this.state.profiles.map(profile=>(
+                <UserProject name={this.state.port}></UserProject>
+              {/* {this.state.profiles.map(profile=>(
               <UserProject
                   name={profile.name}
                   key={profile.id} 
                   onClick={profile.link}
-                  />))}
+                  />))} */}
                 <Button
                   text="Delete"
                   type="button"

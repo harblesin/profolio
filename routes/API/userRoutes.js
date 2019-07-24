@@ -31,7 +31,7 @@ const User = require("../../models/User");
 // };
 
 const checkToken = (req,res,next) => {
- return passport.authenticate("jwt", {failureRedirect:"/"}, function(err,user,info) {
+  passport.authenticate("jwt", {failureRedirect:"/"}, function(err,user,info) {
 
         console.log(user);
         res.send(req.user)

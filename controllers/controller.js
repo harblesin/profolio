@@ -51,6 +51,7 @@ module.exports = {
       }
 
       const payload = {
+        id:user.id,
         email: user.email,
         expires: Date.now() + parseInt(360000)
       };
@@ -91,8 +92,26 @@ module.exports = {
   },
 
   loadProfiles: (req,res,next)=>{
-    passport.authenticate("jwt", function(err,user,info){
-      console.log(JSON.stringify(req.signedCookies))
+    passport.authenticate("jwt", {sessions: false}, (err,user,info)=> {
+      if(err){
+        console.log(err)
+      }
+      if(info !== undefined) {
+        console.log(info.message);
+        res.send(info.message)
+      } else {
+        console.log("separation")
+        console.log(user)
+        console.log(user)
+
+        db.Profolio.findAll({where:{UserId: user.id}}).then((data)=>
+        res.json(data))
+        // res.status(200).send({
+        //   auth:true,
+        //   user
+        // })
+      }
+      
     })(req,res,next)
     //console.log(req.user)
      console.log("here i am")
@@ -110,8 +129,7 @@ module.exports = {
     //   //   return res.status(401).send("UNATH");
     //   // }
     //   var userId = decoded.id
-    //   db.Profolio.findAll({where:{UserId: userId}}).then((data)=>
-    //     res.json(data))
+    //   
     // }
     
   },
