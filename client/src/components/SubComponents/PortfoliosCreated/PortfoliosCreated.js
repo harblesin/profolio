@@ -8,9 +8,11 @@ import UserProject from "../UserProjects/UserProjects";
 class PortfoliosCreated extends Component {
   state = {
     redirect: false,
-    profiles: [{
-      name: "Nothing here bubs!"
-    }],
+    profiles: [
+      {
+        name: "Nothing here bubs!"
+      }
+    ],
     port: ""
   };
 
@@ -20,24 +22,21 @@ class PortfoliosCreated extends Component {
     }
   };
 
-
   componentDidMount() {
-    API.authCheck().then(data => {
-      console.log("logging: " + data);
-      //this.setState({ redirect: true });
-    });
     console.log();
     API.grabProfiles().then(data => {
-      console.log(data);
-      console.log(data.data);
-      this.setState({ profiles: data.data });
-      //console.log(data)
+      if (!data.data.auth) {
+        this.setState({ redirect: true });
+      } else {
+        console.log(data);
+        console.log(data.data);
+        console.log(data.data.auth);
+        this.setState({ profiles: data.data });
+      }
     });
   }
 
   render() {
-    
-
     return (
       <div>
         <div className="card-body list-overflow-container">
@@ -51,8 +50,7 @@ class PortfoliosCreated extends Component {
             </thead>
             <tbody>
               <tr>
-                <UserProject name={this.state.port}></UserProject>
-              {/* {this.state.profiles.map(profile=>(
+                {/* {this.state.profiles.map(profile=>(
               <UserProject
                   name={profile.name}
                   key={profile.id} 
@@ -70,7 +68,6 @@ class PortfoliosCreated extends Component {
                   onClick={() => {}}
                   className="float-right medium warning btn active"
                 />
-                
               </tr>
             </tbody>
           </Table>

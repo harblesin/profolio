@@ -28,15 +28,26 @@ module.exports = {
     const hashCost = 10;
 
     try {
-      console.log("here i am");
-      const passwordHash = await bcrypt.hash(password, hashCost);
-      await db.User.create({ email: email, password: passwordHash });
+      db.User.findOne({
+        where: {
+          email: email
+        }
+      }).then(async user => {
+        if (user !== null) {
+          console.log("Already user with this email");
+          res.send({
+            message: "This email has already been used to create an account"
+          });
+        } else {
+          const passwordHash = await bcrypt.hash(password, hashCost);
+          await db.User.create({ email: email, password: passwordHash });
 
-      res.status(200).send({ email });
-    } catch (error) {
-      res.status(400).send({
-        error: "req.body isnt taking the form data"
+          res.status(200).send({ email });
+        }
       });
+    } catch (err) {
+      console.log(err);
+      res.send(err);
     }
   },
 
@@ -51,7 +62,7 @@ module.exports = {
       }
 
       const payload = {
-        id:user.id,
+        id: user.id,
         email: user.email,
         expires: Date.now() + parseInt(360000)
       };
@@ -71,10 +82,6 @@ module.exports = {
     })(req, res, next);
   },
 
-  // loadProfiles: (req,res)=>{
-  //   db.findAll
-  // },
-
   check: (req, res) => {
     console.log(req);
     console.log("this is here");
@@ -91,51 +98,68 @@ module.exports = {
     db.Details.create(stuff).then(data => res.send(data));
   },
 
-  loadProfiles: (req,res,next)=>{
-    passport.authenticate("jwt", {sessions: false}, (err,user,info)=> {
-      if(err){
-        console.log(err)
-      }
-      if(info !== undefined) {
-        console.log(info.message);
-        res.send(info.message)
-      } else {
-        console.log("separation")
-        console.log(user)
-        console.log(user)
-
-        db.Profolio.findAll({where:{UserId: user.id}}).then((data)=>
-        res.json(data))
-        // res.status(200).send({
-        //   auth:true,
-        //   user
-        // })
-      }
-      
-    })(req,res,next)
-    //console.log(req.user)
-     console.log("here i am")
-    // console.log(req.headers)
-   //console.log(headers.cookie)
-    // if(req.headers && req.headers.cookie){
-    //   console.log("this is here")
-    //   const token = req.headers.cookie
-    //   const authorizaton = token.split(' ');
-      
-    //   //try{
-    //     decoded = jwt.verify('jwt', process.env.SECRET);
-    //     console.log(decoded)
-    //   //} catch (err){
-    //   //   return res.status(401).send("UNATH");
-    //   // }
-    //   var userId = decoded.id
-    //   
-    // }
+  logout: (req, res,next) => {
     
+    passport.authenticate("local", {session: false}, (error,user, info)=>{
+      console.log(req);
+      if(error){
+        console.log("first error")
+        res.status(400).json({error});
+      }
+
+      req.login({session: false }, error=>{
+        if(error){
+          console.log('second error')
+          res.status(400).send({ error })
+        }
+        //const token = jwt.sign(JSON.stringify(payload))
+        res.cookie('token=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;')
+        res.status(200).send({message: "Logged Out"})
+      })
+    })(req,res,next)
+
+
+
+
+        //localStorage.removeItem(req.cookies), 
+    // console.log(req)
+    //  console.log(req.cookies)
+    //  req.cookies = 'token=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;'
+
+    // = ;
+
+    // sessionStorage.removeItem('token')
+    //res.send("User token deleted")
   },
 
-  loadFinishedProfiles:(req, res) => {
-    console.log(req)
+  loadProfiles: (req, res, next) => {
+    passport.authenticate("jwt", { sessions: false }, (err, user, info) => {
+      if (err) {
+        console.log(err);
+      }
+      if (info !== undefined) {
+        console.log(info.message);
+        res.send(info.message);
+      } else {
+        if (user !== undefined) {
+          console.log("separation");
+          console.log(user);
+          console.log(user);
+
+          db.Profolio.findAll({ where: { UserId: user.id } }).then(data =>
+            res.json(data)
+          );
+        } else {
+          res.send({
+            auth: false
+          });
+        }
+      }
+    })(req, res, next);
+  },
+
+  loadFinishedProfiles: (req, res) => {
+    console.log(req);
     db.Profolio.findOne({
       where: { UserId: 1 },
       include: [
@@ -154,8 +178,6 @@ module.exports = {
       ]
     }).then(data => res.json(data));
   }
-
-
 
   // db.Details.create(req.body).then(data => res.json(data));
 };
