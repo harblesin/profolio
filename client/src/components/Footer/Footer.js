@@ -47,9 +47,10 @@ export const Footer1 = props => {
             <Row>
               <Col className="text-center">
                 <Button
+                  href="#skills"
                   text="Next"
                   type="button"
-                  className="large teal btn"
+                  className="large teal btn scrolly"
                   name="footer"
                   onClick={() => props.nextClick()}
                 />
@@ -71,26 +72,28 @@ export const Footer2 = props => {
     <div>
       <div className="footerStyle">
         <Row>
-          <Col className="text-center">
-            {/* form for skills */}
+          <Col>
+
           </Col>
           <Col />
           <Col>
             <Row>
               <Col className="text-center">
                 <Button
+                  href="#portfolio"
                   text="Next"
                   type="button"
-                  className="large teal btn"
+                  className="large teal btn scrolly"
                   name="footer"
                   onClick={() => props.nextClick()}
                 />
                 <br />
                 <br />
                 <Button
+                  href="#veryTop"
                   text="Previous"
                   type="button"
-                  className="large teal btn"
+                  className="large teal btn scrolly"
                   name="footer"
                   onClick={() => props.previousClick()}
                 />
@@ -139,11 +142,17 @@ export const Footer3 = props => {
               className="opacity form-control border border-dark"
               id="profilePicture"
               placeholder="Github Link"
+              name="githubLink"
+              value={props.githubLink}
+              onChange={props.onChange}
             />
             <Form
               className="opacity form-control border border-dark"
               id="profilePicture"
               placeholder="Deployed Link"
+              name="deployedLink"
+              value={props.deployedLink}
+              onChange={props.onChange}
             />
           </Col>
           <Col>
@@ -166,18 +175,20 @@ export const Footer3 = props => {
             <Row>
               <Col className="text-center">
                 <Button
+                  href="#contact"
                   text="Next"
                   type="button"
-                  className="large teal btn"
+                  className="large teal btn scrolly"
                   name="footer"
                   onClick={() => props.nextClick()}
                 />
                 <br />
                 <br />
                 <Button
+                  href="#skills"
                   text="Previous"
                   type="button"
-                  className="large teal btn"
+                  className="large teal btn scrolly"
                   name="footer"
                   onClick={() => props.previousClick()}
                 />
@@ -215,18 +226,20 @@ export const Footer4 = props => {
             <Row>
               <Col className="text-center">
                 <Button
+                  href=" "
                   text="Preview"
                   type="button"
-                  className="large teal btn"
+                  className="large teal btn scrolly"
                   name="footer"
                   onClick={() => props.nextClick()}
                 />
                 <br />
                 <br />
                 <Button
+                  href="#portfolio"
                   text="Previous"
                   type="button"
-                  className="large teal btn"
+                  className="large teal btn scrolly"
                   name="footer"
                   onClick={() => props.previousClick()}
                 />
