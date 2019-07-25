@@ -37,30 +37,20 @@ class NewUser extends Component {
         };
 
 
-        //logic put on pause for checking first if the user is requesting registration with
-        //an email that i already in use
+        API.saveUser(userInfo).then((data) => {
+          console.log(data)
 
-        // console.log(userInfo)
-        //  await API.getUser(userInfo).then(res => {
-        //   if (res === null) {
-        //     console.log(res);
-        //     alert("User with this email already exists!");
-        //   } else {
-        //console.log(res);
-
-
-        API.saveUser(userInfo).then(() => {
-          alert("Welcome " + this.state.email + "!");
+          if(data.data.message){
+            alert(data.data.message)
+            window.location.reload();
+          }else{
+            alert("Welcome " + this.state.email + "!");
 
           this.setState({ redirect: true });
           this.renderRedirect();
+          }
+          
         });
-
-
-        //   }
-        // });
-
-
       } else {
         alert("Passwords do not match!");
       }
