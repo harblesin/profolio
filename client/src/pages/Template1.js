@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import SmallLogo from "./../components/SubComponents/Logo/SmallLogo";
 import { Link, animateScroll as scroll } from "react-scroll";
 import Slider from "react-slick";
+import ProjectCard from "../components/SubComponents/ProjectCard/ProjectCard";
 
 export const Template1 = props => {
   require("./../components/SubComponents/Nav/main.css");
@@ -22,29 +23,29 @@ export const Template1 = props => {
           slidesToShow: 3,
           slidesToScroll: 3,
           infinite: true,
-          dots: true
-        }
+          dots: true,
+        },
       },
       {
         breakpoint: 600,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 2,
-          initialSlide: 2
-        }
+          initialSlide: 2,
+        },
       },
       {
         breakpoint: 480,
         settings: {
           slidesToShow: 1,
-          slidesToScroll: 1
-        }
-      }
-    ]
-  }
+          slidesToScroll: 1,
+        },
+      },
+    ],
+  };
 
   return (
-    <div>
+    <div id="veryTop">
       <nav className="navbar navbar-dark bg-dark">
         <a className="navbar-brand" href="/">
           <SmallLogo
@@ -197,14 +198,33 @@ export const Template1 = props => {
           </header>
           <div className="row">
             <div className="col-4 col-6-medium col-12-small">
+              <ProjectCard {...props} />
+            </div>
+          </div>
+          {/* <div className="row">
+            <div className="col-4 col-6-medium col-12-small">
               <article className="box style2">
-                <a href=" " className="image featured">
+                <a href={props.deployedLink} className="image featured">
                   <img src="images/pic01.jpg" alt="" />
                 </a>
                 <h3>
-                  <a href=" ">{props.projectTitle}</a>
+                  <a href={props.deployedLink}>
+                    {props.projectTitle}
+                  </a>
                 </h3>
-                <p>{props.aboutProject}</p>
+                <p>
+                  {props.aboutProject}
+                </p>
+                <ul className="social text-center">
+                  <li>
+                    <a
+                      href={props.githubLink}
+                      className="fab fa-github icon"
+                    >
+                      <span className="label">Github</span>
+                    </a>
+                  </li>
+                </ul>
               </article>
             </div>
             <div className="col-4 col-6-medium col-12-small">
@@ -262,7 +282,7 @@ export const Template1 = props => {
                 <p>Ornare nulla proin odio consequat.</p>
               </article>
             </div>
-          </div>
+          </div> */}
           <footer>
             <p>Lorem ipsum dolor sit sapien vestibulum ipsum primis?</p>
             <a href="#contact" className="button large scrolly">
@@ -286,7 +306,9 @@ export const Template1 = props => {
           <header>
             <h2>Contact Me</h2>
           </header>
-          <p>Contact Number: {props.contactNumber} </p>
+          <p>
+            Contact Number: {props.contactNumber}{" "}
+          </p>
           <p>Feel free to send me a message below.</p>
           <div className="row">
             <div className="col-12">
