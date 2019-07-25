@@ -15,9 +15,13 @@ class PortfolioCreation extends Component {
     contactNumber: "Phone Number",
     projectTitle: "Project Title",
     aboutProject: "About Project",
-    githubLink: "Github Link",
-    deployedLink: "Deployed Link",
+    githubLink: "Github Project Link",
+    deployedLink: "Deployed Project Link",
     footer: 0,
+    baseImage: "images/profile-pic-placeholder.png",
+    projectPicture: "images/project-placeholder.png",
+    linkedInLink: "LinkedIn Link",
+    githubProfileLink: "Github Profile Link"
   };
 
   handleInputChange = event => {
@@ -26,6 +30,18 @@ class PortfolioCreation extends Component {
 
     this.setState({
       [name]: value,
+    });
+  };
+
+  getBaseFile = files => {
+    this.setState({
+      baseImage: files.base64,
+    });
+  };
+
+  getBaseFileProjectPic = files => {
+    this.setState({
+      projectPicture: files.base64,
     });
   };
 
@@ -49,13 +65,21 @@ class PortfolioCreation extends Component {
     console.log(this.state.footer);
   };
 
-  // addProjectClick = () => {
-  // };
+  addProjectClick = props => {
+    // let children = this.state.children
+    // this.setState({
+    //   children: [...children, <ProjectCard {...props} />]
+    // })
+  };
 
   handleFooterChange = () => {
     if (this.state.footer === 0) {
       return (
-        <Footer1 onChange={this.handleInputChange} nextClick={this.nextClick} />
+        <Footer1
+          onChange={this.handleInputChange}
+          nextClick={this.nextClick}
+          getBaseFile={this.getBaseFile}
+        />
       );
     }
     if (this.state.footer === 1) {
@@ -64,7 +88,6 @@ class PortfolioCreation extends Component {
           onChange={this.handleInputChange}
           nextClick={this.nextClick}
           previousClick={this.previousClick}
-          addProjectClick={this.addProjectClick}
         />
       );
     }
@@ -74,6 +97,8 @@ class PortfolioCreation extends Component {
           onChange={this.handleInputChange}
           nextClick={this.nextClick}
           previousClick={this.previousClick}
+          addProjectClick={this.addProjectClick}
+          getBaseFileProjectPic={this.getBaseFileProjectPic}
         />
       );
     }
