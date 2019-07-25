@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import SmallLogo from "./../components/SubComponents/Logo/SmallLogo";
 import { Link, animateScroll as scroll } from "react-scroll";
 import Slider from "react-slick";
+import ProjectCard from "../components/SubComponents/ProjectCard/ProjectCard";
 
 export const Template1 = props => {
   require("./../components/SubComponents/Nav/main.css");
@@ -197,6 +198,11 @@ export const Template1 = props => {
           </header>
           <div className="row">
             <div className="col-4 col-6-medium col-12-small">
+              <ProjectCard {...props} />
+            </div>
+          </div>
+          {/* <div className="row">
+            <div className="col-4 col-6-medium col-12-small">
               <article className="box style2">
                 <a href={props.deployedLink} className="image featured">
                   <img src="images/pic01.jpg" alt="" />
@@ -213,7 +219,7 @@ export const Template1 = props => {
                   <li>
                     <a
                       href={props.githubLink}
-                      className="icon fab fa-github"
+                      className="fab fa-github icon"
                     >
                       <span className="label">Github</span>
                     </a>
@@ -276,7 +282,7 @@ export const Template1 = props => {
                 <p>Ornare nulla proin odio consequat.</p>
               </article>
             </div>
-          </div>
+          </div> */}
           <footer>
             <p>Lorem ipsum dolor sit sapien vestibulum ipsum primis?</p>
             <a href="#contact" className="button large scrolly">

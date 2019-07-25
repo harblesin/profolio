@@ -6,6 +6,7 @@ import {
   Footer4,
 } from "../components/Footer/Footer";
 import Template1 from "./Template1";
+import ProjectCard from "../components/SubComponents/ProjectCard/ProjectCard";
 
 class PortfolioCreation extends Component {
   state = {
@@ -48,6 +49,9 @@ class PortfolioCreation extends Component {
     console.log(this.state.footer);
   };
 
+  // addProjectClick = () => {
+  // };
+
   handleFooterChange = () => {
     if (this.state.footer === 0) {
       return (
@@ -60,6 +64,7 @@ class PortfolioCreation extends Component {
           onChange={this.handleInputChange}
           nextClick={this.nextClick}
           previousClick={this.previousClick}
+          addProjectClick={this.addProjectClick}
         />
       );
     }

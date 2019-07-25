@@ -72,8 +72,8 @@ export const Footer2 = props => {
     <div>
       <div className="footerStyle">
         <Row>
-          <Col className="text-center">
-            {/* form for skills */}
+          <Col>
+
           </Col>
           <Col />
           <Col>
