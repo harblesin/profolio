@@ -5,7 +5,7 @@ const ProjectCard = (props) => {
     <div>
       <article className="box style2">
         <a href={props.deployedLink} className="image featured">
-          <img src="images/pic01.jpg" alt="" />
+          <img src={props.projectPicture} alt="" />
         </a>
         <h3>
           <a href={props.deployedLink}>
