@@ -4,6 +4,7 @@ import API from "../../../utils/API";
 import Button from "../Button/Button";
 import { Table } from "react-bootstrap";
 import UserProject from "../UserProjects/UserProjects";
+import Logout from "../Logout/Logout"
 
 class PortfoliosCreated extends Component {
   state = {
@@ -36,9 +37,16 @@ class PortfoliosCreated extends Component {
     });
   }
 
+  logout = () => {
+    API.logout().then(()=>{
+      alert("Logged Out")
+    })
+  }
+
   render() {
     return (
       <div>
+        <Logout logout={this.logout}/>
         <div className="card-body list-overflow-container">
           <Table striped bordered hover variant="dark">
             <thead>
