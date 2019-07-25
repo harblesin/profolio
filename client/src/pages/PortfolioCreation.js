@@ -18,6 +18,7 @@ class PortfolioCreation extends Component {
     githubLink: "Github Link",
     deployedLink: "Deployed Link",
     footer: 0,
+    checkedValue: "test"
   };
 
   handleInputChange = event => {
@@ -27,6 +28,19 @@ class PortfolioCreation extends Component {
     this.setState({
       [name]: value,
     });
+  };
+
+  isChecked = event => {
+    let value = event.target.value;
+    // console.log(this.state.checkedValue);
+    console.log('this is the value of the checkbox ' + value);
+
+    if(event.target.checked) {
+      console.log("TRUE")
+    }
+    else {
+      console.log("FALSE")
+    }
   };
 
   nextClick = () => {
@@ -65,6 +79,7 @@ class PortfolioCreation extends Component {
           nextClick={this.nextClick}
           previousClick={this.previousClick}
           addProjectClick={this.addProjectClick}
+          isChecked={this.isChecked}
         />
       );
     }

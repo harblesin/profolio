@@ -1,6 +1,7 @@
 import React from "react";
 import Form from "../SubComponents/Form/Form";
 import Button from "../SubComponents/Button/Button";
+import Checkbox from "../SubComponents/Checkbox/Checkbox"
 import { Row, Col } from "react-bootstrap";
 import SmallLogo from "../SubComponents/Logo/SmallLogo";
 
@@ -28,7 +29,7 @@ export const Footer1 = props => {
             <Button
               text="Upload Picture"
               type="button"
-              onClick={() => {}}
+              onClick={() => { }}
               className="medium teal btn"
             />
           </Col>
@@ -73,7 +74,16 @@ export const Footer2 = props => {
       <div className="footerStyle">
         <Row>
           <Col>
-
+            <div className="form-check">
+              <Checkbox
+              name="checkedValue"
+              value="TEST"
+              onClick={props.isChecked}
+              />
+              <label className="form-check-label" for="defaultCheck1">
+                Default checkbox
+              </label>
+            </div>
           </Col>
           <Col />
           <Col>
@@ -133,7 +143,7 @@ export const Footer3 = props => {
             <Button
               text="Upload Picture"
               type="button"
-              onClick={() => {}}
+              onClick={() => { }}
               className="medium teal btn"
             />
           </Col>

@@ -75,10 +75,11 @@ export const Template1 = props => {
                 spy={true}
                 smooth={true}
                 duration={500}
+                className="nav-link textFix"
               >
-                <a className="nav-link textFix" href=" ">
+                {/* <a className="nav-link textFix" href=" "> */}
                   Skills
-                </a>
+                {/* </a> */}
               </Link>
             </li>
             <li className="nav-item">
