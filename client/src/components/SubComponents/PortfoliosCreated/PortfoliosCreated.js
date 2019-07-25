@@ -4,7 +4,7 @@ import API from "../../../utils/API";
 import Button from "../Button/Button";
 import { Table } from "react-bootstrap";
 import UserProject from "../UserProjects/UserProjects";
-import Logout from "../Logout/Logout"
+import Logout from "../Logout/Logout";
 
 class PortfoliosCreated extends Component {
   state = {
@@ -29,24 +29,21 @@ class PortfoliosCreated extends Component {
       if (!data.data.auth) {
         this.setState({ redirect: true });
       } else {
-        console.log(data);
-        console.log(data.data);
-        console.log(data.data.auth);
-        this.setState({ profiles: data.data });
+        this.setState({ profiles: data.data.data });
       }
     });
   }
 
   logout = () => {
-    API.logout().then(()=>{
-      alert("Logged Out")
-    })
-  }
+    API.logout().then(() => {
+      alert("Logged Out");
+    });
+  };
 
   render() {
     return (
       <div>
-        <Logout logout={this.logout}/>
+        <Logout logout={this.logout} />
         <div className="card-body list-overflow-container">
           <Table striped bordered hover variant="dark">
             <thead>
@@ -58,12 +55,13 @@ class PortfoliosCreated extends Component {
             </thead>
             <tbody>
               <tr>
-                {/* {this.state.profiles.map(profile=>(
-              <UserProject
-                  name={profile.name}
-                  key={profile.id} 
-                  onClick={profile.link}
-                  />))} */}
+                {this.state.profiles.map(profile => (
+                  <UserProject
+                    name={profile.name}
+                    key={profile.id}
+                    onClick={profile.link}
+                  />
+                ))}
                 <Button
                   text="Delete"
                   type="button"
