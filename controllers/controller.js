@@ -173,6 +173,14 @@ module.exports = {
         }
       ]
     }).then(data => res.json(data));
+  },
+
+  newProfolio: (req,res) => {
+    console.log("<-->")
+    console.log(req)
+    // db.Profolio.create({
+    //   name: name
+    // }).then(()=>{})
   }
 
   // db.Details.create(req.body).then(data => res.json(data));
