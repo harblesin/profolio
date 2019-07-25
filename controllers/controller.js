@@ -101,19 +101,22 @@ module.exports = {
   logout: (req, res,next) => {
     
     passport.authenticate("local", {session: false}, (error,user, info)=>{
-      console.log(req);
-      if(error){
-        console.log("first error")
-        res.status(400).json({error});
-      }
+      // console.log(req);
+      // if(error){
+      //   console.log("first error")
+      //   res.status(400).json({error});
+      // }
 
       req.login({session: false }, error=>{
-        if(error){
-          console.log('second error')
-          res.status(400).send({ error })
+        // if(error){
+        //   console.log('second error')
+        //   res.status(400).send({ error })
+        // }
+        // //const token = jwt.sign(JSON.stringify(payload))
+        const token = {
+
         }
-        //const token = jwt.sign(JSON.stringify(payload))
-        res.cookie('token=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;')
+        res.clearCookie("jwt")
         res.status(200).send({message: "Logged Out"})
       })
     })(req,res,next)
@@ -142,10 +145,6 @@ module.exports = {
         res.send(info.message);
       } else {
         if (user !== undefined) {
-          console.log("separation");
-          console.log(user);
-          console.log(user);
-
           db.Profolio.findAll({ where: { UserId: user.id } }).then(data =>
             res.json(data)
           );
