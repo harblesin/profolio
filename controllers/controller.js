@@ -7,8 +7,10 @@ const keys = require("../routes/keys/secret");
 
 module.exports = {
   findOne: (req, res) => {
-    console.log(req.body.email)
-    db.User.findOne({where:{email: req.body.email}}).then(data => res.json(data));
+    console.log(req.body.email);
+    db.User.findOne({ where: { email: req.body.email } }).then(data =>
+      res.json(data)
+    );
   },
 
   // function(req, res) {
@@ -40,9 +42,9 @@ module.exports = {
 
   loginUser: (req, res, next) => {
     passport.authenticate("local", { session: false }, (error, user, info) => {
-      console.log(error);
+      //console.log(error);
       console.log(user);
-      console.log(info);
+      //console.log(info);
 
       if (error || !user) {
         res.status(400).json({ error });
@@ -50,7 +52,7 @@ module.exports = {
 
       const payload = {
         email: user.email,
-        expires: Date.now() + parseInt(36000)
+        expires: Date.now() + parseInt(360000)
       };
 
       req.login(payload, { session: false }, error => {
@@ -68,10 +70,74 @@ module.exports = {
     })(req, res, next);
   },
 
+  // loadProfiles: (req,res)=>{
+  //   db.findAll
+  // },
+
   check: (req, res) => {
-    console.log("this is here")
-    res.status(200).send(true);
+    console.log(req);
+    console.log("this is here");
+    res.status(200).send();
+  },
+
+  test: (req, res) => {
+    stuff = {
+      firstName: req.body.one,
+      lastName: req.body.two,
+      title: req.body.three,
+      UserId: 20
+    };
+    db.Details.create(stuff).then(data => res.send(data));
+  },
+
+  loadProfiles: (req,res,next)=>{
+    passport.authenticate("jwt", function(err,user,info){
+      console.log(JSON.stringify(req.signedCookies))
+    })(req,res,next)
+    //console.log(req.user)
+     console.log("here i am")
+    // console.log(req.headers)
+   //console.log(headers.cookie)
+    // if(req.headers && req.headers.cookie){
+    //   console.log("this is here")
+    //   const token = req.headers.cookie
+    //   const authorizaton = token.split(' ');
+      
+    //   //try{
+    //     decoded = jwt.verify('jwt', process.env.SECRET);
+    //     console.log(decoded)
+    //   //} catch (err){
+    //   //   return res.status(401).send("UNATH");
+    //   // }
+    //   var userId = decoded.id
+    //   db.Profolio.findAll({where:{UserId: userId}}).then((data)=>
+    //     res.json(data))
+    // }
+    
+  },
+
+  loadFinishedProfiles:(req, res) => {
+    console.log(req)
+    db.Profolio.findOne({
+      where: { UserId: 1 },
+      include: [
+        {
+          model: db.Bio,
+          where: {
+            ProfolioId: 1
+          }
+        },
+        {
+          model: db.Skill,
+          where: {
+            ProfolioId: 1
+          }
+        }
+      ]
+    }).then(data => res.json(data));
   }
+
+
 
   // db.Details.create(req.body).then(data => res.json(data));
 };
