@@ -36,6 +36,7 @@ module.exports = function(passport, user) {
         }}
     )
   );
+  
 
   passport.use(
     new JWTStrategy(

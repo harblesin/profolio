@@ -116,7 +116,7 @@ export const Template1 = props => {
           <div className="row">
             <div className="col-4 col-5-large col-12-medium">
               <span className="image fit">
-                <img src="images/pic00.jpg" alt="" />
+                <img src={props.baseImage} alt="" />
               </span>
             </div>
             <div className="col-8 col-7-large col-12-medium">
@@ -199,7 +199,7 @@ export const Template1 = props => {
           </header>
           <div className="row">
             <div className="col-4 col-6-medium col-12-small">
-              <ProjectCard {...props} />
+              <ProjectCard {...props}/>
             </div>
           </div>
           {/* <div className="row">
@@ -367,12 +367,12 @@ export const Template1 = props => {
               <hr />
               <h3>Find me on ...</h3>
               <ul className="social">
+              <li><a href={props.linkedInLink} className="icon fab fa-linkedin"><span className="label">LinkedIn</span></a></li>
+              <li><a href={props.githubProfileLink} className="icon fab fa-github"><span className="label">Github</span></a></li>
                 {/* <li><a href=" " className="icon fab fa-twitter"><span className="label">Twitter</span></a></li>
                 <li><a href=" " className="icon fab fa-facebook"><span className="label">Facebook</span></a></li>
                 <li><a href=" " className="icon fab fa-dribbble"><span className="label">Dribbble</span></a></li>
-                <li><a href=" " className="icon fab fa-linkedin"><span className="label">LinkedIn</span></a></li>
                 <li><a href=" " className="icon fab fa-tumblr"><span className="label">Tumblr</span></a></li>
-                <li><a href=" " className="icon fab fa-github"><span className="label">Github</span></a></li>
                 <li><a href=" " className="icon fab fa-instagram"><span>Instagram</span></a></li>
                 <li><a href=" " className="icon fab fa-foursquare"><span>Foursquare</span></a></li>
                 <li><a href=" " className="icon fab fa-skype"><span>Skype</span></a></li>

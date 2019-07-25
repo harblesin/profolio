@@ -4,6 +4,7 @@ import Button from "../SubComponents/Button/Button";
 import Checkbox from "../SubComponents/Checkbox/Checkbox"
 import { Row, Col } from "react-bootstrap";
 import SmallLogo from "../SubComponents/Logo/SmallLogo";
+import FileBase from "react-file-base64";
 
 export const Footer1 = props => {
   // full name, image, description of yourself
@@ -20,18 +21,14 @@ export const Footer1 = props => {
               value={props.fullName}
               onChange={props.onChange}
             />
-            <br />
-            <Form
-              className="opacity form-control border border-dark"
-              id="profilePicture"
-              placeholder="Profile Picture (URL/PNG)"
-            />
-            <Button
-              text="Upload Picture"
-              type="button"
-              onClick={() => { }}
-              className="medium teal btn"
-            />
+            <div className="text-white medium bg-dark">Upload Image</div>
+            <div className="process_upload-btn bg-dark rounded">
+              <FileBase
+                type="file"
+                multiple={false}
+                onDone={props.getBaseFile.bind(this)}
+              />
+            </div>
           </Col>
           <Col>
             <textarea
@@ -76,9 +73,9 @@ export const Footer2 = props => {
           <Col>
             <div className="form-check">
               <Checkbox
-              name="checkedValue"
-              value="TEST"
-              onClick={props.isChecked}
+                name="checkedValue"
+                value="TEST"
+                onClick={props.isChecked}
               />
               <label className="form-check-label" for="defaultCheck1">
                 Default checkbox
@@ -135,23 +132,20 @@ export const Footer3 = props => {
               value={props.projectTitle}
               onChange={props.onChange}
             />
-            <Form
-              className="opacity form-control border border-dark"
-              id="profilePicture"
-              placeholder="Project Picture (URL/PNG)"
-            />
-            <Button
-              text="Upload Picture"
-              type="button"
-              onClick={() => { }}
-              className="medium teal btn"
-            />
+            <div className="text-white medium bg-dark">Upload Image</div>
+            <div className="process_upload-btn bg-dark rounded">
+              <FileBase
+                type="file"
+                multiple={false}
+                onDone={props.getBaseFileProjectPic.bind(this)}
+              />
+            </div>
           </Col>
           <Col>
             <Form
               className="opacity form-control border border-dark"
               id="profilePicture"
-              placeholder="Github Link"
+              placeholder="Github Project Link"
               name="githubLink"
               value={props.githubLink}
               onChange={props.onChange}
@@ -159,7 +153,7 @@ export const Footer3 = props => {
             <Form
               className="opacity form-control border border-dark"
               id="profilePicture"
-              placeholder="Deployed Link"
+              placeholder="Deployed Project Link"
               name="deployedLink"
               value={props.deployedLink}
               onChange={props.onChange}
@@ -179,6 +173,8 @@ export const Footer3 = props => {
               text="Add Project"
               type="button"
               className="medium teal btn float-right"
+              name="eachProject"
+              onClick={() => props.addProjectClick()}
             />
           </Col>
           <Col>
@@ -231,7 +227,24 @@ export const Footer4 = props => {
               onChange={props.onChange}
             />
           </Col>
-          <Col />
+          <Col>
+            <Form
+              className="opacity form-control border border-dark"
+              id="profilePicture"
+              placeholder="Github Profile Link"
+              name="githubProfile"
+              value={props.githubProfileLink}
+              onChange={props.onChange}
+            />
+            <Form
+              className="opacity form-control border border-dark"
+              id="profilePicture"
+              placeholder="LinkedIn Link"
+              name="linkedInLink"
+              value={props.linkedInLink}
+              onChange={props.onChange}
+            />
+          </Col>
           <Col>
             <Row>
               <Col className="text-center">
