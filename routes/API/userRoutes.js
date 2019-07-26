@@ -21,4 +21,6 @@ router
   .post(userController.test)
   .get(userController.loadProfiles);
 
+router.route("/newProfolio").post(userController.newProfolio)
+
 module.exports = router;
