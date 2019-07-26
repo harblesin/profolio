@@ -1,5 +1,5 @@
 const passport = require("passport");
-const secret = require("./key.secret");
+const secret = require("./key");
 const passportJWT = require("passport-jwt");
 const JWTStrategy = passportJWT.Strategy;
 const bcrypt = require("bcrypt");
