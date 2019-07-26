@@ -40,6 +40,12 @@ class PortfoliosCreated extends Component {
     });
   };
 
+  newProfolio = () => {
+    API.newProfolio().then(()=>{
+      
+    })
+  }
+
   render() {
     return (
       <div>
@@ -80,8 +86,9 @@ class PortfoliosCreated extends Component {
           <Button
             text="Create New"
             type="button"
-            href="/portfoliocreation"
-            onClick={() => {}}
+            onClick={this.newProfolio}
+            //href="/portfoliocreation"
+            //onClick={() => {}}
             className="float-right medium btn-dark btn"
           />
           {this.renderRedirect()}
