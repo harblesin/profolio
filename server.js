@@ -17,7 +17,7 @@ require("./config/authSetup.js")(passport, db.User);
 app.use(cookies())
 app.use(router);
 if (process.env.NODE_ENV === "production") {
-  app.use("/static", express.static(path.join(__dirname, "client/build")));
+  app.use(express.static("client/build"));
 }
 
 var syncOptions = { force: false };
