@@ -85,14 +85,6 @@ class PortfolioCreation extends Component {
       console.log("FALSE")
       this.checkedFalse(value);
     };
-
-    // let skills = this.state.skills;
-
-    // skills.push(value);
-
-    // this.setState({skills});
-
-    // console.log(skills);
   };
 
   checkedTrue = value => {
@@ -211,6 +203,7 @@ class PortfolioCreation extends Component {
           previousClick={this.previousClick}
           addProjectClick={this.addProjectClick}
           isChecked={this.isChecked}
+          getBaseFile={this.getBaseFile}
         />
       );
     }
