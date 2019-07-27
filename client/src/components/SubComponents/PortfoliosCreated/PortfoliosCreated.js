@@ -11,7 +11,7 @@ class PortfoliosCreated extends Component {
     redirect: false,
     profiles: [
       {
-        name: "Nothing here bubs!"
+        name: "Nothing here bub!"
       }
     ],
     port: ""
@@ -72,13 +72,13 @@ class PortfoliosCreated extends Component {
                   text="Delete"
                   type="button"
                   onClick={() => {}}
-                  className="float-right medium danger btn active"
+                  className="float-right medium buttonColor2 font-weight-bold btn active ml-1 mr-2 mb-1"
                 />
                 <Button
                   text="Edit"
                   type="button"
                   onClick={() => {}}
-                  className="float-right medium warning btn active"
+                  className="float-right medium buttonColor3 font-weight-bold btn active mr-1"
                 />
               </tr>
             </tbody>
@@ -89,7 +89,7 @@ class PortfoliosCreated extends Component {
             onClick={this.newProfolio}
             //href="/portfoliocreation"
             //onClick={() => {}}
-            className="float-right medium btn-dark btn"
+            className="float-right medium font-weight-bold buttonColor btn"
           />
           {this.renderRedirect()}
         </div>

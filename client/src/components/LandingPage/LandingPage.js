@@ -109,11 +109,10 @@ class LandingPage1 extends Component {
           </Col>
           <Col xl={7} lg={6} md={5}>
             <h1 className="text-center">What we are about!</h1>
-            <div className="card mx-auto w-75 align-self-center borderSplash backG rounded">
-              <div className="card-body font-weight-bold">
-                <p>
-                  {" "}
-                  Here on PROFolio we provide a{" "}
+            <div className="card mx-auto w-75 align-self-center noBorderSplash backG rounded shadow-lg">
+              <div className="card-body noCardPadding font-weight-bold">
+                <p className="text-center m-0">
+                  Here on PROFolio we provide a
                   <span className="font-weight-bolder"> FREE</span> service to
                   all developers searching for a place to create a portfolio.
                   With multiple templates to choose from we are sure one will
