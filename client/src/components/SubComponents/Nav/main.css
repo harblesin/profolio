@@ -1,6 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,600,600italic,700");
 @import url("./fontawesome.min.css");
-
 /*
 	Miniport by HTML5 UP
 	html5up.net | @ajlkn
@@ -2060,4 +2059,19 @@ body>article {
 .textFix {
 	font-weight: bolder;
 	border: none;
+	cursor: pointer;
+}
+
+.form-check-input1 {
+	margin: 6px 0 0;
+	margin-right: .25rem;
+	outline: 1px solid silver;
+}
+
+.skillsColor {
+	color: black;
+}
+
+.skillSize {
+	max-height: 195px;
 }

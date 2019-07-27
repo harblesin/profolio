@@ -3,7 +3,7 @@ import React from "react";
 function Checkbox(props) {
   return (
     <input
-      class="form-check-input"
+      className="form-check-input1"
       type="checkbox"
       {...props}
     />

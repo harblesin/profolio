@@ -67,23 +67,187 @@ export const Footer1 = props => {
 export const Footer2 = props => {
   // dropdown list of all developer skills(ex. html, css, jquery, etc), ability to add there own with a picture
   return (
-    <div>
-      <div className="footerStyle">
+    <div className="footerStyle">
+      <Col>
         <Row>
           <Col>
             <div className="form-check">
               <Checkbox
                 name="checkedValue"
-                value="TEST"
+                value="./images/template1/html5.png"
                 onClick={props.isChecked}
               />
-              <label className="form-check-label" for="defaultCheck1">
-                Default checkbox
+              <label className="form-check-label font-weight-bolder skillsColor">
+                HTML
+              </label>
+            </div>
+            <div className="form-check">
+              <Checkbox
+                name="checkedValue"
+                value="./images/template1/css2.png"
+                onClick={props.isChecked}
+              />
+              <label className="form-check-label font-weight-bolder skillsColor">
+                CSS
+              </label>
+            </div>
+            <div className="form-check">
+              <Checkbox
+                name="checkedValue"
+                value="./images/template1/js.png"
+                onClick={props.isChecked}
+              />
+              <label className="form-check-label font-weight-bolder skillsColor">
+                Javascript
+              </label>
+            </div>
+            <div className="form-check">
+              <Checkbox
+                name="checkedValue"
+                value="./images/template1/bootstrap.png"
+                onClick={props.isChecked}
+              />
+              <label className="form-check-label font-weight-bolder skillsColor">
+                Bootstrap
+              </label>
+            </div>
+            <div className="form-check">
+              <Checkbox
+                name="checkedValue"
+                value="./images/template1/jquery.png"
+                onClick={props.isChecked}
+              />
+              <label className="form-check-label font-weight-bolder skillsColor">
+                Jquery
+              </label>
+            </div>
+            <div className="form-check">
+              <Checkbox
+                name="checkedValue"
+                value="./images/template1/ajax.png"
+                onClick={props.isChecked}
+              />
+              <label className="form-check-label font-weight-bolder skillsColor">
+                Ajax
+              </label>
+            </div>
+
+          </Col>
+          <Col>
+            <div className="form-check">
+              <Checkbox
+                name="checkedValue"
+                value="./images/template1/express.png"
+                onClick={props.isChecked}
+              />
+              <label className="form-check-label font-weight-bolder skillsColor">
+                Express.js
+              </label>
+            </div>
+            <div className="form-check">
+              <Checkbox
+                name="checkedValue"
+                value="./images/template1/api.png"
+                onClick={props.isChecked}
+              />
+              <label className="form-check-label font-weight-bolder skillsColor">
+                API
+              </label>
+            </div>
+            <div className="form-check">
+              <Checkbox
+                name="checkedValue"
+                value="./images/template1/react.png"
+                onClick={props.isChecked}
+              />
+              <label className="form-check-label font-weight-bolder skillsColor">
+                React.js
+              </label>
+            </div>
+            <div className="form-check">
+              <Checkbox
+                name="checkedValue"
+                value="./images/template1/node.png"
+                onClick={props.isChecked}
+              />
+              <label className="form-check-label font-weight-bolder skillsColor">
+                Node.js
+              </label>
+            </div>
+            <div className="form-check">
+              <Checkbox
+                name="checkedValue"
+                value="./images/template1/mysql.png"
+                onClick={props.isChecked}
+              />
+              <label className="form-check-label font-weight-bolder skillsColor">
+                MySQL
+              </label>
+            </div>
+            <div className="form-check">
+              <Checkbox
+                name="checkedValue"
+                value="./images/template1/mongo.png"
+                onClick={props.isChecked}
+              />
+              <label className="form-check-label font-weight-bolder skillsColor">
+                MongoDB
               </label>
             </div>
           </Col>
-          <Col />
           <Col>
+            <div className="form-check">
+              <Checkbox
+                name="checkedValue"
+                value="./images/template1/fire.png"
+                onClick={props.isChecked}
+              />
+              <label className="form-check-label font-weight-bolder skillsColor">
+                Firebase
+              </label>
+            </div>
+            <div className="form-check">
+              <Checkbox
+                name="checkedValue"
+                value="./images/template1/materialize.png"
+                onClick={props.isChecked}
+              />
+              <label className="form-check-label font-weight-bolder skillsColor">
+                Materialize
+              </label>
+            </div>
+            <div className="form-check">
+              <Checkbox
+                name="checkedValue"
+                value="./images/template1/handlebars.png"
+                onClick={props.isChecked}
+              />
+              <label className="form-check-label font-weight-bolder skillsColor">
+                Handlebar.js
+              </label>
+            </div>
+            <div className="form-check">
+              <Checkbox
+                name="checkedValue"
+                value="./images/template1/sequelize.png"
+                onClick={props.isChecked}
+              />
+              <label className="form-check-label font-weight-bolder skillsColor">
+                Sequelize.js
+              </label>
+            </div>
+          </Col>
+          <Col xl="2" lg="2">
+          <Form
+              className="opacity form-control border border-dark"
+              id="addSkill"
+              placeholder="Add Your Own Skill"
+              name="addSkill"
+              value={props.fullName}
+              onChange={props.onChange}
+            />
+          </Col>
+          <Col className="text-center">
             <Row>
               <Col className="text-center">
                 <Button
@@ -112,7 +276,8 @@ export const Footer2 = props => {
             <SmallLogo className="smallLogo" />
           </Col>
         </Row>
-      </div>
+      </Col>
+
     </div>
   );
 };
