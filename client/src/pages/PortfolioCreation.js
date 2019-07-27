@@ -22,6 +22,7 @@ class PortfolioCreation extends Component {
     aboutProject: "About Project",
     githubLink: "Github Project Link",
     deployedLink: "Deployed Project Link",
+    cardButton: "Click on this button to create a new Project Card",
     footer: 0,
     skills: [],
     skillRemove: [],
@@ -93,7 +94,7 @@ class PortfolioCreation extends Component {
 
     skills.push(value);
 
-    this.setState({skills});
+    this.setState({ skills });
 
     console.log(skills);
   }
@@ -104,10 +105,10 @@ class PortfolioCreation extends Component {
     let link = value;
 
     remove.push(link);
-    this.setState({remove});
+    this.setState({ remove });
 
     skills = skills.filter(link => !remove.includes(link));
-    this.setState({skills});
+    this.setState({ skills });
   }
 
   getBaseFile = files => {
@@ -167,7 +168,7 @@ class PortfolioCreation extends Component {
     let project = this.state.eachProject[this.state.numProject];
     let numProject = this.state.numProject
 
-    project.push( 
+    project.push(
       {
         projectTitle: this.state.projectTitle
         // href: this.state.deployedLink,
@@ -179,7 +180,7 @@ class PortfolioCreation extends Component {
 
     this.setState({
       eachProject: project,
-      numProject: numProject+1
+      numProject: numProject + 1
     });
     console.log(project);
 
@@ -209,11 +210,15 @@ class PortfolioCreation extends Component {
     }
     if (this.state.footer === 2) {
       if (!this.state.footerTruth) {
-        return(
-        <Footer3Button />
+        return (
+          <Footer3Button
+            cardButton={this.state.cardButton}
+            nextClick={this.nextClick}
+            previousClick={this.previousClick}
+          />
         )
-      } 
-      else if (this.state.footerTruth){
+      }
+      else if (this.state.footerTruth) {
         return (
           <Footer3
             onChange={this.handleInputChange}

@@ -11,56 +11,59 @@ export const Footer1 = props => {
   return (
     <div>
       <div className="footerStyle">
-        <Row>
-          <Col className="text-center">
-            <Form
-              className="opacity form-control border border-dark"
-              id="firstName"
-              placeholder="Full Name"
-              name="fullName"
-              value={props.fullName}
-              onChange={props.onChange}
-            />
-            <div className="text-white medium bg-dark">Upload Image</div>
-            <div className="process_upload-btn bg-dark rounded">
-              <FileBase
-                type="file"
-                multiple={false}
-                onDone={props.getBaseFile.bind(this)}
+        <Col>
+          <Row>
+            <Col className="text-center">
+              <Form
+                className="opacity form-control border border-dark"
+                id="firstName"
+                placeholder="Full Name"
+                name="fullName"
+                value={props.fullName}
+                onChange={props.onChange}
               />
-            </div>
-          </Col>
-          <Col>
-            <textarea
-              placeholder="About Me"
-              rows="5"
-              cols="60"
-              className="opacity border border-dark rounded rounded-lg"
-              name="aboutMe"
-              value={props.aboutMe}
-              onChange={props.onChange}
-            />
-          </Col>
-          <Col>
-            <Row>
-              <Col className="text-center">
-                <Button
-                  href="#skills"
-                  text="Next"
-                  type="button"
-                  className="large teal btn scrolly"
-                  name="footer"
-                  onClick={() => {
-                    props.nextClick();
-                  }}
+              <div className="text-white medium bg-dark">Upload Image</div>
+              <div className="process_upload-btn bg-dark rounded">
+                <FileBase
+                  type="file"
+                  multiple={false}
+                  onDone={props.getBaseFile.bind(this)}
                 />
-              </Col>
-            </Row>
-          </Col>
-          <Col>
-            <SmallLogo className="smallLogo" />
-          </Col>
-        </Row>
+              </div>
+            </Col>
+            <Col>
+              <textarea
+                placeholder="About Me"
+                rows="5"
+                cols="60"
+                className="opacity border border-dark rounded rounded-lg"
+                name="aboutMe"
+                value={props.aboutMe}
+                onChange={props.onChange}
+              />
+            </Col>
+            <Col>
+              <Row>
+                <Col className="text-center">
+                  <Button
+                    href="#skills"
+                    text="Next"
+                    type="button"
+                    className="large teal btn scrolly"
+                    name="footer"
+                    onClick={() => {
+                      props.nextClick();
+                    }}
+                  />
+                </Col>
+              </Row>
+            </Col>
+            <Col>
+              <SmallLogo className="smallLogo" />
+            </Col>
+          </Row>
+        </Col>
+
       </div>
     </div>
   );
@@ -287,7 +290,6 @@ export const Footer2 = props => {
           </Col>
         </Row>
       </Col>
-
     </div>
   );
 };
@@ -296,45 +298,49 @@ export const Footer3Button = props => {
   return (
     <div>
       <div className="footerStyle">
-        <Row>
-          <Col className="text-center">
-            <Button
-              text="Add Project"
-              type="button"
-              className="medium teal btn float-right"
-              name="eachProject"
-              onClick={() => props.addProjectClick()}
-            />
-          </Col>
-          <Col>
-            <Row>
-              <Col className="text-center">
-                <Button
-                  href="#contact"
-                  text="Next"
-                  type="button"
-                  className="large teal btn scrolly"
-                  name="footer"
-                  onClick={() => props.nextClick()}
-                />
-                <br />
-                <br />
-                <Button
-                  href="#skills"
-                  text="Previous"
-                  type="button"
-                  className="large teal btn scrolly"
-                  name="footer"
-                  onClick={() => props.previousClick()}
-                />
-                <br />
-              </Col>
-            </Row>
-          </Col>
-          <Col>
-            <SmallLogo className="smallLogo" />
-          </Col>
-        </Row>
+        <Col>
+          <Row>
+            <Col />
+            <Col className="text-center">
+              <Button
+                text={props.cardButton}
+                type="button"
+                className="medium teal btn float-right mt-5"
+                name="eachProject"
+                onClick={() => props.addProjectClick()}
+              />
+            </Col>
+            <Col />
+            <Col>
+              <Row>
+                <Col className="text-center">
+                  <Button
+                    href="#contact"
+                    text="Next"
+                    type="button"
+                    className="large teal btn scrolly"
+                    name="footer"
+                    onClick={() => props.nextClick()}
+                  />
+                  <br />
+                  <br />
+                  <Button
+                    href="#skills"
+                    text="Previous"
+                    type="button"
+                    className="large teal btn scrolly"
+                    name="footer"
+                    onClick={() => props.previousClick()}
+                  />
+                  <br />
+                </Col>
+              </Row>
+            </Col>
+            <Col>
+              <SmallLogo className="smallLogo" />
+            </Col>
+          </Row>
+        </Col>
       </div>
     </div>
   );
@@ -468,6 +474,7 @@ export const Footer4 = props => {
               onChange={props.onChange}
             />
           </Col>
+          <Col />
           <Col>
             <Row>
               <Col className="text-center">
