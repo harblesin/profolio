@@ -203,6 +203,7 @@ class PortfolioCreation extends Component {
           previousClick={this.previousClick}
           addProjectClick={this.addProjectClick}
           isChecked={this.isChecked}
+          getBaseFile={this.getBaseFile}
         />
       );
     }
