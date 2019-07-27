@@ -6,7 +6,10 @@ import {
   Footer4,
 } from "../components/Footer/Footer";
 import Template1 from "./Template1";
-import ProjectCard from "../components/SubComponents/ProjectCard/ProjectCard";
+import {
+  ProjectList,
+  ProjectCard,
+} from "../components/SubComponents/ProjectCard/ProjectCard";
 
 class PortfolioCreation extends Component {
   state = {
@@ -21,13 +24,13 @@ class PortfolioCreation extends Component {
     baseImage: "images/profile-pic-placeholder.png",
     projectPicture: "images/project-placeholder.png",
     linkedInLink: "LinkedIn Link",
-    githubProfileLink: "Github Profile Link"
+    githubProfileLink: "Github Profile Link",
+    eachProject: [],
   };
 
   handleInputChange = event => {
     let value = event.target.value;
     let name = event.target.name;
-
     this.setState({
       [name]: value,
     });
@@ -62,14 +65,27 @@ class PortfolioCreation extends Component {
       footer,
     });
     this.handleFooterChange();
-    console.log(this.state.footer);
   };
 
-  addProjectClick = props => {
-    // let children = this.state.children
-    // this.setState({
-    //   children: [...children, <ProjectCard {...props} />]
-    // })
+  addProjectClick = () => {
+    let project = this.state.eachProject;
+
+    project.push(
+      <ProjectCard
+        projectTitle={this.state.projectTitle}
+        href={this.state.deployedLink}
+        aboutProject={this.state.aboutProject}
+        githubLink={this.state.githubLink}
+        projectPicture={this.state.projectPicture}
+      />
+    );
+
+    this.setState({
+      eachProject: project,
+    });
+    console.log(project);
+
+    this.handleFooterChange();
   };
 
   handleFooterChange = () => {
@@ -117,7 +133,6 @@ class PortfolioCreation extends Component {
     return (
       <div>
         <Template1 {...this.state} />
-
         {this.state.footer}
         {this.handleFooterChange()}
         {console.log(this.state.footer)}
