@@ -22,10 +22,14 @@ router
   .post(userController.test)
   .get(userController.loadProfiles);
 
+<<<<<<< HEAD
 router.route("/master").get(
   (log = () => {
     console.log(secret);
   })
 );
+=======
+router.route("/newProfolio").post(userController.newProfolio)
+>>>>>>> 4c8830b2314dd584970b9bad1fd95692f460a064
 
 module.exports = router;
