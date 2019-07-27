@@ -49,7 +49,9 @@ export const Footer1 = props => {
                   type="button"
                   className="large teal btn scrolly"
                   name="footer"
-                  onClick={() => props.nextClick()}
+                  onClick={() => {
+                    props.nextClick();
+                  }}
                 />
               </Col>
             </Row>

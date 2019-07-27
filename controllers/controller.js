@@ -173,7 +173,23 @@ module.exports = {
         }
       ]
     }).then(data => res.json(data));
-  }
+  },
 
+  getBio: (req, res) => {
+    console.log("req.body = " + req.body.profolioId);
+    db.Bio.findOne({
+      where: { ProfolioId: req.body.profolioId }
+    }).then(data => res.json(data));
+  },
+
+  saveBio: (req, res) => {
+    // bio = {
+    //   fullName: req.body.name,
+    //   aboutMe: req.body.about,
+    //   photo: req.body.photo
+    // };
+    console.log(req.body);
+    db.Bio.create(req.body).then(data => res.send(data));
+  }
   // db.Details.create(req.body).then(data => res.json(data));
 };
