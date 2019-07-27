@@ -29,6 +29,10 @@ export default {
     return axios.get("/api/users/test");
   },
 
+  getPortfolio: function(profolioId) {
+    return axios.post("/api/users/getPortfolio", profolioId);
+  },
+
   getBio: function(profolioId) {
     console.log("profolioId = " + profolioId);
     return axios.post("/api/users/getBio", profolioId);
@@ -40,5 +44,9 @@ export default {
 
   newProfolio: function() {
     return axios.post("/api/users/newProfolio");
+  },
+
+  saveProjectCard: function(projectCard) {
+    return axios.post("/api/users/saveProjectCard", projectCard);
   }
 };
