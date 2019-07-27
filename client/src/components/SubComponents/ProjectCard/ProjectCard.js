@@ -1,11 +1,12 @@
+
 import React from "react";
 
-const ProjectCard = (props) => {
+export function ProjectCard(props) {
   return (
     <div>
       <article className="box style2">
         <a href={props.deployedLink} className="image featured">
-          <img src={props.projectPicture} alt="" />
+          <img src={props.projectPicture} alt="" className="imgSizeFixed" />
         </a>
         <h3>
           <a href={props.deployedLink}>
