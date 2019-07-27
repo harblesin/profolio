@@ -83,9 +83,28 @@ module.exports = {
   },
 
   check: (req, res) => {
-    console.log(req);
-    console.log("this is here");
-    res.status(200).send();
+    passport.authenticate("jwt", { sessions: false }, (err, user, info) => {
+      if (err) {
+        console.log(err);
+      }
+      if (info !== undefined) {
+        console.log(info.message);
+        res.send(info.message);
+      } else {
+        if (user !== undefined) {
+          db.User.findOne({ where: { UserId: user.id } }).then(data => {
+            res.status(200).send({
+              data: data,
+              auth: true
+            });
+          });
+        } else {
+          res.send({
+            auth: false
+          });
+        }
+      }
+    })(req, res, next);
   },
 
   test: (req, res) => {

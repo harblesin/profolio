@@ -26,6 +26,7 @@ class PortfoliosCreated extends Component {
   componentDidMount() {
     console.log();
     API.grabProfiles().then(data => {
+      console.log(data.data.auth);
       if (!data.data.auth) {
         this.setState({ redirect: true });
       } else {
@@ -41,10 +42,8 @@ class PortfoliosCreated extends Component {
   };
 
   newProfolio = () => {
-    API.newProfolio().then(()=>{
-      
-    })
-  }
+    API.newProfolio().then(() => {});
+  };
 
   render() {
     return (

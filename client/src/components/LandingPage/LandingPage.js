@@ -46,9 +46,9 @@ class LandingPage1 extends Component {
 
   componentDidMount() {
     API.authCheck().then(data => {
-      console.log("here i am");
-      console.log(data);
-      this.setState({ redirect: true });
+      if (data.data.auth) {
+        this.setState({ redirect: true });
+      }
     });
   }
 
