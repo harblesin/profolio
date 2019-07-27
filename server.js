@@ -14,10 +14,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(passport.initialize());
 require("./config/authSetup.js")(passport, db.User);
-app.use(cookies())
+app.use(cookies());
 app.use(router);
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static("app/build"));
+  app.use(express.static("client/build"));
 }
 
 var syncOptions = { force: false };
