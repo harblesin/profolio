@@ -175,6 +175,14 @@ module.exports = {
     }).then(data => res.json(data));
   },
 
+  newProfolio: (req, res) => {
+    console.log("<-->");
+    console.log(req);
+    // db.Profolio.create({
+    //   name: name
+    // }).then(()=>{})
+  },
+
   getBio: (req, res) => {
     console.log("req.body = " + req.body.profolioId);
     db.Bio.findOne({

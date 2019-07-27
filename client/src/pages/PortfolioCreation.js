@@ -6,6 +6,7 @@ import {
   Footer4
 } from "../components/Footer/Footer";
 import Template1 from "./Template1";
+import ReactDOM from 'react-dom'
 import ProjectCard from "../components/SubComponents/ProjectCard/ProjectCard";
 import axios from "axios";
 import API from "../utils/API";
@@ -20,6 +21,8 @@ class PortfolioCreation extends Component {
     githubLink: "Github Project Link",
     deployedLink: "Deployed Project Link",
     footer: 0,
+    skills: [],
+    skillRemove: [],
     baseImage: "images/profile-pic-placeholder.png",
     projectPicture: "images/project-placeholder.png",
     linkedInLink: "LinkedIn Link",
@@ -63,6 +66,53 @@ class PortfolioCreation extends Component {
       [name]: value
     });
   };
+
+  isChecked = event => {
+
+    let value = event.target.value;
+
+    console.log('This is the value of the checkbox ' + value);
+
+    if (event.target.checked) {
+      console.log("TRUE")
+      this.checkedTrue(value);
+    }
+    else {
+      console.log("FALSE")
+      this.checkedFalse(value);
+    };
+
+    // let skills = this.state.skills;
+
+    // skills.push(value);
+
+    // this.setState({skills});
+
+    // console.log(skills);
+  };
+
+  checkedTrue = value => {
+
+    let skills = this.state.skills;
+
+    skills.push(value);
+
+    this.setState({skills});
+
+    console.log(skills);
+  }
+
+  checkedFalse = value => {
+    let skills = this.state.skills;
+    let remove = this.state.skillRemove;
+    let link = value;
+
+    remove.push(link);
+    this.setState({remove});
+
+    skills = skills.filter(link => !remove.includes(link));
+    this.setState({skills});
+  }
 
   getBaseFile = files => {
     this.setState({
@@ -141,6 +191,8 @@ class PortfolioCreation extends Component {
           onChange={this.handleInputChange}
           nextClick={this.nextClick}
           previousClick={this.previousClick}
+          addProjectClick={this.addProjectClick}
+          isChecked={this.isChecked}
         />
       );
     }

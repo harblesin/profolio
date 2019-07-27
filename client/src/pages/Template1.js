@@ -1,10 +1,12 @@
-import React, { Component } from "react";
+import React from "react";
 import SmallLogo from "./../components/SubComponents/Logo/SmallLogo";
 import { Link, animateScroll as scroll } from "react-scroll";
 import Slider from "react-slick";
 import ProjectCard from "../components/SubComponents/ProjectCard/ProjectCard";
+// import { NONAME } from "dns";
+import CarouselImage from "./../components/SubComponents/CarouselImage/CarouselImage";
 
-export const Template1 = props => {
+export let Template1 = props => {
   require("./../components/SubComponents/Nav/main.css");
 
   const settings = {
@@ -16,6 +18,7 @@ export const Template1 = props => {
     speed: 2000,
     autoplaySpeed: 2000,
     cssEase: "linear",
+    adaptiveHeight: true,
     responsive: [
       {
         breakpoint: 1024,
@@ -62,10 +65,9 @@ export const Template1 = props => {
                 spy={true}
                 smooth={true}
                 duration={500}
+                className="nav-link textFix"
               >
-                <a className="nav-link textFix" href=" ">
-                  Top
-                </a>
+                Top
               </Link>
             </li>
             <li className="nav-item">
@@ -75,37 +77,34 @@ export const Template1 = props => {
                 spy={true}
                 smooth={true}
                 duration={500}
+                className="nav-link textFix"
               >
-                <a className="nav-link textFix" href=" ">
-                  Skills
-                </a>
+                Skills
               </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link textFix" href=" ">
-                <Link
-                  activeClass="active"
-                  to="portfolio"
-                  spy={true}
-                  smooth={true}
-                  duration={500}
-                >
-                  Projects{" "}
-                </Link>
-              </a>
+              <Link
+                activeClass="active"
+                to="portfolio"
+                spy={true}
+                smooth={true}
+                duration={500}
+                className="nav-link textFix"
+              >
+                Projects{" "}
+              </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link textFix" href=" ">
-                <Link
-                  activeClass="active"
-                  to="contact"
-                  spy={true}
-                  smooth={true}
-                  duration={500}
-                >
-                  Contact
-                </Link>
-              </a>
+              <Link
+                activeClass="active"
+                to="contact"
+                spy={true}
+                smooth={true}
+                duration={500}
+                className="nav-link textFix"
+              >
+                Contact
+              </Link>
             </li>
           </ul>
         </div>
@@ -125,17 +124,16 @@ export const Template1 = props => {
               <p>
                 <span>{props.aboutMe}</span>
               </p>
-              <a href="#skills" className="button large scrolly">
-                <Link
-                  activeClass="active"
-                  to="skills"
-                  spy={true}
-                  smooth={true}
-                  duration={500}
-                >
-                  Learn about what I can do
-                </Link>
-              </a>
+              <Link
+                activeClass="active"
+                to="skills"
+                spy={true}
+                smooth={true}
+                duration={500}
+                className="button large scrolly"
+              >
+                Learn about what I can do
+              </Link>
             </div>
           </div>
         </div>
@@ -148,36 +146,26 @@ export const Template1 = props => {
             <h2>Here's all the stuff I do.</h2>
             <p>Odio turpis amet sed consequat eget posuere consequat.</p>
           </header>
-          <Slider {...settings}>
-            <div>
-              <img src="./images/template1/ajax.png" alt="Ajax" />
-            </div>
-            <div>
-              <img src="./images/template1/api.png" alt="API" />
-            </div>
-            <div>
-              <img src="./images/template1/bootstrap.png" alt="Bootstrap" />
-            </div>
-            <div>
-              <img src="./images/template1/css2.png" alt="CSS" />
-            </div>
-            <div>
-              <img src="./images/template1/express.png" alt="Express" />
-            </div>
+          <Slider className="skillsSize" {...settings}>
+            {/* < div >
+            <img src={props.skills} alt="Imageskillz" />
+          </div > */}
+            {props.skills.map(skill => (
+              <CarouselImage src={skill} />
+            ))}
           </Slider>
           <footer>
             <p>Lorem ipsum dolor sit sapien vestibulum ipsum primis?</p>
-            <a href="#portfolio" className="button large scrolly">
-              <Link
-                activeClass="active"
-                to="portfolio"
-                spy={true}
-                smooth={true}
-                duration={500}
-              >
-                See some of my recent work
-              </Link>
-            </a>
+            <Link
+              activeClass="active"
+              to="portfolio"
+              spy={true}
+              smooth={true}
+              duration={500}
+              className="button large scrolly"
+            >
+              See some of my recent work
+            </Link>
           </footer>
         </div>
       </article>
@@ -281,17 +269,16 @@ export const Template1 = props => {
           </div> */}
           <footer>
             <p>Lorem ipsum dolor sit sapien vestibulum ipsum primis?</p>
-            <a href="#contact" className="button large scrolly">
-              <Link
-                activeClass="active"
-                to="contact"
-                spy={true}
-                smooth={true}
-                duration={500}
-              >
-                Get in touch with me
-              </Link>
-            </a>
+            <Link
+              activeClass="active"
+              to="contact"
+              spy={true}
+              smooth={true}
+              duration={500}
+              className="button large scrolly"
+            >
+              Get in touch with me
+            </Link>
           </footer>
         </div>
       </article>

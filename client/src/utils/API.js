@@ -36,5 +36,9 @@ export default {
 
   saveBio: function(bioInfo) {
     return axios.post("/api/users/saveBio", bioInfo);
+  },
+
+  newProfolio: function() {
+    return axios.post("/api/users/newProfolio");
   }
 };
