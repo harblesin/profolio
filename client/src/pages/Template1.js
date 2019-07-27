@@ -6,6 +6,7 @@ import ProjectCard from "../components/SubComponents/ProjectCard/ProjectCard";
 // import { NONAME } from "dns";
 import CarouselImage from "./../components/SubComponents/CarouselImage/CarouselImage";
 
+
 export let Template1 = props => {
   require("./../components/SubComponents/Nav/main.css");
 
@@ -49,7 +50,7 @@ export let Template1 = props => {
 
   return (
     <div id="veryTop">
-      <nav className="navbar navbar-dark bg-dark">
+      <nav className="navbar navbar-dark bg-secondary">
         <a className="navbar-brand" href="/">
           <SmallLogo
           // width="30"
@@ -181,9 +182,7 @@ export let Template1 = props => {
             </p>
           </header>
           <div className="row">
-            <div className="col-4 col-6-medium col-12-small">
-              <ProjectCard {...props} />
-            </div>
+              {props.eachProject.map(() => <ProjectCard className="img" {...props} />)}
           </div>
           {/* <div className="row">
             <div className="col-4 col-6-medium col-12-small">
@@ -284,13 +283,13 @@ export let Template1 = props => {
       </article>
 
       {/* Contact */}
-      <article id="contact" className="wrapper style4">
+      <article id="contact" className="wrapper bg-dark">
         <div className="container medium">
-          <header>
-            <h2>Contact Me</h2>
-          </header>
-          <p>Contact Number: {props.contactNumber} </p>
-          <p>Feel free to send me a message below.</p>
+          <h1 className="text-white">Contact Me</h1>
+          <h3 className="text-white">
+            Contact Number: {props.contactNumber}{" "}
+          </h3>
+          <h3 className="text-white">Feel free to send me a message below.</h3>
           <div className="row">
             <div className="col-12">
               <form method="post" action="#">
@@ -345,7 +344,7 @@ export let Template1 = props => {
             </div>
             <div className="col-12">
               <hr />
-              <h3>Find me on ...</h3>
+              <h3 className="text-white">Find me on ...</h3>
               <ul className="social">
                 <li>
                   <a href={props.linkedInLink} className="icon fab fa-linkedin">
