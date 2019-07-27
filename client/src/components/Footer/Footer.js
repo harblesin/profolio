@@ -11,56 +11,59 @@ export const Footer1 = props => {
   return (
     <div>
       <div className="footerStyle">
-        <Row>
-          <Col className="text-center">
-            <Form
-              className="opacity form-control border border-dark"
-              id="firstName"
-              placeholder="Full Name"
-              name="fullName"
-              value={props.fullName}
-              onChange={props.onChange}
-            />
-            <div className="text-white medium bg-dark">Upload Image</div>
-            <div className="process_upload-btn bg-dark rounded">
-              <FileBase
-                type="file"
-                multiple={false}
-                onDone={props.getBaseFile.bind(this)}
+        <Col>
+          <Row>
+            <Col className="text-center">
+              <Form
+                className="opacity form-control border border-dark"
+                id="firstName"
+                placeholder="Full Name"
+                name="fullName"
+                value={props.fullName}
+                onChange={props.onChange}
               />
-            </div>
-          </Col>
-          <Col>
-            <textarea
-              placeholder="About Me"
-              rows="5"
-              cols="60"
-              className="opacity border border-dark rounded rounded-lg"
-              name="aboutMe"
-              value={props.aboutMe}
-              onChange={props.onChange}
-            />
-          </Col>
-          <Col>
-            <Row>
-              <Col className="text-center">
-                <Button
-                  href="#skills"
-                  text="Next"
-                  type="button"
-                  className="large teal btn scrolly"
-                  name="footer"
-                  onClick={() => {
-                    props.nextClick();
-                  }}
+              <div className="text-white medium bg-dark">Upload Image</div>
+              <div className="process_upload-btn bg-dark rounded">
+                <FileBase
+                  type="file"
+                  multiple={false}
+                  onDone={props.getBaseFile.bind(this)}
                 />
-              </Col>
-            </Row>
-          </Col>
-          <Col>
-            <SmallLogo className="smallLogo" />
-          </Col>
-        </Row>
+              </div>
+            </Col>
+            <Col>
+              <textarea
+                placeholder="About Me"
+                rows="5"
+                cols="60"
+                className="opacity border border-dark rounded rounded-lg"
+                name="aboutMe"
+                value={props.aboutMe}
+                onChange={props.onChange}
+              />
+            </Col>
+            <Col>
+              <Row>
+                <Col className="text-center">
+                  <Button
+                    href="#skills"
+                    text="Next"
+                    type="button"
+                    className="large teal btn scrolly"
+                    name="footer"
+                    onClick={() => {
+                      props.nextClick();
+                    }}
+                  />
+                </Col>
+              </Row>
+            </Col>
+            <Col>
+              <SmallLogo className="smallLogo" />
+            </Col>
+          </Row>
+        </Col>
+
       </div>
     </div>
   );
@@ -198,56 +201,64 @@ export const Footer2 = props => {
             </div>
           </Col>
           <Col>
-            <div className="form-check">
-              <Checkbox
-                name="checkedValue"
-                value="./images/template1/fire.png"
-                onClick={props.isChecked}
-              />
-              <label className="form-check-label font-weight-bolder skillsColor">
-                Firebase
+            <Row>
+              <Col>
+                <div className="form-check">
+                  <Checkbox
+                    name="checkedValue"
+                    value="./images/template1/fire.png"
+                    onClick={props.isChecked}
+                  />
+                  <label className="form-check-label font-weight-bolder skillsColor">
+                    Firebase
+                  </label>
+                </div>
+                <div className="form-check">
+                  <Checkbox
+                    name="checkedValue"
+                    value="./images/template1/materialize.png"
+                    onClick={props.isChecked}
+                  />
+                  <label className="form-check-label font-weight-bolder skillsColor">
+                    Materialize
+                  </label>
+                </div>
+              </Col>
+              <Col>
+                <div className="form-check">
+                  <Checkbox
+                    name="checkedValue"
+                    value="./images/template1/handlebars.png"
+                    onClick={props.isChecked}
+                  />
+                  <label className="form-check-label font-weight-bolder skillsColor">
+                    Handlebar.js
               </label>
-            </div>
-            <div className="form-check">
-              <Checkbox
-                name="checkedValue"
-                value="./images/template1/materialize.png"
-                onClick={props.isChecked}
-              />
-              <label className="form-check-label font-weight-bolder skillsColor">
-                Materialize
+                </div>
+                <div className="form-check">
+                  <Checkbox
+                    name="checkedValue"
+                    value="./images/template1/sequelize.png"
+                    onClick={props.isChecked}
+                  />
+                  <label className="form-check-label font-weight-bolder skillsColor">
+                    Sequelize.js
               </label>
-            </div>
-            <div className="form-check">
-              <Checkbox
-                name="checkedValue"
-                value="./images/template1/handlebars.png"
-                onClick={props.isChecked}
-              />
-              <label className="form-check-label font-weight-bolder skillsColor">
-                Handlebar.js
-              </label>
-            </div>
-            <div className="form-check">
-              <Checkbox
-                name="checkedValue"
-                value="./images/template1/sequelize.png"
-                onClick={props.isChecked}
-              />
-              <label className="form-check-label font-weight-bolder skillsColor">
-                Sequelize.js
-              </label>
-            </div>
-          </Col>
-          <Col xl="2" lg="2">
-          <Form
-              className="opacity form-control border border-dark"
-              id="addSkill"
-              placeholder="Add Your Own Skill"
-              name="addSkill"
-              value={props.fullName}
-              onChange={props.onChange}
-            />
+                </div>
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                <div className="text-white medium bg-dark mt-4">Upload Image</div>
+                <div className="process_upload-btn bg-dark rounded">
+                  <FileBase
+                    type="file"
+                    multiple={false}
+                    onDone={props.getBaseFile.bind(this)}
+                  />
+                </div>
+              </Col>
+            </Row>
           </Col>
           <Col className="text-center">
             <Row>
@@ -279,7 +290,58 @@ export const Footer2 = props => {
           </Col>
         </Row>
       </Col>
+    </div>
+  );
+};
 
+export const Footer3Button = props => {
+  return (
+    <div>
+      <div className="footerStyle">
+        <Col>
+          <Row>
+            <Col />
+            <Col className="text-center">
+              <Button
+                text={props.cardButton}
+                type="button"
+                className="medium teal btn float-right mt-5"
+                name="eachProject"
+                onClick={() => props.addProjectClick()}
+              />
+            </Col>
+            <Col />
+            <Col>
+              <Row>
+                <Col className="text-center">
+                  <Button
+                    href="#contact"
+                    text="Next"
+                    type="button"
+                    className="large teal btn scrolly"
+                    name="footer"
+                    onClick={() => props.nextClick()}
+                  />
+                  <br />
+                  <br />
+                  <Button
+                    href="#skills"
+                    text="Previous"
+                    type="button"
+                    className="large teal btn scrolly"
+                    name="footer"
+                    onClick={() => props.previousClick()}
+                  />
+                  <br />
+                </Col>
+              </Row>
+            </Col>
+            <Col>
+              <SmallLogo className="smallLogo" />
+            </Col>
+          </Row>
+        </Col>
+      </div>
     </div>
   );
 };
@@ -412,6 +474,7 @@ export const Footer4 = props => {
               onChange={props.onChange}
             />
           </Col>
+          <Col />
           <Col>
             <Row>
               <Col className="text-center">

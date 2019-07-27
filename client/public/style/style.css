@@ -8,6 +8,11 @@ img {
   width: 50%;
 }
 
+.imgSizeFixed {
+  max-width: 200px;
+  max-height: 200px
+}
+
 .button {
   display: inline-block;
   font-weight: 400;
