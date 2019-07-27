@@ -9,6 +9,8 @@ import {
 import Template1 from "./Template1";
 import ReactDOM from 'react-dom'
 import ProjectCard from "../components/SubComponents/ProjectCard/ProjectCard";
+import axios from "axios";
+import API from "../utils/API";
 
 
 class PortfolioCreation extends Component {
@@ -20,6 +22,7 @@ class PortfolioCreation extends Component {
     aboutProject: "About Project",
     githubLink: "Github Project Link",
     deployedLink: "Deployed Project Link",
+    cardButton: "Click on this button to create a new Project Card",
     footer: 0,
     skills: [],
     skillRemove: [],
@@ -31,11 +34,40 @@ class PortfolioCreation extends Component {
     eachProject: [],
   };
 
+  componentDidMount = () => {
+    let object = {
+      profolioId: 1
+    };
+    API.getBio(object).then(response => {
+      console.log(response.data);
+      if (response.data) {
+        if (response.data.photo && response.data.photo !== "") {
+          let bioPic = response.data.photo;
+          this.setState({
+            baseImage: bioPic
+          });
+        }
+        if (response.data.fullName && response.data.fullName !== "") {
+          let name = response.data.fullName;
+          this.setState({
+            fullName: name
+          });
+        }
+        if (response.data.aboutMe && response.data.aboutMe !== "") {
+          let about = response.data.aboutMe;
+          this.setState({
+            aboutMe: about
+          });
+        }
+      }
+    });
+  };
+
   handleInputChange = event => {
     let value = event.target.value;
     let name = event.target.name;
     this.setState({
-      [name]: value,
+      [name]: value
     });
   };
 
@@ -53,14 +85,6 @@ class PortfolioCreation extends Component {
       console.log("FALSE")
       this.checkedFalse(value);
     };
-
-    // let skills = this.state.skills;
-
-    // skills.push(value);
-
-    // this.setState({skills});
-
-    // console.log(skills);
   };
 
   checkedTrue = value => {
@@ -69,7 +93,7 @@ class PortfolioCreation extends Component {
 
     skills.push(value);
 
-    this.setState({skills});
+    this.setState({ skills });
 
     console.log(skills);
   }
@@ -80,29 +104,51 @@ class PortfolioCreation extends Component {
     let link = value;
 
     remove.push(link);
-    this.setState({remove});
+    this.setState({ remove });
 
     skills = skills.filter(link => !remove.includes(link));
-    this.setState({skills});
+    this.setState({ skills });
   }
 
   getBaseFile = files => {
     this.setState({
-      baseImage: files.base64,
+      baseImage: files.base64
     });
   };
 
   getBaseFileProjectPic = files => {
     this.setState({
-      projectPicture: files.base64,
+      projectPicture: files.base64
     });
   };
 
   nextClick = () => {
     let footer = this.state.footer;
+    let object = {};
+    switch (footer) {
+      case 0:
+        object = {
+          fullName: this.state.fullName,
+          aboutMe: this.state.aboutMe,
+          photo: this.state.baseImage.toString()
+        };
+        API.saveBio(object);
+        break;
+      case 1:
+        object = {};
+        break;
+      case 2:
+        object = {};
+        break;
+      case 3:
+        object = {};
+        break;
+      default:
+    }
+
     footer += 1;
     this.setState({
-      footer,
+      footer
     });
     this.handleFooterChange();
     console.log(this.state.footer);
@@ -112,7 +158,7 @@ class PortfolioCreation extends Component {
     let footer = this.state.footer;
     footer -= 1;
     this.setState({
-      footer,
+      footer
     });
     this.handleFooterChange();
   };
@@ -120,7 +166,7 @@ class PortfolioCreation extends Component {
   addProjectClick = () => {
     let project = this.state.eachProject;
 
-    project.push( 
+    project.push(
       {
         projectTitle: this.state.projectTitle,
         href: this.state.deployedLink,
@@ -163,20 +209,22 @@ class PortfolioCreation extends Component {
           previousClick={this.previousClick}
           addProjectClick={this.addProjectClick}
           isChecked={this.isChecked}
+          getBaseFile={this.getBaseFile}
         />
       );
     }
     if (this.state.footer === 2) {
       if (!this.state.footerTruth) {
-        return(
-        <Footer3Button 
-        nextClick={this.nextClick}
-        previousClick={this.previousClick}
-        addProjectClick={this.addProjectClick}
-        />
+        return (
+          <Footer3Button
+            cardButton={this.state.cardButton}
+            nextClick={this.nextClick}
+            previousClick={this.previousClick}
+            addProjectClick={this.addProjectClick}
+          />
         )
-      } 
-      else if (this.state.footerTruth){
+      }
+      else if (this.state.footerTruth) {
         return (
           <Footer3
             onChange={this.handleInputChange}

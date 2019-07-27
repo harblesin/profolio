@@ -6,7 +6,6 @@ import ProjectCard from "../components/SubComponents/ProjectCard/ProjectCard";
 // import { NONAME } from "dns";
 import CarouselImage from "./../components/SubComponents/CarouselImage/CarouselImage";
 
-
 export let Template1 = props => {
   require("./../components/SubComponents/Nav/main.css");
 
@@ -105,7 +104,7 @@ export let Template1 = props => {
                 className="nav-link textFix"
               >
                 Contact
-                </Link>
+              </Link>
             </li>
           </ul>
         </div>
@@ -115,7 +114,7 @@ export let Template1 = props => {
           <div className="row">
             <div className="col-4 col-5-large col-12-medium">
               <span className="image fit">
-                <img src={props.baseImage} alt="" />
+                {<img src={props.baseImage} alt="" />}
               </span>
             </div>
             <div className="col-8 col-7-large col-12-medium">
@@ -138,7 +137,7 @@ export let Template1 = props => {
                 className="button large scrolly"
               >
                 Learn about what I can do
-                </Link>
+              </Link>
             </div>
           </div>
         </div>
@@ -152,12 +151,10 @@ export let Template1 = props => {
             <p>Odio turpis amet sed consequat eget posuere consequat.</p>
           </header>
           <Slider className="skillsSize" {...settings}>
-          {/* < div >
+            {/* < div >
             <img src={props.skills} alt="Imageskillz" />
           </div > */}
-            {props.skills.map(skill=>(
-              <CarouselImage src={skill}/>
-            ))}
+            {props.skills.map(skill => <CarouselImage src={skill} />)}
           </Slider>
           <footer>
             <p>Lorem ipsum dolor sit sapien vestibulum ipsum primis?</p>
@@ -170,7 +167,7 @@ export let Template1 = props => {
               className="button large scrolly"
             >
               See some of my recent work
-              </Link>
+            </Link>
           </footer>
         </div>
       </article>
@@ -186,91 +183,10 @@ export let Template1 = props => {
             </p>
           </header>
           <div className="row">
-              
-              {props.eachProject.map(() => <ProjectCard className="img" {...props} />)}
+            {props.eachProject.map(() =>
+              <ProjectCard className="img" {...props} />
+            )}
           </div>
-          {/* <div className="row">
-            <div className="col-4 col-6-medium col-12-small">
-              <article className="box style2">
-                <a href={props.deployedLink} className="image featured">
-                  <img src="images/pic01.jpg" alt="" />
-                </a>
-                <h3>
-                  <a href={props.deployedLink}>
-                    {props.projectTitle}
-                  </a>
-                </h3>
-                <p>
-                  {props.aboutProject}
-                </p>
-                <ul className="social text-center">
-                  <li>
-                    <a
-                      href={props.githubLink}
-                      className="fab fa-github icon"
-                    >
-                      <span className="label">Github</span>
-                    </a>
-                  </li>
-                </ul>
-              </article>
-            </div>
-            <div className="col-4 col-6-medium col-12-small">
-              <article className="box style2">
-                <a href=" " className="image featured">
-                  <img src="images/pic02.jpg" alt="" />
-                </a>
-                <h3>
-                  <a href=" ">Veroeros primis</a>
-                </h3>
-                <p>Ornare nulla proin odio consequat.</p>
-              </article>
-            </div>
-            <div className="col-4 col-6-medium col-12-small">
-              <article className="box style2">
-                <a href=" " className="image featured">
-                  <img src="images/pic03.jpg" alt="" />
-                </a>
-                <h3>
-                  <a href=" ">Lorem ipsum</a>
-                </h3>
-                <p>Ornare nulla proin odio consequat.</p>
-              </article>
-            </div>
-            <div className="col-4 col-6-medium col-12-small">
-              <article className="box style2">
-                <a href=" " className="image featured">
-                  <img src="images/pic04.jpg" alt="" />
-                </a>
-                <h3>
-                  <a href=" ">Tempus dolore</a>
-                </h3>
-                <p>Ornare nulla proin odio consequat.</p>
-              </article>
-            </div>
-            <div className="col-4 col-6-medium col-12-small">
-              <article className="box style2">
-                <a href=" " className="image featured">
-                  <img src="images/pic05.jpg" alt="" />
-                </a>
-                <h3>
-                  <a href=" ">Feugiat aliquam</a>
-                </h3>
-                <p>Ornare nulla proin odio consequat.</p>
-              </article>
-            </div>
-            <div className="col-4 col-6-medium col-12-small">
-              <article className="box style2">
-                <a href=" " className="image featured">
-                  <img src="images/pic06.jpg" alt="" />
-                </a>
-                <h3>
-                  <a href=" ">Sed amet ornare</a>
-                </h3>
-                <p>Ornare nulla proin odio consequat.</p>
-              </article>
-            </div>
-          </div> */}
           <footer>
             <p>Lorem ipsum dolor sit sapien vestibulum ipsum primis?</p>
             <Link
@@ -282,7 +198,7 @@ export let Template1 = props => {
               className="button large scrolly"
             >
               Get in touch with me
-              </Link>
+            </Link>
           </footer>
         </div>
       </article>
@@ -351,8 +267,19 @@ export let Template1 = props => {
               <hr />
               <h3 className="text-white">Find me on ...</h3>
               <ul className="social">
-                <li><a href={props.linkedInLink} className="icon fab fa-linkedin"><span className="label">LinkedIn</span></a></li>
-                <li><a href={props.githubProfileLink} className="icon fab fa-github"><span className="label">Github</span></a></li>
+                <li>
+                  <a href={props.linkedInLink} className="icon fab fa-linkedin">
+                    <span className="label">LinkedIn</span>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href={props.githubProfileLink}
+                    className="icon fab fa-github"
+                  >
+                    <span className="label">Github</span>
+                  </a>
+                </li>
                 {/* <li><a href=" " className="icon fab fa-twitter"><span className="label">Twitter</span></a></li>
                 <li><a href=" " className="icon fab fa-facebook"><span className="label">Facebook</span></a></li>
                 <li><a href=" " className="icon fab fa-dribbble"><span className="label">Dribbble</span></a></li>

@@ -4,9 +4,18 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   Profolio.associate = function(models) {
-    Profolio.belongsTo(models.User);
-    Profolio.hasMany(models.Bio);
-    Profolio.hasMany(models.Skill);
+    Profolio.hasOne(models.Bio, {
+      onDelete: "cascade"
+    });
+    Profolio.hasMany(models.Skill, {
+      onDelete: "cascade"
+    });
+    Profolio.hasMany(models.Project, {
+      onDelete: "cascade"
+    });
+    Profolio.hasOne(models.Final, {
+      onDelete: "cascade"
+    });
   };
 
   return Profolio;
