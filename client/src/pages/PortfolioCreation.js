@@ -28,7 +28,7 @@ class PortfolioCreation extends Component {
 
   componentDidMount = () => {
     let object = {
-      profolioId: 77
+      profolioId: 1
     };
     API.getBio(object).then(response => {
       console.log(response.data);
