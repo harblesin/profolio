@@ -183,6 +183,26 @@ module.exports = {
     // }).then(()=>{})
   },
 
+  getProfolio: (req, res) => {
+    db.Profolio.findOne({
+      where: { ProfolioId: 1 },
+      include: [
+        {
+          model: db.Bio,
+          where: {
+            ProfolioId: 1
+          }
+        },
+        {
+          model: db.Skill,
+          where: {
+            ProfolioId: 1
+          }
+        }
+      ]
+    }).then(data => res.json(data));
+  },
+
   getBio: (req, res) => {
     console.log("req.body = " + req.body.profolioId);
     db.Bio.findOne({
