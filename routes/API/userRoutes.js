@@ -22,6 +22,12 @@ router
   .post(userController.test)
   .get(userController.loadProfiles);
 
+<<<<<<< HEAD
+=======
+router.route("/getbio").post(userController.getBio);
+
+router.route("/savebio").post(userController.saveBio);
+>>>>>>> 6323bcbb0d9b877a16ea6d0735cd226daedf727d
 router.route("/newProfolio").post(userController.newProfolio);
 
 module.exports = router;

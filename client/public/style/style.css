@@ -131,6 +131,14 @@ img {
   border-width: thick;
 }
 
+.noBorderSplash {
+  border-style: none;
+}
+
+.noCardPadding {
+  padding: none;s
+}
+
 .backgroundHead {
   background: url(../images/test5.jpg) no-repeat center center fixed;;
   background-size: cover;
@@ -160,6 +168,11 @@ img {
 
 .buttonColor3 {
   background-color: #BEC624;
+}
+
+.buttonColor4 {
+  background-color: #000370;
+  color: white;
 }
 
 /* Social Icons */

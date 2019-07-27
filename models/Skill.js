@@ -2,14 +2,8 @@
 module.exports = (sequelize, DataTypes) => {
   var Skill = sequelize.define("Skill", {
     skill: DataTypes.STRING,
-    image: DataTypes.STRING
+    image: DataTypes.BLOB
   });
-
-  Skill.associate = function(models) {
-    Skill.belongsTo(models.Profolio, {
-      onDelete: "cascade"
-    });
-  };
 
   return Skill;
 };
