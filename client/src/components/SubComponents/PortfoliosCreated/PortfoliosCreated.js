@@ -2,9 +2,10 @@ import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import API from "../../../utils/API";
 import Button from "../Button/Button";
-import { Table } from "react-bootstrap";
+import { Modal, Table } from "react-bootstrap";
 import UserProject from "../UserProjects/UserProjects";
 import Logout from "../Logout/Logout";
+//import Modal from "../Modal/Modal";
 
 class PortfoliosCreated extends Component {
   state = {
@@ -14,7 +15,17 @@ class PortfoliosCreated extends Component {
         name: "Nothing here bub!"
       }
     ],
-    port: ""
+    port: "",
+    show: false
+  };
+
+  handleClose = () => {
+    console.log(this.state.show);
+    this.setState({ show: false });
+  };
+  handleShow = () => {
+    console.log(this.state.show);
+    this.setState({ show: true });
   };
 
   renderRedirect = () => {
@@ -85,13 +96,29 @@ class PortfoliosCreated extends Component {
           <Button
             text="Create New"
             type="button"
-            onClick={this.newProfolio}
+            onClick={this.handleShow}
+            //onClick={this.newProfolio}
             //href="/portfoliocreation"
             //onClick={() => {}}
             className="float-right medium font-weight-bold buttonColor btn"
           />
           {this.renderRedirect()}
         </div>
+
+        <Modal show={this.state.show} onHide={this.handleClose}>
+          <Modal.Header closeButton>
+            <Modal.Title>Modal heading</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={this.handleClose}>
+              Close
+            </Button>
+            <Button variant="primary" onClick={this.handleClose}>
+              Save Changes
+            </Button>
+          </Modal.Footer>
+        </Modal>
       </div>
     );
   }
