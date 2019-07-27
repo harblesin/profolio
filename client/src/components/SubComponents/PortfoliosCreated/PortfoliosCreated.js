@@ -4,13 +4,16 @@ import API from "../../../utils/API";
 import Button from "../Button/Button";
 import { Table } from "react-bootstrap";
 import UserProject from "../UserProjects/UserProjects";
+import Logout from "../Logout/Logout";
 
 class PortfoliosCreated extends Component {
   state = {
     redirect: false,
-    profiles: [{
-      name: "Nothing here bubs!"
-    }],
+    profiles: [
+      {
+        name: "Nothing here bubs!"
+      }
+    ],
     port: ""
   };
 
@@ -20,34 +23,33 @@ class PortfoliosCreated extends Component {
     }
   };
 
-  // showProfiles = () => {
-  //   if(this.state.profiles){
-  //     
-  //   }else{
-  //    return <UserProject>Nothing here bub</UserProject>
-  //   }
-
-  // }
-
   componentDidMount() {
-    API.authCheck().then(data => {
-      console.log("logging: " + data);
-      //this.setState({ redirect: true });
-    });
     console.log();
     API.grabProfiles().then(data => {
-      console.log(data);
-      console.log(data.data);
-      this.setState({ profiles: data.data });
-      //console.log(data)
+      if (!data.data.auth) {
+        this.setState({ redirect: true });
+      } else {
+        this.setState({ profiles: data.data.data });
+      }
     });
   }
 
-  render() {
-    
+  logout = () => {
+    API.logout().then(() => {
+      alert("Logged Out");
+    });
+  };
 
+  newProfolio = () => {
+    API.newProfolio().then(()=>{
+      
+    })
+  }
+
+  render() {
     return (
       <div>
+        <Logout logout={this.logout} />
         <div className="card-body list-overflow-container">
           <Table striped bordered hover variant="dark">
             <thead>
@@ -59,12 +61,13 @@ class PortfoliosCreated extends Component {
             </thead>
             <tbody>
               <tr>
-              {this.state.profiles.map(profile=>(
-              <UserProject
-                  name={profile.name}
-                  key={profile.id} 
-                  onClick={profile.link}
-                  />))}
+                {this.state.profiles.map(profile => (
+                  <UserProject
+                    name={profile.name}
+                    key={profile.id}
+                    onClick={profile.link}
+                  />
+                ))}
                 <Button
                   text="Delete"
                   type="button"
@@ -77,15 +80,15 @@ class PortfoliosCreated extends Component {
                   onClick={() => {}}
                   className="float-right medium warning btn active"
                 />
-                
               </tr>
             </tbody>
           </Table>
           <Button
             text="Create New"
             type="button"
-            href="/portfoliocreation"
-            onClick={() => {}}
+            onClick={this.newProfolio}
+            //href="/portfoliocreation"
+            //onClick={() => {}}
             className="float-right medium btn-dark btn"
           />
           {this.renderRedirect()}

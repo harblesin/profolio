@@ -13,6 +13,10 @@ export default {
     return axios.post("/api/users/login", userInfo);
   },
 
+  logout: function() {
+    return axios.get("/api/users/logout");
+  },
+
   authCheck: function() {
     return axios.get("/api/users/check");
   },
@@ -23,5 +27,9 @@ export default {
 
   grabProfiles: function(){
     return axios.get("/api/users/test")
+  },
+
+  newProfolio: function(){
+    return axios.post("/api/users/newProfolio")
   }
 };

@@ -4,12 +4,12 @@ import {
   Footer2,
   Footer3,
   Footer4,
+  Footer3Button
 } from "../components/Footer/Footer";
 import Template1 from "./Template1";
-import {
-  ProjectList,
-  ProjectCard,
-} from "../components/SubComponents/ProjectCard/ProjectCard";
+import ReactDOM from 'react-dom'
+import ProjectCard from "../components/SubComponents/ProjectCard/ProjectCard";
+
 
 class PortfolioCreation extends Component {
   state = {
@@ -21,11 +21,15 @@ class PortfolioCreation extends Component {
     githubLink: "Github Project Link",
     deployedLink: "Deployed Project Link",
     footer: 0,
+    skills: [],
+    skillRemove: [],
     baseImage: "images/profile-pic-placeholder.png",
     projectPicture: "images/project-placeholder.png",
     linkedInLink: "LinkedIn Link",
     githubProfileLink: "Github Profile Link",
+    footerTruth: false,
     eachProject: [],
+    numProject: 0
   };
 
   handleInputChange = event => {
@@ -35,6 +39,53 @@ class PortfolioCreation extends Component {
       [name]: value,
     });
   };
+
+  isChecked = event => {
+
+    let value = event.target.value;
+
+    console.log('This is the value of the checkbox ' + value);
+
+    if (event.target.checked) {
+      console.log("TRUE")
+      this.checkedTrue(value);
+    }
+    else {
+      console.log("FALSE")
+      this.checkedFalse(value);
+    };
+
+    // let skills = this.state.skills;
+
+    // skills.push(value);
+
+    // this.setState({skills});
+
+    // console.log(skills);
+  };
+
+  checkedTrue = value => {
+
+    let skills = this.state.skills;
+
+    skills.push(value);
+
+    this.setState({skills});
+
+    console.log(skills);
+  }
+
+  checkedFalse = value => {
+    let skills = this.state.skills;
+    let remove = this.state.skillRemove;
+    let link = value;
+
+    remove.push(link);
+    this.setState({remove});
+
+    skills = skills.filter(link => !remove.includes(link));
+    this.setState({skills});
+  }
 
   getBaseFile = files => {
     this.setState({
@@ -68,24 +119,25 @@ class PortfolioCreation extends Component {
   };
 
   addProjectClick = () => {
-    let project = this.state.eachProject;
+    let project = this.state.eachProject[this.state.numProject];
+    let numProject = this.state.numProject
 
-    project.push(
-      <ProjectCard
-        projectTitle={this.state.projectTitle}
-        href={this.state.deployedLink}
-        aboutProject={this.state.aboutProject}
-        githubLink={this.state.githubLink}
-        projectPicture={this.state.projectPicture}
-      />
-    );
+    project.push( 
+      {
+        projectTitle: this.state.projectTitle
+        // href: this.state.deployedLink,
+        // aboutProject: this.state.aboutProject,
+        // githubLink: this.state.githubLink,
+        // projectPicture: this.state.projectPicture
+      }
+    )
 
     this.setState({
       eachProject: project,
+      numProject: numProject+1
     });
     console.log(project);
 
-    this.handleFooterChange();
   };
 
   handleFooterChange = () => {
@@ -104,19 +156,28 @@ class PortfolioCreation extends Component {
           onChange={this.handleInputChange}
           nextClick={this.nextClick}
           previousClick={this.previousClick}
+          addProjectClick={this.addProjectClick}
+          isChecked={this.isChecked}
         />
       );
     }
     if (this.state.footer === 2) {
-      return (
-        <Footer3
-          onChange={this.handleInputChange}
-          nextClick={this.nextClick}
-          previousClick={this.previousClick}
-          addProjectClick={this.addProjectClick}
-          getBaseFileProjectPic={this.getBaseFileProjectPic}
-        />
-      );
+      if (!this.state.footerTruth) {
+        return(
+        <Footer3Button />
+        )
+      } 
+      else if (this.state.footerTruth){
+        return (
+          <Footer3
+            onChange={this.handleInputChange}
+            nextClick={this.nextClick}
+            previousClick={this.previousClick}
+            addProjectClick={this.addProjectClick}
+            getBaseFileProjectPic={this.getBaseFileProjectPic}
+          />
+        );
+      }
     }
     if (this.state.footer === 3) {
       return (
