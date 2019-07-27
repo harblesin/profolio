@@ -27,25 +27,25 @@ export let Template1 = props => {
           slidesToShow: 3,
           slidesToScroll: 3,
           infinite: true,
-          dots: true,
-        },
+          dots: true
+        }
       },
       {
         breakpoint: 600,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 2,
-          initialSlide: 2,
-        },
+          initialSlide: 2
+        }
       },
       {
         breakpoint: 480,
         settings: {
           slidesToShow: 1,
-          slidesToScroll: 1,
-        },
-      },
-    ],
+          slidesToScroll: 1
+        }
+      }
+    ]
   };
 
   return (
@@ -105,7 +105,7 @@ export let Template1 = props => {
                 className="nav-link textFix"
               >
                 Contact
-                </Link>
+              </Link>
             </li>
           </ul>
         </div>
@@ -115,19 +115,15 @@ export let Template1 = props => {
           <div className="row">
             <div className="col-4 col-5-large col-12-medium">
               <span className="image fit">
-                <img src={props.baseImage} alt="" />
+                {<img src={props.baseImage} alt="" />}
               </span>
             </div>
             <div className="col-8 col-7-large col-12-medium">
               <header>
-                <h1>
-                  Hi. I'm {props.fullName}.
-                </h1>
+                <h1>Hi. I'm {props.fullName}.</h1>
               </header>
               <p>
-                <span>
-                  {props.aboutMe}
-                </span>
+                <span>{props.aboutMe}</span>
               </p>
               <Link
                 activeClass="active"
@@ -138,7 +134,7 @@ export let Template1 = props => {
                 className="button large scrolly"
               >
                 Learn about what I can do
-                </Link>
+              </Link>
             </div>
           </div>
         </div>
@@ -152,11 +148,11 @@ export let Template1 = props => {
             <p>Odio turpis amet sed consequat eget posuere consequat.</p>
           </header>
           <Slider className="skillsSize" {...settings}>
-          {/* < div >
+            {/* < div >
             <img src={props.skills} alt="Imageskillz" />
           </div > */}
-            {props.skills.map(skill=>(
-              <CarouselImage src={skill}/>
+            {props.skills.map(skill => (
+              <CarouselImage src={skill} />
             ))}
           </Slider>
           <footer>
@@ -170,7 +166,7 @@ export let Template1 = props => {
               className="button large scrolly"
             >
               See some of my recent work
-              </Link>
+            </Link>
           </footer>
         </div>
       </article>
@@ -281,7 +277,7 @@ export let Template1 = props => {
               className="button large scrolly"
             >
               Get in touch with me
-              </Link>
+            </Link>
           </footer>
         </div>
       </article>
@@ -350,8 +346,19 @@ export let Template1 = props => {
               <hr />
               <h3 className="text-white">Find me on ...</h3>
               <ul className="social">
-                <li><a href={props.linkedInLink} className="icon fab fa-linkedin"><span className="label">LinkedIn</span></a></li>
-                <li><a href={props.githubProfileLink} className="icon fab fa-github"><span className="label">Github</span></a></li>
+                <li>
+                  <a href={props.linkedInLink} className="icon fab fa-linkedin">
+                    <span className="label">LinkedIn</span>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href={props.githubProfileLink}
+                    className="icon fab fa-github"
+                  >
+                    <span className="label">Github</span>
+                  </a>
+                </li>
                 {/* <li><a href=" " className="icon fab fa-twitter"><span className="label">Twitter</span></a></li>
                 <li><a href=" " className="icon fab fa-facebook"><span className="label">Facebook</span></a></li>
                 <li><a href=" " className="icon fab fa-dribbble"><span className="label">Dribbble</span></a></li>

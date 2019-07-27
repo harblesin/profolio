@@ -9,6 +9,8 @@ import {
 import Template1 from "./Template1";
 import ReactDOM from 'react-dom'
 import ProjectCard from "../components/SubComponents/ProjectCard/ProjectCard";
+import axios from "axios";
+import API from "../utils/API";
 
 
 class PortfolioCreation extends Component {
@@ -32,11 +34,40 @@ class PortfolioCreation extends Component {
     numProject: 0
   };
 
+  componentDidMount = () => {
+    let object = {
+      profolioId: 1
+    };
+    API.getBio(object).then(response => {
+      console.log(response.data);
+      if (response.data) {
+        if (response.data.photo && response.data.photo !== "") {
+          let bioPic = response.data.photo;
+          this.setState({
+            baseImage: bioPic
+          });
+        }
+        if (response.data.fullName && response.data.fullName !== "") {
+          let name = response.data.fullName;
+          this.setState({
+            fullName: name
+          });
+        }
+        if (response.data.aboutMe && response.data.aboutMe !== "") {
+          let about = response.data.aboutMe;
+          this.setState({
+            aboutMe: about
+          });
+        }
+      }
+    });
+  };
+
   handleInputChange = event => {
     let value = event.target.value;
     let name = event.target.name;
     this.setState({
-      [name]: value,
+      [name]: value
     });
   };
 
@@ -89,21 +120,43 @@ class PortfolioCreation extends Component {
 
   getBaseFile = files => {
     this.setState({
-      baseImage: files.base64,
+      baseImage: files.base64
     });
   };
 
   getBaseFileProjectPic = files => {
     this.setState({
-      projectPicture: files.base64,
+      projectPicture: files.base64
     });
   };
 
   nextClick = () => {
     let footer = this.state.footer;
+    let object = {};
+    switch (footer) {
+      case 0:
+        object = {
+          fullName: this.state.fullName,
+          aboutMe: this.state.aboutMe,
+          photo: this.state.baseImage.toString()
+        };
+        API.saveBio(object);
+        break;
+      case 1:
+        object = {};
+        break;
+      case 2:
+        object = {};
+        break;
+      case 3:
+        object = {};
+        break;
+      default:
+    }
+
     footer += 1;
     this.setState({
-      footer,
+      footer
     });
     this.handleFooterChange();
     console.log(this.state.footer);
@@ -113,7 +166,7 @@ class PortfolioCreation extends Component {
     let footer = this.state.footer;
     footer -= 1;
     this.setState({
-      footer,
+      footer
     });
     this.handleFooterChange();
   };

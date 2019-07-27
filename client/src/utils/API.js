@@ -25,11 +25,20 @@ export default {
     return axios.post("/api/users/test");
   },
 
-  grabProfiles: function(){
-    return axios.get("/api/users/test")
+  grabProfiles: function() {
+    return axios.get("/api/users/test");
   },
 
-  newProfolio: function(){
-    return axios.post("/api/users/newProfolio")
+  getBio: function(profolioId) {
+    console.log("profolioId = " + profolioId);
+    return axios.post("/api/users/getBio", profolioId);
+  },
+
+  saveBio: function(bioInfo) {
+    return axios.post("/api/users/saveBio", bioInfo);
+  },
+
+  newProfolio: function() {
+    return axios.post("/api/users/newProfolio");
   }
 };
