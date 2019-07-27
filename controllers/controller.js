@@ -183,21 +183,23 @@ module.exports = {
     // }).then(()=>{})
   },
 
-  getProfolio: (req, res) => {
+  getPortfolio: (req, res) => {
     db.Profolio.findOne({
-      where: { ProfolioId: 1 },
+      where: { id: req.body.ProfolioId },
       include: [
         {
           model: db.Bio,
           where: {
-            ProfolioId: 1
-          }
+            ProfolioId: req.body.ProfolioId
+          },
+          required: false
         },
         {
-          model: db.Skill,
+          model: db.Project,
           where: {
-            ProfolioId: 1
-          }
+            ProfolioId: req.body.ProfolioId
+          },
+          required: false
         }
       ]
     }).then(data => res.json(data));
@@ -211,13 +213,11 @@ module.exports = {
   },
 
   saveBio: (req, res) => {
-    // bio = {
-    //   fullName: req.body.name,
-    //   aboutMe: req.body.about,
-    //   photo: req.body.photo
-    // };
     console.log(req.body);
     db.Bio.create(req.body).then(data => res.send(data));
+  },
+
+  saveProjectCard: (req, res) => {
+    db.Project.create(req.body).then(data => res.send(data));
   }
-  // db.Details.create(req.body).then(data => res.json(data));
 };

@@ -58,36 +58,22 @@ class PortfolioCreation extends Component {
   //   });
   // };
 
-  // componentDidMount = () => {
+  componentDidMount = () => {
+    // let array = [
+    //   [bio]
+    // ];
 
-  //   let array = [
+    let object = {
+      ProfolioId: 14
+    };
 
-  //   ];
-
-  //   API.getBio(object).then(response => {
-  //     console.log(response.data);
-  //     if (response.data) {
-  //       if (response.data.photo && response.data.photo !== "") {
-  //         let bioPic = response.data.photo;
-  //         this.setState({
-  //           baseImage: bioPic
-  //         });
-  //       }
-  //       if (response.data.fullName && response.data.fullName !== "") {
-  //         let name = response.data.fullName;
-  //         this.setState({
-  //           fullName: name
-  //         });
-  //       }
-  //       if (response.data.aboutMe && response.data.aboutMe !== "") {
-  //         let about = response.data.aboutMe;
-  //         this.setState({
-  //           aboutMe: about
-  //         });
-  //       }
-  //     }
-  //   });
-  // };
+    API.getPortfolio(object).then(response => {
+      console.log("Response Data: " + response.data);
+      if (response.data) {
+        console.log(response);
+      }
+    });
+  };
 
   handleInputChange = event => {
     let value = event.target.value;

@@ -26,4 +26,8 @@ router.route("/getbio").post(userController.getBio);
 router.route("/savebio").post(userController.saveBio);
 router.route("/newProfolio").post(userController.newProfolio);
 
+router.route("/getPortfolio").post(userController.getPortfolio);
+
+router.route("/saveProjectCard").post(userController.saveProjectCard);
+
 module.exports = router;
