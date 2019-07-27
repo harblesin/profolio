@@ -3,13 +3,15 @@ import {
   Footer1,
   Footer2,
   Footer3,
-  Footer4
+  Footer4,
+  Footer3Button
 } from "../components/Footer/Footer";
 import Template1 from "./Template1";
 import ReactDOM from 'react-dom'
 import ProjectCard from "../components/SubComponents/ProjectCard/ProjectCard";
 import axios from "axios";
 import API from "../utils/API";
+
 
 class PortfolioCreation extends Component {
   state = {
@@ -26,7 +28,10 @@ class PortfolioCreation extends Component {
     baseImage: "images/profile-pic-placeholder.png",
     projectPicture: "images/project-placeholder.png",
     linkedInLink: "LinkedIn Link",
-    githubProfileLink: "Github Profile Link"
+    githubProfileLink: "Github Profile Link",
+    footerTruth: false,
+    eachProject: [],
+    numProject: 0
   };
 
   componentDidMount = () => {
@@ -61,7 +66,6 @@ class PortfolioCreation extends Component {
   handleInputChange = event => {
     let value = event.target.value;
     let name = event.target.name;
-
     this.setState({
       [name]: value
     });
@@ -157,14 +161,28 @@ class PortfolioCreation extends Component {
       footer
     });
     this.handleFooterChange();
-    console.log(this.state.footer);
   };
 
-  addProjectClick = props => {
-    // let children = this.state.children
-    // this.setState({
-    //   children: [...children, <ProjectCard {...props} />]
-    // })
+  addProjectClick = () => {
+    let project = this.state.eachProject[this.state.numProject];
+    let numProject = this.state.numProject
+
+    project.push( 
+      {
+        projectTitle: this.state.projectTitle
+        // href: this.state.deployedLink,
+        // aboutProject: this.state.aboutProject,
+        // githubLink: this.state.githubLink,
+        // projectPicture: this.state.projectPicture
+      }
+    )
+
+    this.setState({
+      eachProject: project,
+      numProject: numProject+1
+    });
+    console.log(project);
+
   };
 
   handleFooterChange = () => {
@@ -189,15 +207,22 @@ class PortfolioCreation extends Component {
       );
     }
     if (this.state.footer === 2) {
-      return (
-        <Footer3
-          onChange={this.handleInputChange}
-          nextClick={this.nextClick}
-          previousClick={this.previousClick}
-          addProjectClick={this.addProjectClick}
-          getBaseFileProjectPic={this.getBaseFileProjectPic}
-        />
-      );
+      if (!this.state.footerTruth) {
+        return(
+        <Footer3Button />
+        )
+      } 
+      else if (this.state.footerTruth){
+        return (
+          <Footer3
+            onChange={this.handleInputChange}
+            nextClick={this.nextClick}
+            previousClick={this.previousClick}
+            addProjectClick={this.addProjectClick}
+            getBaseFileProjectPic={this.getBaseFileProjectPic}
+          />
+        );
+      }
     }
     if (this.state.footer === 3) {
       return (
@@ -214,7 +239,6 @@ class PortfolioCreation extends Component {
     return (
       <div>
         <Template1 {...this.state} />
-
         {this.state.footer}
         {this.handleFooterChange()}
         {console.log(this.state.footer)}

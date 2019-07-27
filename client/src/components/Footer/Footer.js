@@ -284,6 +284,55 @@ export const Footer2 = props => {
   );
 };
 
+export const Footer3Button = props => {
+  // project picture, project title, project summary, github project link, deployed link(project picture and title)
+  return (
+    <div>
+      <div className="footerStyle">
+        <Row>
+          <Col className="text-center">
+            <Button
+              text="Add Project"
+              type="button"
+              className="medium teal btn float-right"
+              name="eachProject"
+              onClick={() => props.addProjectClick()}
+            />
+          </Col>
+          <Col>
+            <Row>
+              <Col className="text-center">
+                <Button
+                  href="#contact"
+                  text="Next"
+                  type="button"
+                  className="large teal btn scrolly"
+                  name="footer"
+                  onClick={() => props.nextClick()}
+                />
+                <br />
+                <br />
+                <Button
+                  href="#skills"
+                  text="Previous"
+                  type="button"
+                  className="large teal btn scrolly"
+                  name="footer"
+                  onClick={() => props.previousClick()}
+                />
+                <br />
+              </Col>
+            </Row>
+          </Col>
+          <Col>
+            <SmallLogo className="smallLogo" />
+          </Col>
+        </Row>
+      </div>
+    </div>
+  );
+};
+
 export const Footer3 = props => {
   // project picture, project title, project summary, github project link, deployed link(project picture and title)
   return (
