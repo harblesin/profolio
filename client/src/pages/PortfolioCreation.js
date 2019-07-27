@@ -29,7 +29,6 @@ class PortfolioCreation extends Component {
     githubProfileLink: "Github Profile Link",
     footerTruth: false,
     eachProject: [],
-    numProject: 0
   };
 
   handleInputChange = event => {
@@ -119,26 +118,32 @@ class PortfolioCreation extends Component {
   };
 
   addProjectClick = () => {
-    let project = this.state.eachProject[this.state.numProject];
-    let numProject = this.state.numProject
+    let project = this.state.eachProject;
 
     project.push( 
       {
-        projectTitle: this.state.projectTitle
-        // href: this.state.deployedLink,
-        // aboutProject: this.state.aboutProject,
-        // githubLink: this.state.githubLink,
-        // projectPicture: this.state.projectPicture
+        projectTitle: this.state.projectTitle,
+        href: this.state.deployedLink,
+        aboutProject: this.state.aboutProject,
+        githubLink: this.state.githubLink,
+        projectPicture: this.state.projectPicture
       }
     )
 
     this.setState({
       eachProject: project,
-      numProject: numProject+1
+      footerTruth: true
     });
     console.log(project);
 
   };
+
+  saveProjectButton = () => {
+    this.setState({
+      eachProject: [],
+      footerTruth: false
+    })
+  }
 
   handleFooterChange = () => {
     if (this.state.footer === 0) {
@@ -164,7 +169,11 @@ class PortfolioCreation extends Component {
     if (this.state.footer === 2) {
       if (!this.state.footerTruth) {
         return(
-        <Footer3Button />
+        <Footer3Button 
+        nextClick={this.nextClick}
+        previousClick={this.previousClick}
+        addProjectClick={this.addProjectClick}
+        />
         )
       } 
       else if (this.state.footerTruth){
@@ -173,7 +182,7 @@ class PortfolioCreation extends Component {
             onChange={this.handleInputChange}
             nextClick={this.nextClick}
             previousClick={this.previousClick}
-            addProjectClick={this.addProjectClick}
+            saveProjectButton={this.saveProjectButton}
             getBaseFileProjectPic={this.getBaseFileProjectPic}
           />
         );

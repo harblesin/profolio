@@ -186,6 +186,7 @@ export let Template1 = props => {
             </p>
           </header>
           <div className="row">
+              
               {props.eachProject.map(() => <ProjectCard className="img" {...props} />)}
           </div>
           {/* <div className="row">

@@ -1,7 +1,7 @@
 import React from "react";
 import Form from "../SubComponents/Form/Form";
 import Button from "../SubComponents/Button/Button";
-import Checkbox from "../SubComponents/Checkbox/Checkbox"
+import Checkbox from "../SubComponents/Checkbox/Checkbox";
 import { Row, Col } from "react-bootstrap";
 import SmallLogo from "../SubComponents/Logo/SmallLogo";
 import FileBase from "react-file-base64";
@@ -131,7 +131,6 @@ export const Footer2 = props => {
                 Ajax
               </label>
             </div>
-
           </Col>
           <Col>
             <div className="form-check">
@@ -238,7 +237,7 @@ export const Footer2 = props => {
             </div>
           </Col>
           <Col xl="2" lg="2">
-          <Form
+            <Form
               className="opacity form-control border border-dark"
               id="addSkill"
               placeholder="Add Your Own Skill"
@@ -277,7 +276,6 @@ export const Footer2 = props => {
           </Col>
         </Row>
       </Col>
-
     </div>
   );
 };
@@ -384,11 +382,11 @@ export const Footer3 = props => {
               onChange={props.onChange}
             />
             <Button
-              text="Add Project"
+              text="Save Project"
               type="button"
               className="medium teal btn float-right"
-              name="eachProject"
-              onClick={() => props.addProjectClick()}
+              name="saveProject"
+              onClick={() => props.saveProjectButton()}
             />
           </Col>
           <Col>
@@ -463,16 +461,6 @@ export const Footer4 = props => {
             <Row>
               <Col className="text-center">
                 <Button
-                  href=" "
-                  text="Preview"
-                  type="button"
-                  className="large teal btn scrolly"
-                  name="footer"
-                  onClick={() => props.nextClick()}
-                />
-                <br />
-                <br />
-                <Button
                   href="#portfolio"
                   text="Previous"
                   type="button"
@@ -480,7 +468,16 @@ export const Footer4 = props => {
                   name="footer"
                   onClick={() => props.previousClick()}
                 />
-                <br />
+              </Col>
+              <Col>
+                <Button
+                  href=" "
+                  text="Finish"
+                  type="button"
+                  className="large teal btn scrolly"
+                  name="footer"
+                  onClick={() => props.nextClick()}
+                />
               </Col>
             </Row>
           </Col>
