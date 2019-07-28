@@ -5,12 +5,19 @@ function UserProject (props) {
 
     if(props.name){
         const check = <input type="checkbox"></input>
-        console.log(check)
+        
         
     }
     return(
-    
-        <h1>{props.name}</h1>
+    <div className Row>
+        <h2 className="col-10">{props.name}</h2>
+        <div className="col-1">
+            {props.children}
+        </div>
+        
+    </div>
+        
+        
        
     )
     

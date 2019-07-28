@@ -1,5 +1,5 @@
 const passport = require("passport");
-
+const secret = require("./key");
 const passportJWT = require("passport-jwt");
 const JWTStrategy = passportJWT.Strategy;
 const bcrypt = require("bcrypt");
@@ -15,12 +15,12 @@ module.exports = function(passport, user) {
         passwordField: "password"
       },
       async (email, password, done) => {
-        
         try {
-          const userDocument = await UserModel.findOne({where:{
-            email: email
-          }
-          })
+          const userDocument = await UserModel.findOne({
+            where: {
+              email: email
+            }
+          });
           const passwordsMatch = await bcrypt.compare(
             password,
             userDocument.password
@@ -33,24 +33,24 @@ module.exports = function(passport, user) {
           }
         } catch (error) {
           done(error);
-        }}
+        }
+      }
     )
   );
-  
 
   passport.use(
     new JWTStrategy(
       {
         jwtFromRequest: req => req.cookies.jwt,
-        secretOrKey: process.env.SECRET
+        secretOrKey: secret
       },
       (jwtPayload, done) => {
         if (Date.now() > jwtPayload.expires) {
-          console.log(jwtPayload)
-          console.log("bitch")
+          console.log(jwtPayload);
+          console.log("bitch");
           return done("jwt expired");
         }
-        console.log("bitch2")
+        console.log("bitch2");
         return done(null, jwtPayload);
       }
     )
