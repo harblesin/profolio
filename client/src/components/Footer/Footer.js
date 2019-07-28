@@ -452,7 +452,8 @@ export const Footer4 = props => {
             <Form
               className="opacity form-control border border-dark"
               id="contactNumber"
-              placeholder="Contact Number"
+              //placeholder="Contact Number"
+              //placeholder={props.contactNumber}
               name="contactNumber"
               value={props.contactNumber}
               onChange={props.onChange}
@@ -477,7 +478,8 @@ export const Footer4 = props => {
             <Form
               className="opacity form-control border border-dark"
               id="linkedInLink"
-              placeholder="LinkedIn Link"
+              //placeholder="LinkedIn Link"
+              placeholder={props.linkedInLink}
               name="linkedInLink"
               value={props.linkedInLink}
               onChange={props.onChange}

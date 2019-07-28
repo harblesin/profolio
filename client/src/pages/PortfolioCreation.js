@@ -55,6 +55,7 @@ class PortfolioCreation extends Component {
     };
 
     let bioObject = {};
+    let contactObject = {};
 
     API.getPortfolio(object).then(response => {
       console.log("Response Data: " + response.data);
@@ -87,7 +88,14 @@ class PortfolioCreation extends Component {
             aboutMe: "aboutMe"
           }
         };
-        let contactArray = ["contact", "email", "github", "linkedIn"];
+        contactObject = {
+          table: "Contact",
+          object: {
+            phone: "contactNumber",
+            github: "githubProfileLink",
+            linkedIn: "linkedInLink"
+          }
+        };
         let finalArray = ["final", "finalLink"];
 
         function parseData(dataObject) {
@@ -115,6 +123,7 @@ class PortfolioCreation extends Component {
           }
         }
         parseData(bioObject);
+        parseData(contactObject);
       }
       console.log(dataToSetState);
       for (let i = 0; i < dataToSetState.length; i++) {
@@ -332,6 +341,7 @@ class PortfolioCreation extends Component {
           onChange={this.handleInputChange}
           nextClick={this.nextClick}
           previousClick={this.previousClick}
+          contactNumber={this.state.contactNumber}
         />
       );
     }
