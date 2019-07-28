@@ -74,7 +74,7 @@ module.exports = {
           res.send({ error , auth: false});
         }
 
-        const token = jwt.sign(JSON.stringify(payload), process.env.SECRET);
+        const token = jwt.sign(JSON.stringify(payload), keys);
         console.log(token);
         console.log(payload);
 
