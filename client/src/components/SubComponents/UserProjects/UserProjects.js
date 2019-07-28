@@ -1,26 +1,21 @@
 import React from "react";
 
-function UserProject (props) {
+function UserProject(props) {
 
 
-    if(props.name){
+    if (props.name) {
         const check = <input type="checkbox"></input>
-        
-        
+
+
     }
-    return(
-    <div className Row>
-        <h2 className="col-10">{props.name}</h2>
-        <div className="col-1">
-            {props.children}
+    return (
+        <div>
+            <h2 className="float-left ml-3">{props.name}</h2>
+            <div>
+                {props.children}
+            </div>
         </div>
-        
-    </div>
-        
-        
-       
     )
-    
 }
 
 export default UserProject;
