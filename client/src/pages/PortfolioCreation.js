@@ -32,6 +32,8 @@ class PortfolioCreation extends Component {
     githubProfileLink: "Github Profile Link",
     footerTruth: false,
     eachProject: [],
+    userEmail: "",
+    numProject: 0,
     savedProject: [],
     deleteProjectButton: "Delete Button"
   };
@@ -96,6 +98,15 @@ class PortfolioCreation extends Component {
       [name]: value,
     });
   };
+
+  contactEmail = () => {
+    let message = document.getElementById("contactName").value;
+    let subject = document.getElementById("subject").value;
+    let userEmail = this.state.userEmail;
+
+    document.getElementById("mail").setAttribute("action", "mailto:" + userEmail + "?subject=" + subject + "&body=" + message);
+    document.getElementById("mail").submit();
+  }
 
   isChecked = event => {
     let value = event.target.value;
@@ -286,6 +297,7 @@ class PortfolioCreation extends Component {
           onChange={this.handleInputChange}
           nextClick={this.nextClick}
           previousClick={this.previousClick}
+          userEmail={this.userEmail}
         />
       );
     }

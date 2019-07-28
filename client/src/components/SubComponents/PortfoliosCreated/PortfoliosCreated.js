@@ -20,7 +20,7 @@ class PortfoliosCreated extends Component {
     ],
     profId: "",
     profIdUrl: "",
-    profEditUrl:"",
+    profEditUrl: "",
     show: false,
     name: "",
   };
@@ -30,17 +30,17 @@ class PortfoliosCreated extends Component {
     let profId = {
       id: event.target.id
     }
-    this.setState({profId: profId})
+    this.setState({ profId: profId })
     console.log(profId)
-    await API.deleteProfolio({profId}).then(data=>{
+    await API.deleteProfolio({ profId }).then(data => {
       console.log(data)
       //this.setState({profiles: data.data.data})
     })
     API.grabProfiles().then(data => {
-      
-      
-        this.setState({ profiles: data.data.data });
-    
+
+
+      this.setState({ profiles: data.data.data });
+
     });
   }
 
@@ -69,22 +69,22 @@ class PortfoliosCreated extends Component {
 
   profileRedirect = (id) => {
     console.log("working")
-    if(this.state.profileRedirect){
+    if (this.state.profileRedirect) {
       console.log("were supposed ot be redirecting")
       let url = "/portfoliocreation/" + id
-      return <Redirect to={url}/>;
+      return <Redirect to={url} />;
     }
   }
 
   editRedirect = (id) => {
-    if(this.state.editRedirect){
+    if (this.state.editRedirect) {
       console.log("were supposed ot be redirecting")
       let url = "/portfoliocreation/" + id
-      return <Redirect to={url}/>;
+      return <Redirect to={url} />;
     }
   }
 
-  edit = async (event) =>{
+  edit = async (event) => {
     let id = event.target.id
     await this.setState({
       profEditUrl: id,
@@ -110,12 +110,12 @@ class PortfoliosCreated extends Component {
     });
   };
 
-  newProfolio =  () => {
-      API.newProfolio({name: this.state.name}).then( async (data) => {
-        console.log(data)
+  newProfolio = () => {
+    API.newProfolio({ name: this.state.name }).then(async (data) => {
+      console.log(data)
       await this.setState({
         profIdUrl: data.data,
-        profileRedirect:true
+        profileRedirect: true
       })
     });
   };
@@ -139,35 +139,28 @@ class PortfoliosCreated extends Component {
               <tr>
                 {this.state.profiles.map(profile => (
                   <>
-                  <UserProject
-                    name={profile.name}
-                    key={profile.id}
-                    onClick={profile.link}
-                  ></UserProject>
-                      <Button
-                   id={profile.id}
-                   name="profId"
-                  text="Delete"
-                  type="button"
-                  onClick={this.deleteProf}
-                  className="float-right medium buttonColor2 font-weight-bold btn active ml-1 mr-2 mb-1"
-                />
-
-                <Button
-                  id={profile.id}
-                  text="Edit"
-                  type="button"
-                  onClick={this.edit}
-                  className="float-right medium buttonColor3 font-weight-bold btn active mr-1"
-                />
-
-                  
-
-                   
-                </>
+                    <UserProject
+                      name={profile.name}
+                      key={profile.id}
+                      onClick={profile.link}
+                    ></UserProject>
+                    <Button
+                      id={profile.id}
+                      name="profId"
+                      text="Delete"
+                      type="button"
+                      onClick={this.deleteProf}
+                      className="float-right medium buttonColor2 font-weight-bold btn active ml-1 mr-2 mb-1"
+                    />
+                    <Button
+                      id={profile.id}
+                      text="Edit"
+                      type="button"
+                      onClick={this.edit}
+                      className="float-right medium buttonColor3 font-weight-bold btn active mr-1"
+                    />
+                  </>
                 ))}
-               
-                
               </tr>
             </tbody>
           </Table>
@@ -191,7 +184,7 @@ class PortfoliosCreated extends Component {
               text="Start Creating!"
               className="float-right medium buttonColor3 font-weight-bold btn active mr-1"
               onClick={this.newProfolio}
-              //href={this.state.profIdUrl}
+            //href={this.state.profIdUrl}
             >
             </Button>
             <Button

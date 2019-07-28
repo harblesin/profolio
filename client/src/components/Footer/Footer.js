@@ -458,6 +458,15 @@ export const Footer4 = props => {
             />
             <Form
               className="opacity form-control border border-dark"
+              id="email"
+              placeholder="Your Email"
+              name="email"
+              value={props.userEmail}
+            />
+          </Col>
+          <Col>
+            <Form
+              className="opacity form-control border border-dark"
               id="profilePicture"
               placeholder="Github Profile Link"
               name="githubProfile"
