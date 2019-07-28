@@ -10,7 +10,7 @@ class LandingPage1 extends Component {
   state = {
     email: "",
     password: "",
-    redirect: false
+    redirect: false,
   };
 
   renderRedirect = () => {
@@ -22,7 +22,7 @@ class LandingPage1 extends Component {
   handleInputChange = event => {
     const { name, value } = event.target;
     this.setState({
-      [name]: value
+      [name]: value,
     });
   };
 
@@ -32,20 +32,19 @@ class LandingPage1 extends Component {
     if (this.state.email && this.state.password) {
       let userInfo = {
         email: this.state.email,
-        password: this.state.password
+        password: this.state.password,
       };
-      console.log(userInfo)
-      API.loginUser(userInfo).then((data) => {
-        console.log(data)
-        console.log(data.auth)
-        console.log(data.user)
-        if(!data.data.user){
-          alert("Incorrect Email or Password!")
-        }else{
+      console.log(userInfo);
+      API.loginUser(userInfo).then(data => {
+        console.log(data);
+        console.log(data.auth);
+        console.log(data.user);
+        if (!data.data.user) {
+          alert("Incorrect Email or Password!");
+        } else {
           alert("Welcome back " + this.state.email + "!");
-        this.setState({ redirect: true });
+          this.setState({ redirect: true });
         }
-        
       });
     } else {
       alert("Must enter both a username and password");
@@ -54,7 +53,7 @@ class LandingPage1 extends Component {
 
   componentDidMount() {
     API.authCheck().then(data => {
-      console.log(data.data.auth)
+      console.log(data.data.auth);
       if (data.data.auth) {
         this.setState({ redirect: true });
       }
@@ -63,9 +62,11 @@ class LandingPage1 extends Component {
 
   render() {
     return (
-      <Container fluid={true} className="backgroundHead test">
+      <Container className="backgroundHead test">
         <Row>
-          <LargeLogo />
+          <Col>
+            <LargeLogo />
+          </Col>
         </Row>
         <br />
         <Row>
