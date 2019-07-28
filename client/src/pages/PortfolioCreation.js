@@ -32,6 +32,7 @@ class PortfolioCreation extends Component {
     footerTruth: false,
     eachProject: [],
     savedProject: [],
+    deleteProjectButton: "Delete Button"
   };
 
   // componentDidMount = () => {

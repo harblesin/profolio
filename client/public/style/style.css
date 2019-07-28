@@ -15,6 +15,7 @@ img {
 
 .cardSize {
   width: 22rem;
+  min-height: 35rem;
 }
 
 .textWrap {
