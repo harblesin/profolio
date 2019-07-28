@@ -484,13 +484,12 @@ export const Footer4 = props => {
               />
               <br />
               <Button
-                href=" "
-                text="Finish"
-                type="button"
-                className="large teal btn scrolly mt-2 mb-1"
-                name="footer"
-                onClick={() => props.nextClick()}
-              />
+                  text="Finish"
+                  type="button"
+                  className="large teal btn scrolly"
+                  name="footer"
+                  onClick={props.serveLink}
+                />
             </Col>
             <Col>
               <SmallLogo className="smallLogo" />
