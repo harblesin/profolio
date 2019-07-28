@@ -6,7 +6,6 @@ import ProjectCard from "../components/SubComponents/ProjectCard/ProjectCard";
 // import { NONAME } from "dns";
 import CarouselImage from "./../components/SubComponents/CarouselImage/CarouselImage";
 
-
 export let Template1 = props => {
   require("./../components/SubComponents/Nav/main.css");
 
@@ -27,25 +26,25 @@ export let Template1 = props => {
           slidesToShow: 3,
           slidesToScroll: 3,
           infinite: true,
-          dots: true
-        }
+          dots: true,
+        },
       },
       {
         breakpoint: 600,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 2,
-          initialSlide: 2
-        }
+          initialSlide: 2,
+        },
       },
       {
         breakpoint: 480,
         settings: {
           slidesToShow: 1,
-          slidesToScroll: 1
-        }
-      }
-    ]
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
 
   return (
@@ -120,10 +119,14 @@ export let Template1 = props => {
             </div>
             <div className="col-8 col-7-large col-12-medium">
               <header>
-                <h1>Hi. I'm {props.fullName}.</h1>
+                <h1>
+                  Hi. I'm {props.fullName}.
+                </h1>
               </header>
               <p>
-                <span>{props.aboutMe}</span>
+                <span>
+                  {props.aboutMe}
+                </span>
               </p>
               <Link
                 activeClass="active"
@@ -144,19 +147,16 @@ export let Template1 = props => {
       <article id="skills" className="wrapper style2">
         <div className="container">
           <header>
-            <h2>Here's all the stuff I do.</h2>
-            <p>Odio turpis amet sed consequat eget posuere consequat.</p>
+            <h2>Skills</h2>
+            <p>These are my skills.</p>
           </header>
           <Slider className="skillsSize" {...settings}>
             {/* < div >
             <img src={props.skills} alt="Imageskillz" />
           </div > */}
-            {props.skills.map(skill => (
-              <CarouselImage src={skill} />
-            ))}
+            {props.skills.map(skill => <CarouselImage src={skill} />)}
           </Slider>
           <footer>
-            <p>Lorem ipsum dolor sit sapien vestibulum ipsum primis?</p>
             <Link
               activeClass="active"
               to="portfolio"
@@ -175,99 +175,27 @@ export let Template1 = props => {
       <article id="portfolio" className="wrapper style3">
         <div className="container">
           <header>
-            <h2>Here’s some stuff I made recently.</h2>
+            <h2>Projects</h2>
             <p>
-              Proin odio consequat sapien vestibulum consequat lorem dolore
-              feugiat.
+              Here is some of projects that I have created.
             </p>
           </header>
-          <div className="row">
-              {props.eachProject.map(() => <ProjectCard className="img" {...props} />)}
+          <div className="row rowCenter">
+            {props.savedProject.map(project =>
+              <ProjectCard
+                id={project.id}
+                projectTitle={project.name}
+                projectPicture={project.projectPicture}
+                deployedLink={project.deployedLink}
+                githubLink={project.githubLink}
+                aboutProject={project.aboutProject}
+              />
+            )}
+            {props.eachProject.map(() =>
+              <ProjectCard className="img" {...props} />
+            )}
           </div>
-          {/* <div className="row">
-            <div className="col-4 col-6-medium col-12-small">
-              <article className="box style2">
-                <a href={props.deployedLink} className="image featured">
-                  <img src="images/pic01.jpg" alt="" />
-                </a>
-                <h3>
-                  <a href={props.deployedLink}>
-                    {props.projectTitle}
-                  </a>
-                </h3>
-                <p>
-                  {props.aboutProject}
-                </p>
-                <ul className="social text-center">
-                  <li>
-                    <a
-                      href={props.githubLink}
-                      className="fab fa-github icon"
-                    >
-                      <span className="label">Github</span>
-                    </a>
-                  </li>
-                </ul>
-              </article>
-            </div>
-            <div className="col-4 col-6-medium col-12-small">
-              <article className="box style2">
-                <a href=" " className="image featured">
-                  <img src="images/pic02.jpg" alt="" />
-                </a>
-                <h3>
-                  <a href=" ">Veroeros primis</a>
-                </h3>
-                <p>Ornare nulla proin odio consequat.</p>
-              </article>
-            </div>
-            <div className="col-4 col-6-medium col-12-small">
-              <article className="box style2">
-                <a href=" " className="image featured">
-                  <img src="images/pic03.jpg" alt="" />
-                </a>
-                <h3>
-                  <a href=" ">Lorem ipsum</a>
-                </h3>
-                <p>Ornare nulla proin odio consequat.</p>
-              </article>
-            </div>
-            <div className="col-4 col-6-medium col-12-small">
-              <article className="box style2">
-                <a href=" " className="image featured">
-                  <img src="images/pic04.jpg" alt="" />
-                </a>
-                <h3>
-                  <a href=" ">Tempus dolore</a>
-                </h3>
-                <p>Ornare nulla proin odio consequat.</p>
-              </article>
-            </div>
-            <div className="col-4 col-6-medium col-12-small">
-              <article className="box style2">
-                <a href=" " className="image featured">
-                  <img src="images/pic05.jpg" alt="" />
-                </a>
-                <h3>
-                  <a href=" ">Feugiat aliquam</a>
-                </h3>
-                <p>Ornare nulla proin odio consequat.</p>
-              </article>
-            </div>
-            <div className="col-4 col-6-medium col-12-small">
-              <article className="box style2">
-                <a href=" " className="image featured">
-                  <img src="images/pic06.jpg" alt="" />
-                </a>
-                <h3>
-                  <a href=" ">Sed amet ornare</a>
-                </h3>
-                <p>Ornare nulla proin odio consequat.</p>
-              </article>
-            </div>
-          </div> */}
           <footer>
-            <p>Lorem ipsum dolor sit sapien vestibulum ipsum primis?</p>
             <Link
               activeClass="active"
               to="contact"

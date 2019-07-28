@@ -1,7 +1,7 @@
 import React from "react";
 import Form from "../SubComponents/Form/Form";
 import Button from "../SubComponents/Button/Button";
-import Checkbox from "../SubComponents/Checkbox/Checkbox"
+import Checkbox from "../SubComponents/Checkbox/Checkbox";
 import { Row, Col } from "react-bootstrap";
 import SmallLogo from "../SubComponents/Logo/SmallLogo";
 import FileBase from "react-file-base64";
@@ -44,7 +44,7 @@ export const Footer1 = props => {
             </Col>
             <Col>
               <Row>
-                <Col className="text-center">
+                <Col className="text-center mt-5">
                   <Button
                     href="#skills"
                     text="Next"
@@ -63,7 +63,6 @@ export const Footer1 = props => {
             </Col>
           </Row>
         </Col>
-
       </div>
     </div>
   );
@@ -136,7 +135,6 @@ export const Footer2 = props => {
                 Ajax
               </label>
             </div>
-
           </Col>
           <Col>
             <div className="form-check">
@@ -233,7 +231,7 @@ export const Footer2 = props => {
                   />
                   <label className="form-check-label font-weight-bolder skillsColor">
                     Handlebar.js
-              </label>
+                  </label>
                 </div>
                 <div className="form-check">
                   <Checkbox
@@ -243,13 +241,15 @@ export const Footer2 = props => {
                   />
                   <label className="form-check-label font-weight-bolder skillsColor">
                     Sequelize.js
-              </label>
+                  </label>
                 </div>
               </Col>
             </Row>
             <Row>
               <Col>
-                <div className="text-white medium bg-dark mt-4">Upload Image</div>
+                <div className="text-white medium bg-dark mt-4">
+                  Upload Image
+                </div>
                 <div className="process_upload-btn bg-dark rounded">
                   <FileBase
                     type="file"
@@ -399,11 +399,11 @@ export const Footer3 = props => {
               onChange={props.onChange}
             />
             <Button
-              text="Add Project"
+              text="Save Project"
               type="button"
               className="medium teal btn float-right"
-              name="eachProject"
-              onClick={() => props.addProjectClick()}
+              name="saveProject"
+              onClick={() => props.saveProjectButton()}
             />
           </Col>
           <Col>
@@ -446,6 +446,7 @@ export const Footer4 = props => {
     <div>
       <div className="footerStyle">
         <Row>
+          <Col />
           <Col className="text-center">
             <Form
               className="opacity form-control border border-dark"
@@ -484,17 +485,7 @@ export const Footer4 = props => {
           <Col />
           <Col>
             <Row>
-              <Col className="text-center">
-                <Button
-                  href=" "
-                  text="Preview"
-                  type="button"
-                  className="large teal btn scrolly"
-                  name="footer"
-                  onClick={() => props.nextClick()}
-                />
-                <br />
-                <br />
+              <Col className="text-center mt-5">
                 <Button
                   href="#portfolio"
                   text="Previous"
@@ -503,10 +494,20 @@ export const Footer4 = props => {
                   name="footer"
                   onClick={() => props.previousClick()}
                 />
-                <br />
+              </Col>
+              <Col className="text-center mt-5">
+                <Button
+                  href=" "
+                  text="Finish"
+                  type="button"
+                  className="large teal btn scrolly"
+                  name="footer"
+                  onClick={() => props.nextClick()}
+                />
               </Col>
             </Row>
           </Col>
+          <Col />
           <Col>
             <SmallLogo className="smallLogo" />
           </Col>
