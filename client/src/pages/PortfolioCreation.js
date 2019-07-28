@@ -4,7 +4,7 @@ import {
   Footer2,
   Footer3,
   Footer4,
-  Footer3Button,
+  Footer3Button
 } from "../components/Footer/Footer";
 import Template1 from "./Template1";
 import ReactDOM from "react-dom";
@@ -37,22 +37,21 @@ class PortfolioCreation extends Component {
   };
 
   componentDidMount = () => {
-<<<<<<< HEAD
-=======
     // let array = [
     //   [bio]
     // ];
 
-     const { match: { params }} = this.props;
+    const {
+      match: { params }
+    } = this.props;
 
     // API.getUserStuff(${params.id}).then({data: profile})=>{
-      console.log(params.id)
-       this.setState({profolioId: params.id})
+    console.log(params.id);
+    this.setState({ profolioId: params.id });
     // }
 
->>>>>>> 26ea66f2799f99b3360ee81276e63c0b97d1289d
     let object = {
-      ProfolioId: 14,
+      ProfolioId: 14
     };
 
     let bioObject = {};
@@ -137,7 +136,7 @@ class PortfolioCreation extends Component {
     let value = event.target.value;
     let name = event.target.name;
     this.setState({
-      [name]: value,
+      [name]: value
     });
   };
 
@@ -179,13 +178,13 @@ class PortfolioCreation extends Component {
 
   getBaseFile = files => {
     this.setState({
-      baseImage: files.base64,
+      baseImage: files.base64
     });
   };
 
   getBaseFileProjectPic = files => {
     this.setState({
-      projectPicture: files.base64,
+      projectPicture: files.base64
     });
   };
 
@@ -197,7 +196,7 @@ class PortfolioCreation extends Component {
         object = {
           fullName: this.state.fullName,
           aboutMe: this.state.aboutMe,
-          photo: this.state.baseImage.toString(),
+          photo: this.state.baseImage.toString()
         };
         API.saveBio(object);
         break;
@@ -215,7 +214,7 @@ class PortfolioCreation extends Component {
 
     footer += 1;
     this.setState({
-      footer,
+      footer
     });
     this.handleFooterChange();
     console.log(this.state.footer);
@@ -225,7 +224,7 @@ class PortfolioCreation extends Component {
     let footer = this.state.footer;
     footer -= 1;
     this.setState({
-      footer,
+      footer
     });
     this.handleFooterChange();
   };
@@ -236,11 +235,11 @@ class PortfolioCreation extends Component {
       href: this.state.deployedLink,
       aboutProject: this.state.aboutProject,
       githubLink: this.state.githubLink,
-      projectPicture: this.state.projectPicture,
+      projectPicture: this.state.projectPicture
     };
     this.setState({
       eachProject: [project],
-      footerTruth: true,
+      footerTruth: true
     });
     console.log(project);
   };
@@ -251,7 +250,7 @@ class PortfolioCreation extends Component {
       thumbnail: this.state.projectPicture,
       deployedLink: this.state.deployedLink,
       githubLink: this.state.githubLink,
-      aboutProject: this.state.aboutProject,
+      aboutProject: this.state.aboutProject
     };
 
     API.saveProjectCard(savedProjectCard).then(async response => {
@@ -265,7 +264,7 @@ class PortfolioCreation extends Component {
       projectPicture: this.state.projectPicture,
       deployedLink: this.state.deployedLink,
       githubLink: this.state.githubLink,
-      aboutProject: this.state.aboutProject,
+      aboutProject: this.state.aboutProject
     });
 
     this.setState({
@@ -275,7 +274,7 @@ class PortfolioCreation extends Component {
       githubLink: "Github Project Link",
       deployedLink: "Deployed Project Link",
       projectPicture: "images/project-placeholder.png",
-      footerTruth: false,
+      footerTruth: false
     });
     console.log(projectCard);
   };
