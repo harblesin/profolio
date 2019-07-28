@@ -455,6 +455,13 @@ export const Footer4 = props => {
               value={props.contactNumber}
               onChange={props.onChange}
             />
+            <Form
+              className="opacity form-control border border-dark"
+              id="email"
+              placeholder="Your Email"
+              name="email"
+              value={props.userEmail}
+            />
           </Col>
           <Col>
             <Form

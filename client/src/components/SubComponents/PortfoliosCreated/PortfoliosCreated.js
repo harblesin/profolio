@@ -41,8 +41,8 @@ class PortfoliosCreated extends Component {
   };
 
   newProfolio = () => {
-    API.newProfolio().then(()=>{
-      
+    API.newProfolio().then(() => {
+
     })
   }
 
@@ -67,19 +67,20 @@ class PortfoliosCreated extends Component {
                     key={profile.id}
                     onClick={profile.link}
                   />
+                  <Button
+                    text="Delete"
+                    type="button"
+                    onClick={() => { }}
+                    className="float-right medium buttonColor2 font-weight-bold btn active ml-1 mr-2 mb-1"
+                  />
+                  <Button
+                    text="Edit"
+                    type="button"
+                    onClick={() => { }}
+                    className="float-right medium buttonColor3 font-weight-bold btn active mr-1"
+                  />
                 ))}
-                <Button
-                  text="Delete"
-                  type="button"
-                  onClick={() => {}}
-                  className="float-right medium buttonColor2 font-weight-bold btn active ml-1 mr-2 mb-1"
-                />
-                <Button
-                  text="Edit"
-                  type="button"
-                  onClick={() => {}}
-                  className="float-right medium buttonColor3 font-weight-bold btn active mr-1"
-                />
+
               </tr>
             </tbody>
           </Table>

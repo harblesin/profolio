@@ -292,13 +292,13 @@ export let Template1 = props => {
           <h3 className="text-white">Feel free to send me a message below.</h3>
           <div className="row">
             <div className="col-12">
-              <form method="post" action="#">
+              <form method="post" id="mail">
                 <div className="row">
                   <div className="col-6 col-12-small">
                     <input
                       type="text"
                       name="name"
-                      id="name"
+                      id="contactName"
                       placeholder="Name"
                     />
                   </div>
