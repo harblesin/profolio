@@ -169,6 +169,11 @@ img {
   height: 100vh;
 }
 
+.userSplashFix {
+  width: 100%;
+  display: table;
+}
+
 .test2 {
   vertical-align: middle;
 }
