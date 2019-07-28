@@ -53,15 +53,16 @@ module.exports = {
 
   loginUser: (req, res, next) => {
     passport.authenticate("local", { session: false }, (error, user, info) => {
+      
       //console.log(error);
       console.log(user);
       //console.log(info);
 
       if (error || !user) {
         
-        res.send({error, auth:false})
+       return res.send({error, auth:false})
         //res.status(400).send({auth: false});
-      }else{
+      }
         const payload = {
         id: user.id,
         email: user.email,
@@ -81,7 +82,7 @@ module.exports = {
         res.cookie("jwt", token, { secure: false });
         res.status(200).send({ user });
       });
-      }
+      
 
       
     })(req, res, next);
