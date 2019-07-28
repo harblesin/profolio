@@ -4,7 +4,7 @@ import {
   Footer2,
   Footer3,
   Footer4,
-  Footer3Button,
+  Footer3Button
 } from "../components/Footer/Footer";
 import Template1 from "./Template1";
 import ReactDOM from "react-dom";
@@ -32,62 +32,103 @@ class PortfolioCreation extends Component {
     githubProfileLink: "Github Profile Link",
     footerTruth: false,
     eachProject: [],
-    userEmail: "",
-    numProject: 0,
     savedProject: [],
     deleteProjectButton: "Delete Button"
   };
-
-  // componentDidMount = () => {
-  //   let object = {
-  //     profolioId: 14
-  //   };
-  //   API.getBio(object).then(response => {
-  //     console.log(response.data);
-  //     if (response.data) {
-  //       if (response.data.photo && response.data.photo !== "") {
-  //         let bioPic = response.data.photo;
-  //         this.setState({
-  //           baseImage: bioPic
-  //         });
-  //       }
-  //       if (response.data.fullName && response.data.fullName !== "") {
-  //         let name = response.data.fullName;
-  //         this.setState({
-  //           fullName: name
-  //         });
-  //       }
-  //       if (response.data.aboutMe && response.data.aboutMe !== "") {
-  //        let about = response.data.aboutMe;
-  //         this.setState({
-  //           aboutMe: about
-  //         });
-  //       }
-  //     }
-  //   });
-  // };
 
   componentDidMount = () => {
     // let array = [
     //   [bio]
     // ];
 
-     const { match: { params }} = this.props;
+    const {
+      match: { params }
+    } = this.props;
 
     // API.getUserStuff(${params.id}).then({data: profile})=>{
-      console.log(params.id)
-       this.setState({profolioId: params.id})
+    console.log(params.id);
+    this.setState({ profolioId: params.id });
     // }
 
     let object = {
-      ProfolioId: 14,
+      ProfolioId: 14
     };
+
+    let bioObject = {};
 
     API.getPortfolio(object).then(response => {
       console.log("Response Data: " + response.data);
+      let dataToSetState = [];
       if (response.data) {
-        console.log(response);
+        console.log(response.data);
+
+        // *** SKILLS ***
+        console.log(response.data.Skills[0].skill);
+
+        let loadedSkills = response.data.Skills[0].skill;
+        console.log(loadedSkills.split(","));
+        let skillsArray = loadedSkills.split(",");
+        let skillsLinks = [];
+        for (let i = 0; i < skillsArray.length; i++) {
+          skillsLinks.push("./images/template1/" + skillsArray[i] + ".png");
+        }
+        this.setState({
+          skills: skillsLinks
+        });
+
+        /////////////////////
+
+        // *** BIO ***
+        bioObject = {
+          table: "Bio",
+          object: {
+            photo: "baseImage",
+            fullName: "fullName",
+            aboutMe: "aboutMe"
+          }
+        };
+        let contactArray = ["contact", "email", "github", "linkedIn"];
+        let finalArray = ["final", "finalLink"];
+
+        function parseData(dataObject) {
+          let bioTest = response.data[dataObject.table];
+          console.log("bioTest" + JSON.stringify(bioTest));
+          let tableSearch = dataObject.table;
+          let test = response.data.Bio;
+          console.log("tableSearch: " + tableSearch);
+          console.log(test);
+          let table = response.data[tableSearch];
+          console.log("table: " + table);
+          if (table && table !== "") {
+            console.log(Object.keys(dataObject.object));
+            let keyArray = Object.keys(dataObject.object);
+            for (let i = 0; i < keyArray.length; i++) {
+              let keySet = keyArray[i];
+              console.log("Key: " + keySet);
+              let valueSet = dataObject.object[keySet];
+              console.log("Value: " + valueSet);
+              console.log(bioTest[keySet]);
+              if (bioTest[keySet] && bioTest[keySet] !== "") {
+                dataToSetState.push({ [valueSet]: bioTest[keySet] });
+              }
+            }
+          }
+        }
+        parseData(bioObject);
       }
+      console.log(dataToSetState);
+      for (let i = 0; i < dataToSetState.length; i++) {
+        this.setState(dataToSetState[i]);
+      }
+    });
+  };
+
+  setInitial = initial => {
+    let initialKey = initial.key;
+    let initialValue = initial.value;
+    console.log(initial.key, initial.value);
+    this.setState({
+      [initialKey]: initialValue
     });
   };
 
@@ -95,18 +136,9 @@ class PortfolioCreation extends Component {
     let value = event.target.value;
     let name = event.target.name;
     this.setState({
-      [name]: value,
+      [name]: value
     });
   };
-
-  contactEmail = () => {
-    let message = document.getElementById("contactName").value;
-    let subject = document.getElementById("subject").value;
-    let userEmail = this.state.userEmail;
-
-    document.getElementById("mail").setAttribute("action", "mailto:" + userEmail + "?subject=" + subject + "&body=" + message);
-    document.getElementById("mail").submit();
-  }
 
   isChecked = event => {
     let value = event.target.value;
@@ -146,13 +178,13 @@ class PortfolioCreation extends Component {
 
   getBaseFile = files => {
     this.setState({
-      baseImage: files.base64,
+      baseImage: files.base64
     });
   };
 
   getBaseFileProjectPic = files => {
     this.setState({
-      projectPicture: files.base64,
+      projectPicture: files.base64
     });
   };
 
@@ -164,7 +196,7 @@ class PortfolioCreation extends Component {
         object = {
           fullName: this.state.fullName,
           aboutMe: this.state.aboutMe,
-          photo: this.state.baseImage.toString(),
+          photo: this.state.baseImage.toString()
         };
         API.saveBio(object);
         break;
@@ -182,7 +214,7 @@ class PortfolioCreation extends Component {
 
     footer += 1;
     this.setState({
-      footer,
+      footer
     });
     this.handleFooterChange();
     console.log(this.state.footer);
@@ -192,7 +224,7 @@ class PortfolioCreation extends Component {
     let footer = this.state.footer;
     footer -= 1;
     this.setState({
-      footer,
+      footer
     });
     this.handleFooterChange();
   };
@@ -203,11 +235,11 @@ class PortfolioCreation extends Component {
       href: this.state.deployedLink,
       aboutProject: this.state.aboutProject,
       githubLink: this.state.githubLink,
-      projectPicture: this.state.projectPicture,
+      projectPicture: this.state.projectPicture
     };
     this.setState({
       eachProject: [project],
-      footerTruth: true,
+      footerTruth: true
     });
     console.log(project);
   };
@@ -218,7 +250,7 @@ class PortfolioCreation extends Component {
       thumbnail: this.state.projectPicture,
       deployedLink: this.state.deployedLink,
       githubLink: this.state.githubLink,
-      aboutProject: this.state.aboutProject,
+      aboutProject: this.state.aboutProject
     };
 
     API.saveProjectCard(savedProjectCard).then(async response => {
@@ -232,7 +264,7 @@ class PortfolioCreation extends Component {
       projectPicture: this.state.projectPicture,
       deployedLink: this.state.deployedLink,
       githubLink: this.state.githubLink,
-      aboutProject: this.state.aboutProject,
+      aboutProject: this.state.aboutProject
     });
 
     this.setState({
@@ -242,7 +274,7 @@ class PortfolioCreation extends Component {
       githubLink: "Github Project Link",
       deployedLink: "Deployed Project Link",
       projectPicture: "images/project-placeholder.png",
-      footerTruth: false,
+      footerTruth: false
     });
     console.log(projectCard);
   };
@@ -258,6 +290,9 @@ class PortfolioCreation extends Component {
       );
     }
     if (this.state.footer === 1) {
+      if (this.refs.html5) {
+        console.log(this.refs.html5);
+      }
       return (
         <Footer2
           onChange={this.handleInputChange}
@@ -297,7 +332,6 @@ class PortfolioCreation extends Component {
           onChange={this.handleInputChange}
           nextClick={this.nextClick}
           previousClick={this.previousClick}
-          userEmail={this.userEmail}
         />
       );
     }

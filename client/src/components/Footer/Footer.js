@@ -77,6 +77,7 @@ export const Footer2 = props => {
           <Col>
             <div className="form-check">
               <Checkbox
+                id="html5"
                 name="checkedValue"
                 value="./images/template1/html5.png"
                 onClick={props.isChecked}
@@ -450,7 +451,7 @@ export const Footer4 = props => {
           <Col className="text-center">
             <Form
               className="opacity form-control border border-dark"
-              id="firstName"
+              id="contactNumber"
               placeholder="Contact Number"
               name="contactNumber"
               value={props.contactNumber}
@@ -475,7 +476,7 @@ export const Footer4 = props => {
             />
             <Form
               className="opacity form-control border border-dark"
-              id="profilePicture"
+              id="linkedInLink"
               placeholder="LinkedIn Link"
               name="linkedInLink"
               value={props.linkedInLink}

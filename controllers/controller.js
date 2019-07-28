@@ -273,7 +273,28 @@ module.exports = {
           required: false
         },
         {
+          model: db.Skill,
+          where: {
+            ProfolioId: req.body.ProfolioId
+          },
+          required: false
+        },
+        {
           model: db.Project,
+          where: {
+            ProfolioId: req.body.ProfolioId
+          },
+          required: false
+        },
+        {
+          model: db.Contact,
+          where: {
+            ProfolioId: req.body.ProfolioId
+          },
+          required: false
+        },
+        {
+          model: db.Final,
           where: {
             ProfolioId: req.body.ProfolioId
           },
