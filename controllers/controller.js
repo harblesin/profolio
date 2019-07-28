@@ -57,7 +57,7 @@ module.exports = {
       console.log(user);
       //console.log(info);
 
-      if (!user) {
+      if (!user || error || user === undefined) {
         console.log("no user")
         
         res.send({error, auth:false})
