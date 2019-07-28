@@ -58,6 +58,7 @@ module.exports = {
       //console.log(info);
 
       if (error || !user) {
+        console.log("no user")
         
         res.send({error, auth:false})
         //res.status(400).send({auth: false});
