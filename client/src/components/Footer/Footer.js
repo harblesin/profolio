@@ -1,7 +1,7 @@
 import React from "react";
 import Form from "../SubComponents/Form/Form";
 import Button from "../SubComponents/Button/Button";
-import Checkbox from "../SubComponents/Checkbox/Checkbox"
+import Checkbox from "../SubComponents/Checkbox/Checkbox";
 import { Row, Col } from "react-bootstrap";
 import SmallLogo from "../SubComponents/Logo/SmallLogo";
 import FileBase from "react-file-base64";
@@ -63,7 +63,6 @@ export const Footer1 = props => {
             </Col>
           </Row>
         </Col>
-
       </div>
     </div>
   );
@@ -78,6 +77,7 @@ export const Footer2 = props => {
           <Col>
             <div className="form-check">
               <Checkbox
+                id="html5"
                 name="checkedValue"
                 value="./images/template1/html5.png"
                 onClick={props.isChecked}
@@ -136,7 +136,6 @@ export const Footer2 = props => {
                 Ajax
               </label>
             </div>
-
           </Col>
           <Col>
             <div className="form-check">
@@ -233,7 +232,7 @@ export const Footer2 = props => {
                   />
                   <label className="form-check-label font-weight-bolder skillsColor">
                     Handlebar.js
-              </label>
+                  </label>
                 </div>
                 <div className="form-check">
                   <Checkbox
@@ -243,13 +242,15 @@ export const Footer2 = props => {
                   />
                   <label className="form-check-label font-weight-bolder skillsColor">
                     Sequelize.js
-              </label>
+                  </label>
                 </div>
               </Col>
             </Row>
             <Row>
               <Col>
-                <div className="text-white medium bg-dark mt-4">Upload Image</div>
+                <div className="text-white medium bg-dark mt-4">
+                  Upload Image
+                </div>
                 <div className="process_upload-btn bg-dark rounded">
                   <FileBase
                     type="file"
@@ -449,7 +450,7 @@ export const Footer4 = props => {
           <Col className="text-center">
             <Form
               className="opacity form-control border border-dark"
-              id="firstName"
+              id="contactNumber"
               placeholder="Contact Number"
               name="contactNumber"
               value={props.contactNumber}
@@ -459,7 +460,7 @@ export const Footer4 = props => {
           <Col>
             <Form
               className="opacity form-control border border-dark"
-              id="profilePicture"
+              id="githubProfile"
               placeholder="Github Profile Link"
               name="githubProfile"
               value={props.githubProfileLink}
@@ -467,7 +468,7 @@ export const Footer4 = props => {
             />
             <Form
               className="opacity form-control border border-dark"
-              id="profilePicture"
+              id="linkedInLink"
               placeholder="LinkedIn Link"
               name="linkedInLink"
               value={props.linkedInLink}
