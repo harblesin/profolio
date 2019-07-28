@@ -53,11 +53,7 @@ module.exports = {
 
   loginUser: (req, res, next) => {
     passport.authenticate("local", { session: false }, (error, user, info) => {
-      //console.log(error);
-      console.log(user);
-      //console.log(info);
-
-      if (!user || error || user === undefined) {
+      if (error || !user) {
         console.log("no user")
         
         res.send({error, auth:false})

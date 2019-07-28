@@ -51,7 +51,7 @@ class PortfolioCreation extends Component {
     // }
 
     let object = {
-      ProfolioId: 14
+      ProfolioId: params.id
     };
 
     let bioObject = {};
@@ -63,18 +63,18 @@ class PortfolioCreation extends Component {
         console.log(response.data);
 
         // *** SKILLS ***
-        console.log(response.data.Skills[0].skill);
+        // console.log(response.data.Skills[0].skill);
 
-        let loadedSkills = response.data.Skills[0].skill;
-        console.log(loadedSkills.split(","));
-        let skillsArray = loadedSkills.split(",");
-        let skillsLinks = [];
-        for (let i = 0; i < skillsArray.length; i++) {
-          skillsLinks.push("./images/template1/" + skillsArray[i] + ".png");
-        }
-        this.setState({
-          skills: skillsLinks
-        });
+        // let loadedSkills = response.data.Skills[0].skill;
+        // console.log(loadedSkills.split(","));
+        // let skillsArray = loadedSkills.split(",");
+        // let skillsLinks = [];
+        // for (let i = 0; i < skillsArray.length; i++) {
+        //   skillsLinks.push("./images/template1/" + skillsArray[i] + ".png");
+        // }
+        // this.setState({
+        //   skills: skillsLinks
+        // });
 
         /////////////////////
 

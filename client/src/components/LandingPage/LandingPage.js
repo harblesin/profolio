@@ -37,13 +37,11 @@ class LandingPage1 extends Component {
       console.log(userInfo)
       API.loginUser(userInfo).then((data) => {
         console.log(data)
-        console.log(data.auth)
-        console.log(data.user)
         if(!data.data.user){
           alert("Incorrect Email or Password!")
         }else{
           alert("Welcome back " + this.state.email + "!");
-        this.setState({ redirect: true });
+        //this.setState({ redirect: true });
         }
         
       });
