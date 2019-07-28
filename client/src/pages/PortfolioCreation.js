@@ -14,6 +14,7 @@ import API from "../utils/API";
 
 class PortfolioCreation extends Component {
   state = {
+    profolioId: "",
     fullName: "Full Name",
     aboutMe: "About Me",
     contactNumber: "Phone Number",
@@ -36,6 +37,20 @@ class PortfolioCreation extends Component {
   };
 
   componentDidMount = () => {
+<<<<<<< HEAD
+=======
+    // let array = [
+    //   [bio]
+    // ];
+
+     const { match: { params }} = this.props;
+
+    // API.getUserStuff(${params.id}).then({data: profile})=>{
+      console.log(params.id)
+       this.setState({profolioId: params.id})
+    // }
+
+>>>>>>> 26ea66f2799f99b3360ee81276e63c0b97d1289d
     let object = {
       ProfolioId: 14,
     };
