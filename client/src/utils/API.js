@@ -48,5 +48,6 @@ export default {
 
   saveProjectCard: function(projectCard) {
     return axios.post("/api/users/saveProjectCard", projectCard);
-  }
+  },
+
 };

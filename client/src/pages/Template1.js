@@ -147,8 +147,8 @@ export let Template1 = props => {
       <article id="skills" className="wrapper style2">
         <div className="container">
           <header>
-            <h2>Here's all the stuff I do.</h2>
-            <p>Odio turpis amet sed consequat eget posuere consequat.</p>
+            <h2>Skills</h2>
+            <p>These are my skills.</p>
           </header>
           <Slider className="skillsSize" {...settings}>
             {/* < div >
@@ -157,7 +157,6 @@ export let Template1 = props => {
             {props.skills.map(skill => <CarouselImage src={skill} />)}
           </Slider>
           <footer>
-            <p>Lorem ipsum dolor sit sapien vestibulum ipsum primis?</p>
             <Link
               activeClass="active"
               to="portfolio"
@@ -176,19 +175,27 @@ export let Template1 = props => {
       <article id="portfolio" className="wrapper style3">
         <div className="container">
           <header>
-            <h2>Here’s some stuff I made recently.</h2>
+            <h2>Projects</h2>
             <p>
-              Proin odio consequat sapien vestibulum consequat lorem dolore
-              feugiat.
+              Here is some of projects that I have created.
             </p>
           </header>
-          <div className="row">
+          <div className="row rowCenter">
+            {props.savedProject.map(project =>
+              <ProjectCard
+                id={project.id}
+                projectTitle={project.name}
+                projectPicture={project.projectPicture}
+                deployedLink={project.deployedLink}
+                githubLink={project.githubLink}
+                aboutProject={project.aboutProject}
+              />
+            )}
             {props.eachProject.map(() =>
               <ProjectCard className="img" {...props} />
             )}
           </div>
           <footer>
-            <p>Lorem ipsum dolor sit sapien vestibulum ipsum primis?</p>
             <Link
               activeClass="active"
               to="contact"
