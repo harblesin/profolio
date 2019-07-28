@@ -5,7 +5,7 @@ import Button from "../Button/Button";
 import { Modal, Table } from "react-bootstrap";
 import UserProject from "../UserProjects/UserProjects";
 import Logout from "../Logout/Logout";
-import Form from "../Form/Form"
+import Form from "../Form/Form";
 //import Modal from "../Modal/Modal";
 
 class PortfoliosCreated extends Component {
@@ -22,27 +22,23 @@ class PortfoliosCreated extends Component {
     profIdUrl: "",
     profEditUrl: "",
     show: false,
-    name: "",
+    name: ""
   };
 
-  deleteProf = async (event) => {
-
+  deleteProf = async event => {
     let profId = {
       id: event.target.id
-    }
-    this.setState({ profId: profId })
-    console.log(profId)
+    };
+    this.setState({ profId: profId });
+    console.log(profId);
     await API.deleteProfolio({ profId }).then(data => {
-      console.log(data)
+      console.log(data);
       //this.setState({profiles: data.data.data})
-    })
-    API.grabProfiles().then(data => {
-
-
-      this.setState({ profiles: data.data.data });
-
     });
-  }
+    API.grabProfiles().then(data => {
+      this.setState({ profiles: data.data.data });
+    });
+  };
 
   handleInputChange = event => {
     const { name, value } = event.target;
@@ -50,7 +46,6 @@ class PortfoliosCreated extends Component {
       [name]: value
     });
   };
-
 
   handleClose = () => {
     console.log(this.state.show);
@@ -67,30 +62,30 @@ class PortfoliosCreated extends Component {
     }
   };
 
-  profileRedirect = (id) => {
-    console.log("working")
+  profileRedirect = id => {
+    console.log("working");
     if (this.state.profileRedirect) {
-      console.log("were supposed ot be redirecting")
-      let url = "/portfoliocreation/" + id
+      console.log("were supposed ot be redirecting");
+      let url = "/portfoliocreation" + id;
       return <Redirect to={url} />;
     }
-  }
+  };
 
-  editRedirect = (id) => {
+  editRedirect = id => {
     if (this.state.editRedirect) {
-      console.log("were supposed ot be redirecting")
-      let url = "/portfoliocreation/" + id
+      console.log("were supposed ot be redirecting");
+      let url = "/portfoliocreation" + id;
       return <Redirect to={url} />;
     }
-  }
+  };
 
-  edit = async (event) => {
-    let id = event.target.id
+  edit = async event => {
+    let id = event.target.id;
     await this.setState({
       profEditUrl: id,
       editRedirect: true
-    })
-  }
+    });
+  };
 
   componentDidMount() {
     console.log();
@@ -111,12 +106,12 @@ class PortfoliosCreated extends Component {
   };
 
   newProfolio = () => {
-    API.newProfolio({ name: this.state.name }).then(async (data) => {
-      console.log(data)
+    API.newProfolio({ name: this.state.name }).then(async data => {
+      console.log(data);
       await this.setState({
         profIdUrl: data.data,
         profileRedirect: true
-      })
+      });
     });
   };
 
@@ -143,7 +138,7 @@ class PortfoliosCreated extends Component {
                       name={profile.name}
                       key={profile.id}
                       onClick={profile.link}
-                    ></UserProject>
+                    />
                     <Button
                       id={profile.id}
                       name="profId"
@@ -175,18 +170,23 @@ class PortfoliosCreated extends Component {
 
         <Modal show={this.state.show} onHide={this.handleClose}>
           <Modal.Header closeButton>
-            <Modal.Title>What would you like to name your Profolio?</Modal.Title>
+            <Modal.Title>
+              What would you like to name your Profolio?
+            </Modal.Title>
           </Modal.Header>
-          <Form handleInputChange={this.handleInputChange} name="name" placeholder=" . . . My Very First Profolio . . ."></Form>
+          <Form
+            handleInputChange={this.handleInputChange}
+            name="name"
+            placeholder=" . . . My Very First Profolio . . ."
+          />
           <Modal.Footer>
             <Button
               variant="primary"
               text="Start Creating!"
               className="float-right medium buttonColor3 font-weight-bold btn active mr-1"
               onClick={this.newProfolio}
-            //href={this.state.profIdUrl}
-            >
-            </Button>
+              //href={this.state.profIdUrl}
+            />
             <Button
               variant="primary"
               text="Cancel"
