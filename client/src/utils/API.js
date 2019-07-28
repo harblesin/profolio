@@ -42,8 +42,12 @@ export default {
     return axios.post("/api/users/saveBio", bioInfo);
   },
 
-  newProfolio: function() {
-    return axios.post("/api/users/newProfolio");
+  newProfolio: function(profolioName) {
+    return axios.post("/api/users/newProfolio", profolioName);
+  },
+
+  deleteProfolio: function(profId) {
+    return axios.post("/api/users/deleteProfolio", profId)
   },
 
   saveProjectCard: function(projectCard) {

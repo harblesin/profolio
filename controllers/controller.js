@@ -58,18 +58,20 @@ module.exports = {
       //console.log(info);
 
       if (error || !user) {
-        res.status(400).json({ error });
-      }
-
-      const payload = {
+        
+        res.send({error, auth:false})
+        //res.status(400).send({auth: false});
+      }else{
+        const payload = {
         id: user.id,
         email: user.email,
-        expires: Date.now() + parseInt(360000)
+        expires: Date.now() + parseInt(3600000)
       };
 
       req.login(payload, { session: false }, error => {
         if (error) {
-          res.status(400).send({ error });
+
+          res.send({ error , auth: false});
         }
 
         const token = jwt.sign(JSON.stringify(payload), process.env.SECRET);
@@ -79,10 +81,13 @@ module.exports = {
         res.cookie("jwt", token, { secure: false });
         res.status(200).send({ user });
       });
+      }
+
+      
     })(req, res, next);
   },
 
-  check: (req, res) => {
+  check: (req, res,next) => {
     passport.authenticate("jwt", { sessions: false }, (err, user, info) => {
       if (err) {
         console.log(err);
@@ -92,8 +97,8 @@ module.exports = {
         res.send(info.message);
       } else {
         if (user !== undefined) {
-          db.User.findOne({ where: { UserId: user.id } }).then(data => {
-            res.status(200).send({
+          db.User.findOne({ where: { id: user.id } }).then(data => {
+            res.send({
               data: data,
               auth: true
             });
@@ -194,12 +199,66 @@ module.exports = {
     }).then(data => res.json(data));
   },
 
-  newProfolio: (req, res) => {
-    console.log("<-->");
-    console.log(req);
-    // db.Profolio.create({
-    //   name: name
-    // }).then(()=>{})
+  newProfolio: (req, res,next) => {
+    passport.authenticate("jwt", { sessions: false }, (err, user, info) => {
+      if (err) {
+        console.log(err);
+      }
+      if (info !== undefined) {
+        console.log(info.message);
+        res.send(info.message);
+      } else {
+        if (user !== undefined) {
+          console.log(user.id)
+          console.log(user)
+          console.log(req.user)
+          db.Profolio.create({
+            
+            name: req.body.name,
+            UserId: user.id
+          }).then((data) => {
+            console.log(data)
+            console.log(data.id)
+            res.json(data.id)
+          });
+        } else {
+          res.send({
+            auth: false
+          });
+        }
+      }
+    })(req, res, next);
+  },
+
+  deleteProfolio: (req,res, next) =>{
+    console.log(req.body)
+
+    passport.authenticate("jwt", { sessions: false }, async (err, user, info) => {
+      if (err) {
+        console.log(err);
+      }
+      if (info !== undefined) {
+        console.log(info.message);
+        res.send(info.message);
+      } else {
+        if (user !== undefined) {
+          console.log(req.body)
+        try{db.Profolio.destroy({
+              where: {id: req.body.profId.id}
+              }).then((data) => {
+            console.log(data)
+            res.json(data)
+          });
+        }catch(err){
+          res.json(error)
+        }
+        } else {
+          res.send({
+            auth: false
+          });
+        }
+      }
+    })(req, res, next);
   },
 
   getPortfolio: (req, res) => {
