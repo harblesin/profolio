@@ -34,10 +34,18 @@ class LandingPage1 extends Component {
         email: this.state.email,
         password: this.state.password
       };
-      console.log(userInfo);
-      API.loginUser(userInfo).then(() => {
-        alert("Welcome back " + this.state.email + "!");
+      console.log(userInfo)
+      API.loginUser(userInfo).then((data) => {
+        console.log(data)
+        console.log(data.auth)
+        console.log(data.user)
+        if(!data.data.user){
+          alert("Incorrect Email or Password!")
+        }else{
+          alert("Welcome back " + this.state.email + "!");
         this.setState({ redirect: true });
+        }
+        
       });
     } else {
       alert("Must enter both a username and password");
@@ -46,9 +54,10 @@ class LandingPage1 extends Component {
 
   componentDidMount() {
     API.authCheck().then(data => {
-      console.log("here i am");
-      console.log(data);
-      this.setState({ redirect: true });
+      console.log(data.data.auth)
+      if (data.data.auth) {
+        this.setState({ redirect: true });
+      }
     });
   }
 
