@@ -4,7 +4,7 @@ import {
   Footer2,
   Footer3,
   Footer4,
-  Footer3Button
+  Footer3Button,
 } from "../components/Footer/Footer";
 import Template1 from "./Template1";
 import ReactDOM from "react-dom";
@@ -32,7 +32,8 @@ class PortfolioCreation extends Component {
     githubProfileLink: "Github Profile Link",
     footerTruth: false,
     eachProject: [],
-    numProject: 0
+    savedProject: [],
+    deleteProjectButton: "Delete Button"
   };
 
   // componentDidMount = () => {
@@ -77,7 +78,7 @@ class PortfolioCreation extends Component {
     // }
 
     let object = {
-      ProfolioId: 14
+      ProfolioId: 14,
     };
 
     API.getPortfolio(object).then(response => {
@@ -92,7 +93,7 @@ class PortfolioCreation extends Component {
     let value = event.target.value;
     let name = event.target.name;
     this.setState({
-      [name]: value
+      [name]: value,
     });
   };
 
@@ -134,13 +135,13 @@ class PortfolioCreation extends Component {
 
   getBaseFile = files => {
     this.setState({
-      baseImage: files.base64
+      baseImage: files.base64,
     });
   };
 
   getBaseFileProjectPic = files => {
     this.setState({
-      projectPicture: files.base64
+      projectPicture: files.base64,
     });
   };
 
@@ -152,7 +153,7 @@ class PortfolioCreation extends Component {
         object = {
           fullName: this.state.fullName,
           aboutMe: this.state.aboutMe,
-          photo: this.state.baseImage.toString()
+          photo: this.state.baseImage.toString(),
         };
         API.saveBio(object);
         break;
@@ -170,7 +171,7 @@ class PortfolioCreation extends Component {
 
     footer += 1;
     this.setState({
-      footer
+      footer,
     });
     this.handleFooterChange();
     console.log(this.state.footer);
@@ -180,28 +181,59 @@ class PortfolioCreation extends Component {
     let footer = this.state.footer;
     footer -= 1;
     this.setState({
-      footer
+      footer,
     });
     this.handleFooterChange();
   };
 
   addProjectClick = () => {
-    let project = this.state.eachProject[this.state.numProject];
-    let numProject = this.state.numProject;
+    let project = {
+      projectTitle: this.state.projectTitle,
+      href: this.state.deployedLink,
+      aboutProject: this.state.aboutProject,
+      githubLink: this.state.githubLink,
+      projectPicture: this.state.projectPicture,
+    };
+    this.setState({
+      eachProject: [project],
+      footerTruth: true,
+    });
+    console.log(project);
+  };
 
-    project.push({
-      projectTitle: this.state.projectTitle
-      // href: this.state.deployedLink,
-      // aboutProject: this.state.aboutProject,
-      // githubLink: this.state.githubLink,
-      // projectPicture: this.state.projectPicture
+  saveProjectButton = async () => {
+    let savedProjectCard = {
+      name: this.state.projectTitle,
+      thumbnail: this.state.projectPicture,
+      deployedLink: this.state.deployedLink,
+      githubLink: this.state.githubLink,
+      aboutProject: this.state.aboutProject,
+    };
+
+    API.saveProjectCard(savedProjectCard).then(async response => {
+      console.log(response.data);
+    });
+
+    let projectCard = this.state.savedProject;
+
+    projectCard.push({
+      name: this.state.projectTitle,
+      projectPicture: this.state.projectPicture,
+      deployedLink: this.state.deployedLink,
+      githubLink: this.state.githubLink,
+      aboutProject: this.state.aboutProject,
     });
 
     this.setState({
-      eachProject: project,
-      numProject: numProject + 1
+      eachProject: [],
+      projectTitle: "Project Title",
+      aboutProject: "About Project",
+      githubLink: "Github Project Link",
+      deployedLink: "Deployed Project Link",
+      projectPicture: "images/project-placeholder.png",
+      footerTruth: false,
     });
-    console.log(project);
+    console.log(projectCard);
   };
 
   handleFooterChange = () => {
@@ -233,6 +265,7 @@ class PortfolioCreation extends Component {
             cardButton={this.state.cardButton}
             nextClick={this.nextClick}
             previousClick={this.previousClick}
+            addProjectClick={this.addProjectClick}
           />
         );
       } else if (this.state.footerTruth) {
@@ -241,7 +274,7 @@ class PortfolioCreation extends Component {
             onChange={this.handleInputChange}
             nextClick={this.nextClick}
             previousClick={this.previousClick}
-            addProjectClick={this.addProjectClick}
+            saveProjectButton={this.saveProjectButton}
             getBaseFileProjectPic={this.getBaseFileProjectPic}
           />
         );

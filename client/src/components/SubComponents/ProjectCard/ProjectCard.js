@@ -1,19 +1,18 @@
-
 import React from "react";
 
 export function ProjectCard(props) {
   return (
     <div>
-      <article className="box style2">
+      <article className="box style2 cardSize">
         <a href={props.deployedLink} className="image featured">
           <img src={props.projectPicture} alt="" className="imgSizeFixed" />
         </a>
-        <h3>
+        <h3 className="textWrap">
           <a href={props.deployedLink}>
             {props.projectTitle}
           </a>
         </h3>
-        <p>
+        <p className="textWrap">
           {props.aboutProject}
         </p>
         <ul className="social text-center">
