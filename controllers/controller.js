@@ -240,5 +240,6 @@ module.exports = {
 
   saveProjectCard: (req, res) => {
     db.Project.create(req.body).then(data => res.send(data));
-  }
+  },
+
 };

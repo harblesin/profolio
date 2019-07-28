@@ -9,8 +9,22 @@ img {
 }
 
 .imgSizeFixed {
-  max-width: 200px;
+  max-width: 352px;
   max-height: 200px
+}
+
+.cardSize {
+  width: 22rem;
+  min-height: 35rem;
+}
+
+.textWrap {
+  width: 18rem;
+  overflow-wrap: break-word;
+}
+
+.rowCenter{
+  justify-content: center;
 }
 
 .button {

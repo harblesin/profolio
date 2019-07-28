@@ -3,7 +3,8 @@ module.exports = (sequelize, DataTypes) => {
     name: DataTypes.STRING,
     thumbnail: DataTypes.TEXT,
     deployedLink: DataTypes.STRING,
-    githubLink: DataTypes.STRING
+    githubLink: DataTypes.STRING,
+    aboutProject: DataTypes.STRING
   });
 
   return Project;
