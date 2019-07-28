@@ -32,13 +32,10 @@ class PortfolioCreation extends Component {
     githubProfileLink: "Github Profile Link",
     footerTruth: false,
     eachProject: [],
-<<<<<<< HEAD
     userEmail: "",
-    numProject: 0
-=======
+    numProject: 0,
     savedProject: [],
     deleteProjectButton: "Delete Button"
->>>>>>> bddb21488600258509cb953480f9130ba7ed01b5
   };
 
   // componentDidMount = () => {
