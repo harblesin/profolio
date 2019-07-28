@@ -46,8 +46,8 @@ export default {
     return axios.post("/api/users/newProfolio");
   },
 
-  saveProjectCard: function(projectCard) {
-    return axios.post("/api/users/saveProjectCard", projectCard);
+  saveProjectCard: function(savedProjectCard) {
+    return axios.post("/api/users/saveProjectCard", savedProjectCard);
   },
 
 };

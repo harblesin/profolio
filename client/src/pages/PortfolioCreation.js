@@ -193,6 +193,18 @@ class PortfolioCreation extends Component {
   };
 
   saveProjectButton = async () => {
+    let savedProjectCard = {
+      name: this.state.projectTitle,
+      thumbnail: this.state.projectPicture,
+      deployedLink: this.state.deployedLink,
+      githubLink: this.state.githubLink,
+      aboutProject: this.state.aboutProject,
+    };
+
+    API.saveProjectCard(savedProjectCard).then(async response => {
+      console.log(response.data);
+    });
+
     let projectCard = this.state.savedProject;
 
     projectCard.push({
@@ -200,14 +212,8 @@ class PortfolioCreation extends Component {
       projectPicture: this.state.projectPicture,
       deployedLink: this.state.deployedLink,
       githubLink: this.state.githubLink,
-      aboutProject: this.state.aboutProject
+      aboutProject: this.state.aboutProject,
     });
-    // API.saveProjectCard(projectCard).then(async response => {
-    //   this.setState({
-    //     savedProject: [response.data],
-    //   });
-    //   console.log(response.data);
-    // });
 
     this.setState({
       eachProject: [],
@@ -218,7 +224,7 @@ class PortfolioCreation extends Component {
       projectPicture: "images/project-placeholder.png",
       footerTruth: false,
     });
-    console.log(projectCard)
+    console.log(projectCard);
   };
 
   handleFooterChange = () => {
