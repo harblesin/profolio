@@ -498,12 +498,11 @@ export const Footer4 = props => {
               </Col>
               <Col className="text-center mt-5">
                 <Button
-                  href=" "
                   text="Finish"
                   type="button"
                   className="large teal btn scrolly"
                   name="footer"
-                  onClick={() => props.nextClick()}
+                  onClick={props.serveLink}
                 />
               </Col>
             </Row>
