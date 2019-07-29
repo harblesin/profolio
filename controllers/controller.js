@@ -320,4 +320,17 @@ module.exports = {
     db.Project.create(req.body).then(data => res.send(data));
   },
 
+  saveFinal:(req,res) =>{
+    db.Final.create(req.body).then(data=>res.send(data))
+  },
+
+  getFinal:(req,res)=>{
+    console.log(req.body)
+    db.Final.findOne({where:{
+      id: req.body.id
+    }}).then((data)=>{
+      res.send(data)
+    })
+  }
+
 };

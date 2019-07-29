@@ -16,9 +16,6 @@ module.exports = (sequelize, DataTypes) => {
     Profolio.hasOne(models.Contact, {
       onDelete: "cascade"
     });
-    Profolio.hasOne(models.Final, {
-      onDelete: "cascade"
-    });
   };
 
   return Profolio;
