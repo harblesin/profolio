@@ -11,9 +11,9 @@ import ReactDOM from "react-dom";
 import ProjectCard from "../components/SubComponents/ProjectCard/ProjectCard";
 import axios from "axios";
 import API from "../utils/API";
-import { Modal } from "react-bootstrap"
-import Form from "../components/SubComponents/Form/Form"
-import Button from "../components/SubComponents/Button/Button"
+import { Modal } from "react-bootstrap";
+import Form from "../components/SubComponents/Form/Form";
+import Button from "../components/SubComponents/Button/Button";
 import { Redirect } from "react-router-dom";
 
 class PortfolioCreation extends Component {
@@ -21,7 +21,7 @@ class PortfolioCreation extends Component {
     userId: "",
     profolioId: "",
     fullName: "Full Name",
-    aboutMe: "About Me",
+    aboutMe: "About me.",
     contactNumber: "Phone Number",
     projectTitle: "Project Title",
     aboutProject: "About Project",
@@ -35,6 +35,7 @@ class PortfolioCreation extends Component {
     projectPicture: "images/project-placeholder.png",
     linkedInLink: "LinkedIn Link",
     githubProfileLink: "Github Profile Link",
+    userEmail: "Your Email",
     footerTruth: false,
     eachProject: [],
     savedProject: [],
@@ -44,12 +45,11 @@ class PortfolioCreation extends Component {
     redirect: false
   };
 
-    renderRedirect = () => {
-      if (this.state.redirect) {
-        return <Redirect to="/" />;
-      }
-    };
-
+  renderRedirect = () => {
+    if (this.state.redirect) {
+      return <Redirect to="/" />;
+    }
+  };
 
   componentDidMount = () => {
     // let array = [
@@ -60,14 +60,12 @@ class PortfolioCreation extends Component {
       console.log(data.data);
       if (!data.data.auth || data.data === "No auth token") {
         this.setState({ redirect: true });
-      }else{
+      } else {
         this.setState({
           userId: data.data.data.id
-        })
+        });
       }
     });
-
-    
 
     const {
       match: { params }
@@ -83,30 +81,61 @@ class PortfolioCreation extends Component {
     };
 
     let bioObject = {};
+    let contactObject = {};
 
+    // *** GET ENTIRE PORTFOLIO FROM DB ***
     API.getPortfolio(object).then(response => {
       console.log("Response Data: " + response.data);
       let dataToSetState = [];
       if (response.data) {
         console.log(response.data);
 
-        // *** SKILLS ***
-        // console.log(response.data.Skills[0].skill);
+        // *** PARSE SKILLS ***
+        if (response.data.Skills.length > 0) {
+          console.log(response.data.Skills[0].skill);
 
-        // let loadedSkills = response.data.Skills[0].skill;
-        // console.log(loadedSkills.split(","));
-        // let skillsArray = loadedSkills.split(",");
-        // let skillsLinks = [];
-        // for (let i = 0; i < skillsArray.length; i++) {
-        //   skillsLinks.push("./images/template1/" + skillsArray[i] + ".png");
-        // }
-        // this.setState({
-        //   skills: skillsLinks
-        // });
+          let loadedSkills = response.data.Skills[0].skill;
+          console.log(loadedSkills.split(","));
+          let skillsArray = loadedSkills.split(",");
+          let skillsLinks = [];
+          for (let i = 0; i < skillsArray.length; i++) {
+            skillsLinks.push("./images/template1/" + skillsArray[i] + ".png");
+          }
+          this.setState({
+            skills: skillsLinks
+          });
+        }
 
         /////////////////////
 
-        // *** BIO ***
+        // *** PARSE PROJECTS ***
+
+        let projectCards = [];
+        let projectCard = {};
+
+        if (response.data.Projects.length > 0) {
+          console.log(response.data.Projects);
+          for (let i = 0; i < response.data.Projects.length; i++) {
+            projectCard = response.data.Projects[i];
+            let projectCardConverted = {
+              name: projectCard.name,
+              projectPicture: projectCard.thumbnail.toString(),
+              deployedLink: projectCard.deployedLink,
+              githubLink: projectCard.githubLink,
+              aboutProject: projectCard.aboutProject
+            };
+
+            projectCards.push(projectCardConverted);
+          }
+          console.log("ProjectCards: " + JSON.stringify(projectCards));
+          this.setState({
+            savedProject: projectCards
+          });
+        }
+
+        /////////////////////
+
+        // *** PARSE BIO AND CONTACT***
         bioObject = {
           table: "Bio",
           object: {
@@ -115,8 +144,14 @@ class PortfolioCreation extends Component {
             aboutMe: "aboutMe"
           }
         };
-        let contactArray = ["contact", "email", "github", "linkedIn"];
-        let finalArray = ["final", "finalLink"];
+        contactObject = {
+          table: "Contact",
+          object: {
+            phone: "contactNumber",
+            github: "githubProfileLink",
+            linkedIn: "linkedInLink"
+          }
+        };
 
         function parseData(dataObject) {
           let bioTest = response.data[dataObject.table];
@@ -143,6 +178,7 @@ class PortfolioCreation extends Component {
           }
         }
         parseData(bioObject);
+        parseData(contactObject);
       }
       console.log(dataToSetState);
       for (let i = 0; i < dataToSetState.length; i++) {
@@ -159,6 +195,8 @@ class PortfolioCreation extends Component {
       [initialKey]: initialValue
     });
   };
+
+  ////////////////////
 
   handleInputChange = event => {
     let value = event.target.value;
@@ -224,18 +262,41 @@ class PortfolioCreation extends Component {
         object = {
           fullName: this.state.fullName,
           aboutMe: this.state.aboutMe,
-          photo: this.state.baseImage.toString()
+          photo: this.state.baseImage.toString(),
+          ProfolioId: this.state.profolioId
         };
         API.saveBio(object);
         break;
       case 1:
-        object = {};
+        let clutteredSkills = this.state.skills;
+        console.log(clutteredSkills);
+        let cleanSkills = [];
+        for (let i = 0; i < clutteredSkills.length; i++) {
+          let lastSlash = clutteredSkills[i].lastIndexOf("/");
+          let lastDot = clutteredSkills[i].lastIndexOf(".");
+          let cleanSkill = clutteredSkills[i].substring(lastSlash + 1, lastDot);
+          cleanSkills.push(cleanSkill);
+        }
+        let cleanSkillsString = cleanSkills.join(",");
+        console.log(cleanSkillsString);
+        object = {
+          skill: cleanSkillsString,
+          ProfolioId: this.state.profolioId
+        };
+        API.saveSkills(object);
         break;
       case 2:
         object = {};
         break;
       case 3:
-        object = {};
+        object = {
+          email: this.state.userEmail,
+          phone: this.state.contactNumber,
+          github: this.state.githubProfileLink,
+          linkedIn: this.state.linkedInLink,
+          ProfolioId: this.state.profolioId
+        };
+        API.saveContact(object);
         break;
       default:
     }
@@ -278,7 +339,8 @@ class PortfolioCreation extends Component {
       thumbnail: this.state.projectPicture,
       deployedLink: this.state.deployedLink,
       githubLink: this.state.githubLink,
-      aboutProject: this.state.aboutProject
+      aboutProject: this.state.aboutProject,
+      ProfolioId: this.state.profolioId
     };
 
     API.saveProjectCard(savedProjectCard).then(async response => {
@@ -308,20 +370,19 @@ class PortfolioCreation extends Component {
   };
 
   serveLink = () => {
-    let newId = (((this.state.profolioId + 255) * 32) - 1234)
+    this.nextClick();
+    let newId = (this.state.profolioId + 255) * 32 - 1234;
     this.setState({
       servedLink: newId
-    })
-    console.log(newId)
+    });
+    console.log(newId);
     API.saveFinalProf({
       finalLink: newId,
       userId: this.state.userId,
       profolioId: this.state.profolioId
-    }).then(()=>{
-      
-    })
-    this.handleShow()
-  }
+    }).then(() => {});
+    this.handleShow();
+  };
 
   handleClose = () => {
     console.log(this.state.show);
@@ -339,6 +400,8 @@ class PortfolioCreation extends Component {
           onChange={this.handleInputChange}
           nextClick={this.nextClick}
           getBaseFile={this.getBaseFile}
+          fullName={this.state.fullName}
+          aboutMe={this.state.aboutMe}
         />
       );
     }
@@ -385,6 +448,10 @@ class PortfolioCreation extends Component {
           onChange={this.handleInputChange}
           nextClick={this.nextClick}
           previousClick={this.previousClick}
+          contactNumber={this.state.contactNumber}
+          userEmail={this.state.userEmail}
+          linkedInLink={this.state.linkedInLink}
+          githubProfileLink={this.state.githubProfileLink}
           serveLink={this.serveLink}
           handleShow={this.handleShow}
         />
@@ -393,7 +460,6 @@ class PortfolioCreation extends Component {
   };
 
   render() {
-    
     return (
       <div>
         <Template1 {...this.state} />
@@ -404,9 +470,7 @@ class PortfolioCreation extends Component {
 
         <Modal show={this.state.show} onHide={this.handleClose}>
           <Modal.Header closeButton>
-            <Modal.Title>
-              Copy and Paste to Share your Profolio!
-            </Modal.Title>
+            <Modal.Title>Copy and Paste to Share your Profolio!</Modal.Title>
           </Modal.Header>
           https://pacific-inlet-50937.herokuapp.com{this.state.servedLink}
           <Modal.Footer>

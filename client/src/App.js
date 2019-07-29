@@ -10,7 +10,7 @@ import PortfoliosCreated from "./pages/PortfoliosCreated";
 import Preview from "./pages/Preview";
 import UserSplash from "./pages/UserSplash";
 import Template1 from "./pages/Template1";
-import finalPage from "./pages/finalPage"
+import finalPage from "./pages/finalPage";
 
 function App() {
   return (
