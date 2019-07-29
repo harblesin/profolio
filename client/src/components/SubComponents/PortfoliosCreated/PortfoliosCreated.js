@@ -15,8 +15,8 @@ class PortfoliosCreated extends Component {
     editRedirect: false,
     profiles: [
       {
-        name: "Nothing here bub!",
-      },
+        name: "Nothing here bub!"
+      }
     ],
     profId: "",
     profIdUrl: "",
@@ -28,7 +28,7 @@ class PortfoliosCreated extends Component {
 
   deleteProf = async event => {
     let profId = {
-      id: event.target.id,
+      id: event.target.id
     };
     this.setState({ profId: profId });
     console.log(profId);
@@ -44,7 +44,7 @@ class PortfoliosCreated extends Component {
   handleInputChange = event => {
     const { name, value } = event.target;
     this.setState({
-      [name]: value,
+      [name]: value
     });
   };
 
@@ -84,7 +84,7 @@ class PortfoliosCreated extends Component {
     let id = event.target.id;
     await this.setState({
       profEditUrl: id,
-      editRedirect: true,
+      editRedirect: true
     });
   };
 
@@ -98,31 +98,30 @@ class PortfoliosCreated extends Component {
         this.setState({ profiles: data.data.data });
       }
     });
-
-    
   }
 
-  grabFinal = async (event) => {
-    console.log(event.target.name)
-    let id = event.target.id
-    console.log(id)
+  grabFinal = async event => {
+    console.log(event.target.name);
+    let id = event.target.id;
+    console.log(id);
     await this.setState({
       id: id
-    })
-    console.log(this.state.id)
-    await API.getFinalProf({id: this.state.id}).then((data)=>{
-      console.log(data)
-      if(data.data.finalLink){
-         let  link =  "https://pacific-inlet-50937.herokuapp.com/profolio"+data.data.finalLink;
-        console.log(link)
-        alert(link)
-        return <Redirect to={link}/>
-      }else{
-        alert("Profile isn't complete!")
+    });
+    console.log(this.state.id);
+    await API.getFinalProf({ id: this.state.id }).then(data => {
+      console.log(data);
+      if (data.data.finalLink) {
+        let link =
+          "https://pacific-inlet-50937.herokuapp.com/profolio" +
+          data.data.finalLink;
+        console.log(link);
+        alert(link);
+        return <Redirect to={link} />;
+      } else {
+        alert("Profile isn't complete!");
       }
-     
-    })
-  }
+    });
+  };
 
   logout = () => {
     API.logout().then(() => {
@@ -135,15 +134,15 @@ class PortfoliosCreated extends Component {
       console.log(data);
       await this.setState({
         profIdUrl: data.data,
-        profileRedirect: true,
+        profileRedirect: true
       });
     });
   };
 
   handleKeyPress(target) {
-    if(target.charCode===13){
-      alert('Enter clicked!!!');
-    } 
+    if (target.charCode === 13) {
+      alert("Enter clicked!!!");
+    }
   }
 
   render() {
@@ -163,7 +162,7 @@ class PortfoliosCreated extends Component {
             </thead>
             <tbody className="userSplashFix">
               <tr>
-                {this.state.profiles.map(profile =>
+                {this.state.profiles.map(profile => (
                   <Row className="mt-2 mb-2">
                     <Col>
                       <UserProject
@@ -173,7 +172,6 @@ class PortfoliosCreated extends Component {
                         grabFinal={this.grabFinal}
                       />
 
-                      
                       <Button
                         id={profile.id}
                         name="profId"
@@ -191,7 +189,7 @@ class PortfoliosCreated extends Component {
                       />
                     </Col>
                   </Row>
-                )}
+                ))}
               </tr>
             </tbody>
           </Table>
