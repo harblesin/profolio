@@ -130,13 +130,17 @@ class PortfoliosCreated extends Component {
   };
 
   newProfolio = () => {
-    API.newProfolio({ name: this.state.name }).then(async data => {
-      console.log(data);
-      await this.setState({
-        profIdUrl: data.data,
-        profileRedirect: true
+    if (this.state.name === "") {
+      alert("Don't forget to name your Profolio!");
+    } else {
+      API.newProfolio({ name: this.state.name }).then(async data => {
+        console.log(data);
+        await this.setState({
+          profIdUrl: data.data,
+          profileRedirect: true
+        });
       });
-    });
+    }
   };
 
   handleKeyPress(target) {
@@ -210,7 +214,7 @@ class PortfoliosCreated extends Component {
           <Form
             handleInputChange={this.handleInputChange}
             name="name"
-            placeholder=" . . . My Very First Profolio . . ."
+            placeholder="  My Profolio  "
             onKeyPress={this.handleKeyPress}
           />
           <Modal.Footer>
