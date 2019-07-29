@@ -5,7 +5,7 @@ function Form(props) {
    return (
        <form>
            <div className="form-group">
-               <input type="text" name={props.name} onChange={props.handleInputChange} {...props} />
+               <input name={props.name} onChange={props.handleInputChange} {...props} />
            </div>
        </form>
    )

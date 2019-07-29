@@ -73,28 +73,30 @@ class LandingPage1 extends Component {
           <Col className="loginBox">
             <h3>Login</h3>
             <div className="rounded m-auto rounded-lg">
-              <Form
-                className="opacity form-control border border-dark"
-                id="userName"
-                name="email"
-                placeholder="Email"
-                onChange={this.handleInputChange}
-              />
-              <Form
-                className="opacity form-control border border-dark"
-                id="password"
-                type="password"
-                name="password"
-                placeholder="Password"
-                onChange={this.handleInputChange}
-              />
-              <Button
-                text="Login"
-                type="button"
-                onClick={this.login}
-                className="float-right medium teal btn"
-              />
-              {this.renderRedirect()}
+                <Form
+                  className="opacity form-control border border-dark"
+                  id="userName"
+                  type="email"
+                  name="email"
+                  placeholder="Email"
+                  onChange={this.handleInputChange}
+                />
+                <Form
+                  className="opacity form-control border border-dark"
+                  id="password"
+                  type="password"
+                  name="password"
+                  placeholder="Password"
+                  onChange={this.handleInputChange}
+                />
+                <Button
+                  id="enterAction"
+                  text="Login"
+                  type="submit"
+                  onClick={this.login}
+                  className="float-right medium teal btn"
+                />
+                {this.renderRedirect()}
             </div>
             <br />
             <br />
