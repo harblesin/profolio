@@ -408,7 +408,7 @@ class PortfolioCreation extends Component {
               Copy and Paste to Share your Profolio!
             </Modal.Title>
           </Modal.Header>
-          https://powerful-taiga-80042.herokuapp.com/profolio{this.state.servedLink}
+          https://pacific-inlet-50937.herokuapp.com{this.state.servedLink}
           <Modal.Footer>
             <Button
               variant="primary"
