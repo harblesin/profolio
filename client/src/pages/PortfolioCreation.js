@@ -371,7 +371,7 @@ class PortfolioCreation extends Component {
 
   serveLink = () => {
     this.nextClick();
-    let newId = (this.state.profolioId + 255) * 32 - 1234;
+    let newId = ((this.state.profolioId + 255) * 32) - 1234;
     this.setState({
       servedLink: newId
     });
