@@ -5,11 +5,11 @@ import Slider from "react-slick";
 import ProjectCard from "../components/SubComponents/ProjectCard/ProjectCard";
 // import { NONAME } from "dns";
 import CarouselImage from "./../components/SubComponents/CarouselImage/CarouselImage";
-// import "./../components/SubComponents/Nav/main.css";
+import "./../components/SubComponents/Nav/main.css";
 
 export let Template1 = props => {
 
-require("./../components/SubComponents/Nav/main.css")
+  // require("./../components/SubComponents/Nav/main.css")
 
   const settings = {
     dots: false,
@@ -121,7 +121,7 @@ require("./../components/SubComponents/Nav/main.css")
             </div>
             <div className="col-8 col-7-large col-12-medium">
               <header>
-                <h1>
+                <h1 className="templateFix1">
                   Hi. I'm {props.fullName}.
                 </h1>
               </header>
@@ -149,7 +149,7 @@ require("./../components/SubComponents/Nav/main.css")
       <article id="skills" className="wrapper style2">
         <div className="container">
           <header>
-            <h2>Skills</h2>
+            <h2 className="templateFix1">Skills</h2>
             <p>These are my skills.</p>
           </header>
           <Slider className="skillsSize" {...settings}>
@@ -177,7 +177,7 @@ require("./../components/SubComponents/Nav/main.css")
       <article id="portfolio" className="wrapper style3">
         <div className="container">
           <header>
-            <h2>Projects</h2>
+            <h2 className="templateFix1">Projects</h2>
             <p>
               Here is some of projects that I have created.
             </p>
@@ -215,11 +215,11 @@ require("./../components/SubComponents/Nav/main.css")
       {/* Contact */}
       <article id="contact" className="wrapper bg-dark">
         <div className="container medium">
-          <h1 className="text-white">Contact Me</h1>
-          <h3 className="text-white">
+          <h1 className="text-white templateFix1">Contact Me</h1>
+          <h3 className="text-white templateFix1">
             Contact Number: {props.contactNumber}{" "}
           </h3>
-          <h3 className="text-white">Feel free to send me a message below.</h3>
+          <h3 className="text-white templateFix1">Feel free to send me a message below.</h3>
           <div className="row">
             <div className="col-12">
               <form method="post" id="mail">
@@ -274,7 +274,7 @@ require("./../components/SubComponents/Nav/main.css")
             </div>
             <div className="col-12">
               <hr />
-              <h3 className="text-white">Find me on ...</h3>
+              <h3 className="text-white templateFix1">Find me on ...</h3>
               <ul className="social">
                 <li>
                   <a href={props.linkedInLink} className="icon fab fa-linkedin">

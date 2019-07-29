@@ -61,7 +61,7 @@ class NewUser extends Component {
 
   render() {
     return (
-      <Container fluid={true} className="backgroundHead test">
+      <Container fluid={true} className="backgroundHead test overflow-auto">
         <Row>
           <LargeLogo />
         </Row>

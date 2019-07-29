@@ -172,15 +172,13 @@ class PortfoliosCreated extends Component {
                         id={profile.id}
                         grabFinal={this.grabFinal}
                       />
-
-                      
                       <Button
                         id={profile.id}
                         name="profId"
                         text="Delete"
                         type="button"
                         onClick={this.deleteProf}
-                        className="float-right medium buttonColor2 font-weight-bold btn active ml-1 mr-2 mb-1"
+                        className="float-right medium buttonColor2 font-weight-bold btn active ml-1 mr-4 mb-1"
                       />
                       <Button
                         id={profile.id}
