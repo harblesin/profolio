@@ -2,10 +2,8 @@ const router = require("express").Router();
 const passport = require("passport");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const keys = require("../keys/secret");
 const userController = require("../../controllers/controller");
 const User = require("../../models/User");
-const secret = require("../keys/secret");
 
 router.route("/register").post(userController.saveUser);
 

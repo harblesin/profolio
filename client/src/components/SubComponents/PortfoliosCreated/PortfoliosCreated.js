@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import API from "../../../utils/API";
 import Button from "../Button/Button";
-import { Modal, Table } from "react-bootstrap";
+import { Modal, Table, Row, Col } from "react-bootstrap";
 import UserProject from "../UserProjects/UserProjects";
 import Logout from "../Logout/Logout";
 import Form from "../Form/Form";
@@ -115,6 +115,12 @@ class PortfoliosCreated extends Component {
     });
   };
 
+  handleKeyPress(target) {
+    if (target.charCode === 13) {
+      alert("Enter clicked!!!");
+    }
+  }
+
   render() {
     return (
       <div>
@@ -130,31 +136,33 @@ class PortfoliosCreated extends Component {
                 </th>
               </tr>
             </thead>
-            <tbody>
+            <tbody className="userSplashFix">
               <tr>
                 {this.state.profiles.map(profile => (
-                  <>
-                    <UserProject
-                      name={profile.name}
-                      key={profile.id}
-                      onClick={profile.link}
-                    />
-                    <Button
-                      id={profile.id}
-                      name="profId"
-                      text="Delete"
-                      type="button"
-                      onClick={this.deleteProf}
-                      className="float-right medium buttonColor2 font-weight-bold btn active ml-1 mr-2 mb-1"
-                    />
-                    <Button
-                      id={profile.id}
-                      text="Edit"
-                      type="button"
-                      onClick={this.edit}
-                      className="float-right medium buttonColor3 font-weight-bold btn active mr-1"
-                    />
-                  </>
+                  <Row className="mt-2 mb-2">
+                    <Col>
+                      <UserProject
+                        name={profile.name}
+                        key={profile.id}
+                        onClick={profile.link}
+                      />
+                      <Button
+                        id={profile.id}
+                        name="profId"
+                        text="Delete"
+                        type="button"
+                        onClick={this.deleteProf}
+                        className="float-right medium buttonColor2 font-weight-bold btn active ml-1 mr-2 mb-1"
+                      />
+                      <Button
+                        id={profile.id}
+                        text="Edit"
+                        type="button"
+                        onClick={this.edit}
+                        className="float-right medium buttonColor3 font-weight-bold btn active mr-1"
+                      />
+                    </Col>
+                  </Row>
                 ))}
               </tr>
             </tbody>
@@ -178,6 +186,7 @@ class PortfoliosCreated extends Component {
             handleInputChange={this.handleInputChange}
             name="name"
             placeholder=" . . . My Very First Profolio . . ."
+            onKeyPress={this.handleKeyPress}
           />
           <Modal.Footer>
             <Button

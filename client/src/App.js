@@ -10,6 +10,7 @@ import PortfoliosCreated from "./pages/PortfoliosCreated";
 import Preview from "./pages/Preview";
 import UserSplash from "./pages/UserSplash";
 import Template1 from "./pages/Template1";
+import finalPage from "./pages/finalPage";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           path="/portfoliocreation:id"
           component={PortfolioCreation}
         />
+        <Route exact path="/profolio:id" component={finalPage} />
         <Route exact path="/portfolioscreated" component={PortfoliosCreated} />
         <Route exact path="/preview" component={Preview} />
         <Route exact path="/usersplash" component={UserSplash} />

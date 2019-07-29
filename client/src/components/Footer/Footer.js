@@ -262,29 +262,24 @@ export const Footer2 = props => {
             </Row> */}
           {/* </Col> */}
           <Col className="text-center">
-            <Row>
-              <Col className="text-center">
-                <Button
-                  href="#portfolio"
-                  text="Next"
-                  type="button"
-                  className="large teal btn scrolly"
-                  name="footer"
-                  onClick={() => props.nextClick()}
-                />
-                <br />
-                <br />
-                <Button
-                  href="#veryTop"
-                  text="Previous"
-                  type="button"
-                  className="large teal btn scrolly"
-                  name="footer"
-                  onClick={() => props.previousClick()}
-                />
-                <br />
-              </Col>
-            </Row>
+            <br />
+            <Button
+              href="#portfolio"
+              text="Next"
+              type="button"
+              className="large teal btn scrolly mb-2"
+              name="footer"
+              onClick={() => props.nextClick()}
+            />
+            <br />
+            <Button
+              href="#veryTop"
+              text="Previous"
+              type="button"
+              className="large teal btn scrolly mt-2 mb-1"
+              name="footer"
+              onClick={() => props.previousClick()}
+            />
           </Col>
           <Col>
             <SmallLogo className="smallLogo" />
@@ -312,30 +307,26 @@ export const Footer3Button = props => {
               />
             </Col>
             <Col />
-            <Col>
-              <Row>
-                <Col className="text-center">
-                  <Button
-                    href="#contact"
-                    text="Next"
-                    type="button"
-                    className="large teal btn scrolly"
-                    name="footer"
-                    onClick={() => props.nextClick()}
-                  />
-                  <br />
-                  <br />
-                  <Button
-                    href="#skills"
-                    text="Previous"
-                    type="button"
-                    className="large teal btn scrolly"
-                    name="footer"
-                    onClick={() => props.previousClick()}
-                  />
-                  <br />
-                </Col>
-              </Row>
+            <Col className="text-center">
+              <br />
+              <Button
+                href="#contact"
+                text="Next"
+                type="button"
+                className="large teal btn scrolly mb-2"
+                name="footer"
+                onClick={() => props.nextClick()}
+              />
+              <br />
+              <Button
+                href="#skills"
+                text="Previous"
+                type="button"
+                className="large teal btn scrolly mt-2 mb-1"
+                name="footer"
+                onClick={() => props.previousClick()}
+              />
+              <br />
             </Col>
             <Col>
               <SmallLogo className="smallLogo" />
@@ -407,30 +398,26 @@ export const Footer3 = props => {
               onClick={() => props.saveProjectButton()}
             />
           </Col>
-          <Col>
-            <Row>
-              <Col className="text-center">
-                <Button
-                  href="#contact"
-                  text="Next"
-                  type="button"
-                  className="large teal btn scrolly"
-                  name="footer"
-                  onClick={() => props.nextClick()}
-                />
-                <br />
-                <br />
-                <Button
-                  href="#skills"
-                  text="Previous"
-                  type="button"
-                  className="large teal btn scrolly"
-                  name="footer"
-                  onClick={() => props.previousClick()}
-                />
-                <br />
-              </Col>
-            </Row>
+          <Col className="text-center">
+            <br />
+            <Button
+              href="#contact"
+              text="Next"
+              type="button"
+              className="large teal btn scrolly mb-2"
+              name="footer"
+              onClick={() => props.nextClick()}
+            />
+            <br />
+            <Button
+              href="#skills"
+              text="Previous"
+              type="button"
+              className="large teal btn scrolly mt-2 mb-1"
+              name="footer"
+              onClick={() => props.previousClick()}
+            />
+            <br />
           </Col>
           <Col>
             <SmallLogo className="smallLogo" />
@@ -446,74 +433,69 @@ export const Footer4 = props => {
   return (
     <div>
       <div className="footerStyle">
-        <Row>
-          <Col />
-          <Col className="text-center">
-            <Form
-              className="opacity form-control border border-dark"
-              id="contactNumber"
-              placeholder="Contact Number"
-              name="contactNumber"
-              value={props.contactNumber}
-              onChange={props.onChange}
-            />
-            <Form
-              className="opacity form-control border border-dark"
-              id="email"
-              placeholder="Your Email"
-              name="userEmail"
-              value={props.userEmail}
-              onChange={props.onChange}
-            />
-          </Col>
-          <Col>
-            <Form
-              className="opacity form-control border border-dark"
-              id="profilePicture"
-              placeholder="Github Profile Link"
-              name="githubProfile"
-              value={props.githubProfileLink}
-              onChange={props.onChange}
-            />
-            <Form
-              className="opacity form-control border border-dark"
-              id="linkedInLink"
-              placeholder="LinkedIn Link"
-              name="linkedInLink"
-              value={props.linkedInLink}
-              onChange={props.onChange}
-            />
-          </Col>
-          <Col />
-          <Col>
-            <Row>
-              <Col className="text-center mt-5">
-                <Button
-                  href="#portfolio"
-                  text="Previous"
-                  type="button"
-                  className="large teal btn scrolly"
-                  name="footer"
-                  onClick={() => props.previousClick()}
-                />
-              </Col>
-              <Col className="text-center mt-5">
-                <Button
-                  href=" "
-                  text="Finish"
-                  type="button"
-                  className="large teal btn scrolly"
-                  name="footer"
-                  onClick={() => props.nextClick()}
-                />
-              </Col>
-            </Row>
-          </Col>
-          <Col />
-          <Col>
-            <SmallLogo className="smallLogo" />
-          </Col>
-        </Row>
+        <Col>
+          <Row>
+            <Col className="text-center">
+              <br />
+              <Form
+                className="opacity form-control border border-dark"
+                id="contactNumber"
+                placeholder="Contact Number"
+                name="contactNumber"
+                value={props.contactNumber}
+                onChange={props.onChange}
+              />
+              <Form
+                className="opacity form-control border border-dark"
+                id="email"
+                placeholder="Your Email"
+                name="email"
+                value={props.userEmail}
+              />
+            </Col>
+            <Col>
+              <br />
+              <Form
+                className="opacity form-control border border-dark"
+                id="profilePicture"
+                placeholder="Github Profile Link"
+                name="githubProfile"
+                value={props.githubProfileLink}
+                onChange={props.onChange}
+              />
+              <Form
+                className="opacity form-control border border-dark"
+                id="linkedInLink"
+                placeholder="LinkedIn Link"
+                name="linkedInLink"
+                value={props.linkedInLink}
+                onChange={props.onChange}
+              />
+            </Col>
+            <Col className="text-center">
+              <br />
+              <Button
+                href="#portfolio"
+                text="Previous"
+                type="button"
+                className="large teal btn scrolly mb-2"
+                name="footer"
+                onClick={() => props.previousClick()}
+              />
+              <br />
+              <Button
+                text="Finish"
+                type="button"
+                className="large teal btn scrolly"
+                name="footer"
+                onClick={props.serveLink}
+              />
+            </Col>
+            <Col>
+              <SmallLogo className="smallLogo" />
+            </Col>
+          </Row>
+        </Col>
       </div>
     </div>
   );

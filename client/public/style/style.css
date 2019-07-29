@@ -10,7 +10,7 @@ img {
 
 .imgSizeFixed {
   max-width: 352px;
-  max-height: 200px
+  max-height: 300px
 }
 
 .cardSize {
@@ -167,6 +167,11 @@ img {
 
 .test {
   height: 100vh;
+}
+
+.userSplashFix {
+  width: 100%;
+  display: table;
 }
 
 .test2 {

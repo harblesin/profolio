@@ -3,7 +3,7 @@ const router = require("express").Router();
 const passport = require("passport");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const keys = require("../routes/keys/secret");
+const keys = require("../config/key");
 
 module.exports = {
   findOne: (req, res) => {
@@ -58,7 +58,12 @@ module.exports = {
       //console.log(info);
 
       if (error || !user) {
+<<<<<<< HEAD
         res.send({ error, auth: false });
+=======
+        
+       res.send({error, auth:false})
+>>>>>>> 929abd4a66cf4cc23bed68ff95aee43748a4535b
         //res.status(400).send({auth: false});
       } else {
         const payload = {
@@ -72,9 +77,15 @@ module.exports = {
             res.send({ error, auth: false });
           }
 
+<<<<<<< HEAD
           const token = jwt.sign(JSON.stringify(payload), process.env.SECRET);
           console.log(token);
           console.log(payload);
+=======
+        const token = jwt.sign(JSON.stringify(payload), keys);
+        console.log(token);
+        console.log(payload);
+>>>>>>> 929abd4a66cf4cc23bed68ff95aee43748a4535b
 
           res.cookie("jwt", token, { secure: false });
           res.status(200).send({ user });
