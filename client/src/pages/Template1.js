@@ -50,7 +50,6 @@ require("./../components/SubComponents/Nav/main.css")
 
   return (
     <div id="veryTop">
-      {this.IndexLayout}
       <nav className="navbar navbar-dark bg-secondary">
         <a className="navbar-brand" href="/">
           <SmallLogo
