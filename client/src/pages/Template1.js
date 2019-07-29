@@ -5,6 +5,7 @@ import Slider from "react-slick";
 import ProjectCard from "../components/SubComponents/ProjectCard/ProjectCard";
 // import { NONAME } from "dns";
 import CarouselImage from "./../components/SubComponents/CarouselImage/CarouselImage";
+// import "./../components/SubComponents/Nav/main.css";
 
 export let Template1 = props => {
 

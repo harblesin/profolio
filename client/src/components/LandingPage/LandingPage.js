@@ -62,7 +62,7 @@ class LandingPage1 extends Component {
 
   render() {
     return (
-      <Container fluid={true} className="backgroundHead test">
+      <Container fluid={true} className="backgroundHead test overflow-auto">
         <Row>
           <Col>
             <LargeLogo />
