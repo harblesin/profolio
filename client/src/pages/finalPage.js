@@ -50,11 +50,9 @@ class PortfolioCreation extends Component {
 
     // API.getUserStuff(${params.id}).then({data: profile})=>{
     console.log(params.id);
-    this.setState({ profolioId: params.id });
-    // }
 
     let object = {
-      ProfolioId: params.id
+      ProfolioId: this.state.profolioId
     };
 
     let bioObject = {};
