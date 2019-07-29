@@ -68,7 +68,7 @@ class About extends Component {
           </Col>
           <Col>
             <div className="card mx-auto align-self-center borderSplash backG rounded">
-              <img src="..." class="card-img-top" alt="..." />
+              <img src="./images/developers/jonathanProject3.jpg" class="card-img-top" alt="..." />
               <div className="card-body font-weight-bold p-1">
                 <h2 className="text-center">Jonathan</h2>
                 <p>
