@@ -35,7 +35,7 @@ class PortfolioCreation extends Component {
     deleteProjectButton: "Delete Button"
   };
 
-  componentDidMount = () => {
+  componentDidMount = async () => {
     // let array = [
     //   [bio]
     // ];
@@ -46,7 +46,7 @@ class PortfolioCreation extends Component {
 
     const code = params.id / 64;
 
-    this.setState({ profolioId: code });
+    await this.setState({ profolioId: code });
 
     // API.getUserStuff(${params.id}).then({data: profile})=>{
     console.log(code);
@@ -60,7 +60,7 @@ class PortfolioCreation extends Component {
     let contactObject = {};
 
     // *** GET ENTIRE PORTFOLIO FROM DB ***
-    API.getPortfolio(object).then(response => {
+    await API.getPortfolio(object).then(response => {
       console.log("Response Data: " + response.data);
       let dataToSetState = [];
       if (response.data) {
