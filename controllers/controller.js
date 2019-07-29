@@ -327,7 +327,7 @@ module.exports = {
   getFinal:(req,res)=>{
     console.log(req.body)
     db.Final.findOne({where:{
-      id: req.body.id
+      profolioId: req.body.id
     }}).then((data)=>{
       res.send(data)
     })
