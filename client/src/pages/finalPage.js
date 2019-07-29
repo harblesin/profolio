@@ -47,8 +47,7 @@ class PortfolioCreation extends Component {
     // API.getUserStuff(${params.id}).then({data: profile})=>{
     console.log(params.id);
 
-    const code = (((params.id+1234)/32) - 255)
-    
+    const code = (params.id + 1234) / 32 - 255;
 
     this.setState({ profolioId: code });
     // }
