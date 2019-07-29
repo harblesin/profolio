@@ -22,7 +22,8 @@ class PortfoliosCreated extends Component {
     profIdUrl: "",
     profEditUrl: "",
     show: false,
-    name: ""
+    name: "",
+    id: ""
   };
 
   deleteProf = async event => {
@@ -99,6 +100,29 @@ class PortfoliosCreated extends Component {
     });
   }
 
+  grabFinal = async event => {
+    console.log(event.target.name);
+    let id = event.target.id;
+    console.log(id);
+    await this.setState({
+      id: id
+    });
+    console.log(this.state.id);
+    await API.getFinalProf({ id: this.state.id }).then(data => {
+      console.log(data);
+      if (data.data.finalLink) {
+        let link =
+          "https://pacific-inlet-50937.herokuapp.com/profolio" +
+          data.data.finalLink;
+        console.log(link);
+        alert(link);
+        return <Redirect to={link} />;
+      } else {
+        alert("Profile isn't complete!");
+      }
+    });
+  };
+
   logout = () => {
     API.logout().then(() => {
       alert("Logged Out");
@@ -144,8 +168,10 @@ class PortfoliosCreated extends Component {
                       <UserProject
                         name={profile.name}
                         key={profile.id}
-                        onClick={profile.link}
+                        id={profile.id}
+                        grabFinal={this.grabFinal}
                       />
+
                       <Button
                         id={profile.id}
                         name="profId"
