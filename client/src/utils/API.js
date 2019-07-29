@@ -42,16 +42,23 @@ export default {
     return axios.post("/api/users/saveBio", bioInfo);
   },
 
+  saveSkills: function(skillsInfo) {
+    return axios.post("/api/users/saveSkills", skillsInfo);
+  },
+
+  saveContact: function(saveContact) {
+    return axios.post("/api/users/saveContact", saveContact);
+  },
+
   newProfolio: function(profolioName) {
     return axios.post("/api/users/newProfolio", profolioName);
   },
 
   deleteProfolio: function(profId) {
-    return axios.post("/api/users/deleteProfolio", profId)
+    return axios.post("/api/users/deleteProfolio", profId);
   },
 
   saveProjectCard: function(savedProjectCard) {
     return axios.post("/api/users/saveProjectCard", savedProjectCard);
-  },
-
+  }
 };

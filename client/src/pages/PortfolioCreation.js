@@ -15,8 +15,8 @@ import API from "../utils/API";
 class PortfolioCreation extends Component {
   state = {
     profolioId: "",
-    fullName: "Full Name",
-    aboutMe: "About Me",
+    fullName: "",
+    aboutMe: "",
     contactNumber: "Phone Number",
     projectTitle: "Project Title",
     aboutProject: "About Project",
@@ -30,6 +30,7 @@ class PortfolioCreation extends Component {
     projectPicture: "images/project-placeholder.png",
     linkedInLink: "LinkedIn Link",
     githubProfileLink: "Github Profile Link",
+    userEmail: "Your Email",
     footerTruth: false,
     eachProject: [],
     savedProject: [],
@@ -51,35 +52,65 @@ class PortfolioCreation extends Component {
     // }
 
     let object = {
-      ProfolioId: 14
+      ProfolioId: params.id
     };
 
     let bioObject = {};
     let contactObject = {};
 
+    // *** GET ENTIRE PORTFOLIO FROM DB ***
     API.getPortfolio(object).then(response => {
       console.log("Response Data: " + response.data);
       let dataToSetState = [];
       if (response.data) {
         console.log(response.data);
 
-        // *** SKILLS ***
-        console.log(response.data.Skills[0].skill);
+        // *** PARSE SKILLS ***
+        if (response.data.Skills.length > 0) {
+          console.log(response.data.Skills[0].skill);
 
-        let loadedSkills = response.data.Skills[0].skill;
-        console.log(loadedSkills.split(","));
-        let skillsArray = loadedSkills.split(",");
-        let skillsLinks = [];
-        for (let i = 0; i < skillsArray.length; i++) {
-          skillsLinks.push("./images/template1/" + skillsArray[i] + ".png");
+          let loadedSkills = response.data.Skills[0].skill;
+          console.log(loadedSkills.split(","));
+          let skillsArray = loadedSkills.split(",");
+          let skillsLinks = [];
+          for (let i = 0; i < skillsArray.length; i++) {
+            skillsLinks.push("./images/template1/" + skillsArray[i] + ".png");
+          }
+          this.setState({
+            skills: skillsLinks
+          });
         }
-        this.setState({
-          skills: skillsLinks
-        });
 
         /////////////////////
 
-        // *** BIO ***
+        // *** PARSE PROJECTS ***
+
+        let projectCards = [];
+        let projectCard = {};
+
+        if (response.data.Projects.length > 0) {
+          console.log(response.data.Projects);
+          for (let i = 0; i < response.data.Projects.length; i++) {
+            projectCard = response.data.Projects[i];
+            let projectCardConverted = {
+              name: projectCard.name,
+              projectPicture: projectCard.thumbnail.toString(),
+              deployedLink: projectCard.deployedLink,
+              githubLink: projectCard.githubLink,
+              aboutProject: projectCard.aboutProject
+            };
+
+            projectCards.push(projectCardConverted);
+          }
+          console.log("ProjectCards: " + JSON.stringify(projectCards));
+          this.setState({
+            savedProject: projectCards
+          });
+        }
+
+        /////////////////////
+
+        // *** PARSE BIO AND CONTACT***
         bioObject = {
           table: "Bio",
           object: {
@@ -96,7 +127,6 @@ class PortfolioCreation extends Component {
             linkedIn: "linkedInLink"
           }
         };
-        let finalArray = ["final", "finalLink"];
 
         function parseData(dataObject) {
           let bioTest = response.data[dataObject.table];
@@ -140,6 +170,8 @@ class PortfolioCreation extends Component {
       [initialKey]: initialValue
     });
   };
+
+  ////////////////////
 
   handleInputChange = event => {
     let value = event.target.value;
@@ -205,18 +237,41 @@ class PortfolioCreation extends Component {
         object = {
           fullName: this.state.fullName,
           aboutMe: this.state.aboutMe,
-          photo: this.state.baseImage.toString()
+          photo: this.state.baseImage.toString(),
+          ProfolioId: this.state.profolioId
         };
         API.saveBio(object);
         break;
       case 1:
-        object = {};
+        let clutteredSkills = this.state.skills;
+        console.log(clutteredSkills);
+        let cleanSkills = [];
+        for (let i = 0; i < clutteredSkills.length; i++) {
+          let lastSlash = clutteredSkills[i].lastIndexOf("/");
+          let lastDot = clutteredSkills[i].lastIndexOf(".");
+          let cleanSkill = clutteredSkills[i].substring(lastSlash + 1, lastDot);
+          cleanSkills.push(cleanSkill);
+        }
+        let cleanSkillsString = cleanSkills.join(",");
+        console.log(cleanSkillsString);
+        object = {
+          skill: cleanSkillsString,
+          ProfolioId: this.state.profolioId
+        };
+        API.saveSkills(object);
         break;
       case 2:
         object = {};
         break;
       case 3:
-        object = {};
+        object = {
+          email: this.state.userEmail,
+          phone: this.state.contactNumber,
+          github: this.state.githubProfileLink,
+          linkedIn: this.state.linkedInLink,
+          ProfolioId: this.state.profolioId
+        };
+        API.saveContact(object);
         break;
       default:
     }
@@ -259,7 +314,8 @@ class PortfolioCreation extends Component {
       thumbnail: this.state.projectPicture,
       deployedLink: this.state.deployedLink,
       githubLink: this.state.githubLink,
-      aboutProject: this.state.aboutProject
+      aboutProject: this.state.aboutProject,
+      ProfolioId: this.state.profolioId
     };
 
     API.saveProjectCard(savedProjectCard).then(async response => {
@@ -295,6 +351,8 @@ class PortfolioCreation extends Component {
           onChange={this.handleInputChange}
           nextClick={this.nextClick}
           getBaseFile={this.getBaseFile}
+          fullName={this.state.fullName}
+          aboutMe={this.state.aboutMe}
         />
       );
     }
@@ -342,6 +400,9 @@ class PortfolioCreation extends Component {
           nextClick={this.nextClick}
           previousClick={this.previousClick}
           contactNumber={this.state.contactNumber}
+          userEmail={this.state.userEmail}
+          linkedInLink={this.state.linkedInLink}
+          githubProfileLink={this.state.githubProfileLink}
         />
       );
     }

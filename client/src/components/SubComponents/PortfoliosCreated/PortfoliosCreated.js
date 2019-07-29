@@ -66,7 +66,7 @@ class PortfoliosCreated extends Component {
     console.log("working");
     if (this.state.profileRedirect) {
       console.log("were supposed ot be redirecting");
-      let url = "/portfoliocreation/" + id;
+      let url = "/portfoliocreation" + id;
       return <Redirect to={url} />;
     }
   };
@@ -74,7 +74,7 @@ class PortfoliosCreated extends Component {
   editRedirect = id => {
     if (this.state.editRedirect) {
       console.log("were supposed ot be redirecting");
-      let url = "/portfoliocreation/" + id;
+      let url = "/portfoliocreation" + id;
       return <Redirect to={url} />;
     }
   };

@@ -25,12 +25,17 @@ router
 router.route("/getbio").post(userController.getBio);
 
 router.route("/savebio").post(userController.saveBio);
+
+router.route("/saveskills").post(userController.saveSkill);
+
+router.route("/savecontact").post(userController.saveContact);
+
 router.route("/newProfolio").post(userController.newProfolio);
 
 router.route("/getPortfolio").post(userController.getPortfolio);
 
 router.route("/saveProjectCard").post(userController.saveProjectCard);
 
-router.route("/deleteProfolio").post(userController.deleteProfolio)
+router.route("/deleteProfolio").post(userController.deleteProfolio);
 
 module.exports = router;

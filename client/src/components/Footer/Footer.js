@@ -231,7 +231,7 @@ export const Footer2 = props => {
                     onClick={props.isChecked}
                   />
                   <label className="form-check-label font-weight-bolder skillsColor">
-                    Handlebar.js
+                    Handlebars.js
                   </label>
                 </div>
                 <div className="form-check">
@@ -452,8 +452,7 @@ export const Footer4 = props => {
             <Form
               className="opacity form-control border border-dark"
               id="contactNumber"
-              //placeholder="Contact Number"
-              //placeholder={props.contactNumber}
+              placeholder="Contact Number"
               name="contactNumber"
               value={props.contactNumber}
               onChange={props.onChange}
@@ -462,8 +461,9 @@ export const Footer4 = props => {
               className="opacity form-control border border-dark"
               id="email"
               placeholder="Your Email"
-              name="email"
+              name="userEmail"
               value={props.userEmail}
+              onChange={props.onChange}
             />
           </Col>
           <Col>
@@ -478,8 +478,7 @@ export const Footer4 = props => {
             <Form
               className="opacity form-control border border-dark"
               id="linkedInLink"
-              //placeholder="LinkedIn Link"
-              placeholder={props.linkedInLink}
+              placeholder="LinkedIn Link"
               name="linkedInLink"
               value={props.linkedInLink}
               onChange={props.onChange}
