@@ -49,6 +49,7 @@ class PortfolioCreation extends Component {
     this.setState({ profolioId: code });
 
     // API.getUserStuff(${params.id}).then({data: profile})=>{
+    console.log(code);
     console.log(params.id);
 
     let object = {

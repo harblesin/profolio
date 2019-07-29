@@ -14,6 +14,7 @@ if (process.env.NODE_ENV === "production") {
 }
 
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser({limit: '5mb'}))
 app.use(bodyParser.json());
 app.use(passport.initialize());
 require("./config/authSetup.js")(passport, db.User);
