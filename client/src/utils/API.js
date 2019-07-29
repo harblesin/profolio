@@ -54,4 +54,12 @@ export default {
     return axios.post("/api/users/saveProjectCard", savedProjectCard);
   },
 
+  saveFinalProf: function(info) {
+    return axios.post("/api/users/final", info)
+  },
+
+  getFinalProf: function(info){
+    return axios.post("/api/users/finalget", info)
+  }
+
 };

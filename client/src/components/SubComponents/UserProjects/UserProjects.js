@@ -10,7 +10,10 @@ function UserProject(props) {
     }
     return (
         <div>
-            <h2 className="float-left ml-3">{props.name}</h2>
+            <h2 id={props.id} onClick={props.grabFinal} className="float-left ml-3">
+            {props.name}
+            </h2>
+            
             <div>
                 {props.children}
             </div>

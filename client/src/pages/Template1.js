@@ -7,7 +7,8 @@ import ProjectCard from "../components/SubComponents/ProjectCard/ProjectCard";
 import CarouselImage from "./../components/SubComponents/CarouselImage/CarouselImage";
 
 export let Template1 = props => {
-  require("./../components/SubComponents/Nav/main.css");
+
+require("./../components/SubComponents/Nav/main.css")
 
   const settings = {
     dots: false,
@@ -49,6 +50,7 @@ export let Template1 = props => {
 
   return (
     <div id="veryTop">
+      {this.IndexLayout}
       <nav className="navbar navbar-dark bg-secondary">
         <a className="navbar-brand" href="/">
           <SmallLogo
