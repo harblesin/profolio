@@ -44,7 +44,7 @@ class PortfolioCreation extends Component {
       match: { params }
     } = this.props;
 
-    const code = (params.id + 1234) / 32 - 255;
+    const code = params.id / 64;
 
     this.setState({ profolioId: code });
 

@@ -371,7 +371,7 @@ class PortfolioCreation extends Component {
 
   serveLink = () => {
     this.nextClick();
-    let newId = (this.state.profolioId + 255) * 32 - 1234;
+    let newId = this.state.profolioId * 64;
     this.setState({
       servedLink: newId
     });
@@ -472,7 +472,8 @@ class PortfolioCreation extends Component {
           <Modal.Header closeButton>
             <Modal.Title>Copy and Paste to Share your Profolio!</Modal.Title>
           </Modal.Header>
-          https://pacific-inlet-50937.herokuapp.com/profolio{this.state.servedLink}
+          https://pacific-inlet-50937.herokuapp.com/profolio
+          {this.state.servedLink}
           <Modal.Footer>
             <Button
               variant="primary"
