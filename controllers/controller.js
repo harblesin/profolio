@@ -3,7 +3,7 @@ const router = require("express").Router();
 const passport = require("passport");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const keys = require("../routes/keys/secret");
+const keys = require("../config/key");
 
 module.exports = {
   findOne: (req, res) => {
@@ -59,7 +59,7 @@ module.exports = {
 
       if (error || !user) {
         
-       return next(res.send({error, auth:false})) 
+       res.send({error, auth:false})
         //res.status(400).send({auth: false});
       }else{
         const payload = {
