@@ -11,9 +11,9 @@ import ReactDOM from "react-dom";
 import ProjectCard from "../components/SubComponents/ProjectCard/ProjectCard";
 import axios from "axios";
 import API from "../utils/API";
-import { Modal } from "react-bootstrap"
-import Form from "../components/SubComponents/Form/Form"
-import Button from "../components/SubComponents/Button/Button"
+import { Modal } from "react-bootstrap";
+import Form from "../components/SubComponents/Form/Form";
+import Button from "../components/SubComponents/Button/Button";
 import { Redirect } from "react-router-dom";
 
 class PortfolioCreation extends Component {
@@ -44,12 +44,11 @@ class PortfolioCreation extends Component {
     redirect: false
   };
 
-    renderRedirect = () => {
-      if (this.state.redirect) {
-        return <Redirect to="/" />;
-      }
-    };
-
+  renderRedirect = () => {
+    if (this.state.redirect) {
+      return <Redirect to="/" />;
+    }
+  };
 
   componentDidMount = () => {
     // let array = [
@@ -62,8 +61,6 @@ class PortfolioCreation extends Component {
         this.setState({ redirect: true });
       }
     });
-
-    
 
     const {
       match: { params }
@@ -88,7 +85,6 @@ class PortfolioCreation extends Component {
       if (response.data) {
         console.log(response.data);
 
-<<<<<<< HEAD
         // *** PARSE SKILLS ***
         if (response.data.Skills.length > 0) {
           console.log(response.data.Skills[0].skill);
@@ -104,21 +100,6 @@ class PortfolioCreation extends Component {
             skills: skillsLinks
           });
         }
-=======
-        // *** SKILLS ***
-        // console.log(response.data.Skills[0].skill);
-
-        // let loadedSkills = response.data.Skills[0].skill;
-        // console.log(loadedSkills.split(","));
-        // let skillsArray = loadedSkills.split(",");
-        // let skillsLinks = [];
-        // for (let i = 0; i < skillsArray.length; i++) {
-        //   skillsLinks.push("./images/template1/" + skillsArray[i] + ".png");
-        // }
-        // this.setState({
-        //   skills: skillsLinks
-        // });
->>>>>>> 929abd4a66cf4cc23bed68ff95aee43748a4535b
 
         /////////////////////
 
@@ -384,13 +365,14 @@ class PortfolioCreation extends Component {
   };
 
   serveLink = () => {
-    let newId = (((this.state.profolioId + 255) * 3) - 1234)
+    this.nextClick();
+    let newId = (this.state.profolioId + 255) * 3 - 1234;
     this.setState({
       servedLink: newId
-    })
-    console.log(newId)
-    this.handleShow()
-  }
+    });
+    console.log(newId);
+    this.handleShow();
+  };
 
   handleClose = () => {
     console.log(this.state.show);
@@ -456,15 +438,12 @@ class PortfolioCreation extends Component {
           onChange={this.handleInputChange}
           nextClick={this.nextClick}
           previousClick={this.previousClick}
-<<<<<<< HEAD
           contactNumber={this.state.contactNumber}
           userEmail={this.state.userEmail}
           linkedInLink={this.state.linkedInLink}
           githubProfileLink={this.state.githubProfileLink}
-=======
           serveLink={this.serveLink}
           handleShow={this.handleShow}
->>>>>>> 929abd4a66cf4cc23bed68ff95aee43748a4535b
         />
       );
     }
@@ -481,11 +460,10 @@ class PortfolioCreation extends Component {
 
         <Modal show={this.state.show} onHide={this.handleClose}>
           <Modal.Header closeButton>
-            <Modal.Title>
-              Copy and Paste to Share your Profolio!
-            </Modal.Title>
+            <Modal.Title>Copy and Paste to Share your Profolio!</Modal.Title>
           </Modal.Header>
-          https://powerful-taiga-80042.herokuapp.com/profolio{this.state.servedLink}
+          https://powerful-taiga-80042.herokuapp.com/profolio
+          {this.state.servedLink}
           <Modal.Footer>
             <Button
               variant="primary"

@@ -447,10 +447,11 @@ export const Footer4 = props => {
               />
               <Form
                 className="opacity form-control border border-dark"
-                id="email"
+                id="userEmail"
                 placeholder="Your Email"
-                name="email"
+                name="userEmail"
                 value={props.userEmail}
+                onChange={props.onChange}
               />
             </Col>
             <Col>
@@ -459,7 +460,7 @@ export const Footer4 = props => {
                 className="opacity form-control border border-dark"
                 id="profilePicture"
                 placeholder="Github Profile Link"
-                name="githubProfile"
+                name="githubProfileLink"
                 value={props.githubProfileLink}
                 onChange={props.onChange}
               />
