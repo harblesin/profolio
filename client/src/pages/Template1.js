@@ -5,8 +5,16 @@ import Slider from "react-slick";
 import ProjectCard from "../components/SubComponents/ProjectCard/ProjectCard";
 // import { NONAME } from "dns";
 import CarouselImage from "./../components/SubComponents/CarouselImage/CarouselImage";
+// import "./../components/SubComponents/Nav/main.css";
 
 export let Template1 = props => {
+
+  // const IndexLayout = ({location }) => {
+  //   if (location.pathname === ("/template1")){
+  //       require("./../components/SubComponents/Nav/main.css");
+  //   }
+  // }
+
   require("./../components/SubComponents/Nav/main.css");
 
   const settings = {
@@ -49,6 +57,7 @@ export let Template1 = props => {
 
   return (
     <div id="veryTop">
+      {/* {this.IndexLayout()} */}
       <nav className="navbar navbar-dark bg-secondary">
         <a className="navbar-brand" href="/">
           <SmallLogo
