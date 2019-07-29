@@ -18,6 +18,7 @@ import { Redirect } from "react-router-dom";
 
 class PortfolioCreation extends Component {
   state = {
+    userId: "",
     profolioId: "",
     fullName: "Full Name",
     aboutMe: "About Me",
@@ -59,6 +60,10 @@ class PortfolioCreation extends Component {
       console.log(data.data);
       if (!data.data.auth || data.data === "No auth token") {
         this.setState({ redirect: true });
+      }else{
+        this.setState({
+          userId: data.data.data.id
+        })
       }
     });
 
@@ -303,11 +308,18 @@ class PortfolioCreation extends Component {
   };
 
   serveLink = () => {
-    let newId = (((this.state.profolioId + 255) * 3) - 1234)
+    let newId = (((this.state.profolioId + 255) * 32) - 1234)
     this.setState({
       servedLink: newId
     })
     console.log(newId)
+    API.saveFinalProf({
+      finalLink: newId,
+      userId: this.state.userId,
+      profolioId: this.state.profolioId
+    }).then(()=>{
+      
+    })
     this.handleShow()
   }
 
@@ -381,6 +393,7 @@ class PortfolioCreation extends Component {
   };
 
   render() {
+    
     return (
       <div>
         <Template1 {...this.state} />
@@ -395,7 +408,7 @@ class PortfolioCreation extends Component {
               Copy and Paste to Share your Profolio!
             </Modal.Title>
           </Modal.Header>
-          https://powerful-taiga-80042.herokuapp.com/profolio{this.state.servedLink}
+          https://pacific-inlet-50937.herokuapp.com{this.state.servedLink}
           <Modal.Footer>
             <Button
               variant="primary"

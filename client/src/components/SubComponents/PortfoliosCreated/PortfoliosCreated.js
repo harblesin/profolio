@@ -15,19 +15,20 @@ class PortfoliosCreated extends Component {
     editRedirect: false,
     profiles: [
       {
-        name: "Nothing here bub!"
-      }
+        name: "Nothing here bub!",
+      },
     ],
     profId: "",
     profIdUrl: "",
     profEditUrl: "",
     show: false,
-    name: ""
+    name: "",
+    id: ""
   };
 
   deleteProf = async event => {
     let profId = {
-      id: event.target.id
+      id: event.target.id,
     };
     this.setState({ profId: profId });
     console.log(profId);
@@ -43,7 +44,7 @@ class PortfoliosCreated extends Component {
   handleInputChange = event => {
     const { name, value } = event.target;
     this.setState({
-      [name]: value
+      [name]: value,
     });
   };
 
@@ -83,7 +84,7 @@ class PortfoliosCreated extends Component {
     let id = event.target.id;
     await this.setState({
       profEditUrl: id,
-      editRedirect: true
+      editRedirect: true,
     });
   };
 
@@ -97,6 +98,30 @@ class PortfoliosCreated extends Component {
         this.setState({ profiles: data.data.data });
       }
     });
+
+    
+  }
+
+  grabFinal = async (event) => {
+    console.log(event.target.name)
+    let id = event.target.id
+    console.log(id)
+    await this.setState({
+      id: id
+    })
+    console.log(this.state.id)
+    await API.getFinalProf({id: this.state.id}).then((data)=>{
+      console.log(data)
+      if(data.data.finalLink){
+         let  link =  "https://pacific-inlet-50937.herokuapp.com/profolio"+data.data.finalLink;
+        console.log(link)
+        alert(link)
+        return <Redirect to={link}/>
+      }else{
+        alert("Profile isn't complete!")
+      }
+     
+    })
   }
 
   logout = () => {
@@ -110,10 +135,16 @@ class PortfoliosCreated extends Component {
       console.log(data);
       await this.setState({
         profIdUrl: data.data,
-        profileRedirect: true
+        profileRedirect: true,
       });
     });
   };
+
+  handleKeyPress(target) {
+    if(target.charCode===13){
+      alert('Enter clicked!!!');
+    } 
+  }
 
   render() {
     return (
@@ -130,36 +161,39 @@ class PortfoliosCreated extends Component {
                 </th>
               </tr>
             </thead>
-                <tbody className="userSplashFix">
-                  <tr>
-                    {this.state.profiles.map(profile => (
-                      <Row className="mt-2 mb-2">
-                        <Col>
-                          <UserProject
-                            name={profile.name}
-                            key={profile.id}
-                            onClick={profile.link}
-                          />
-                          <Button
-                            id={profile.id}
-                            name="profId"
-                            text="Delete"
-                            type="button"
-                            onClick={this.deleteProf}
-                            className="float-right medium buttonColor2 font-weight-bold btn active ml-1 mr-2 mb-1"
-                          />
-                          <Button
-                            id={profile.id}
-                            text="Edit"
-                            type="button"
-                            onClick={this.edit}
-                            className="float-right medium buttonColor3 font-weight-bold btn active mr-1"
-                          />
-                        </Col>
-                      </Row>
-                    ))}
-                  </tr>
-                </tbody>
+            <tbody className="userSplashFix">
+              <tr>
+                {this.state.profiles.map(profile =>
+                  <Row className="mt-2 mb-2">
+                    <Col>
+                      <UserProject
+                        name={profile.name}
+                        key={profile.id}
+                        id={profile.id}
+                        grabFinal={this.grabFinal}
+                      />
+
+                      
+                      <Button
+                        id={profile.id}
+                        name="profId"
+                        text="Delete"
+                        type="button"
+                        onClick={this.deleteProf}
+                        className="float-right medium buttonColor2 font-weight-bold btn active ml-1 mr-2 mb-1"
+                      />
+                      <Button
+                        id={profile.id}
+                        text="Edit"
+                        type="button"
+                        onClick={this.edit}
+                        className="float-right medium buttonColor3 font-weight-bold btn active mr-1"
+                      />
+                    </Col>
+                  </Row>
+                )}
+              </tr>
+            </tbody>
           </Table>
           <Button
             text="Create New"
@@ -180,6 +214,7 @@ class PortfoliosCreated extends Component {
             handleInputChange={this.handleInputChange}
             name="name"
             placeholder=" . . . My Very First Profolio . . ."
+            onKeyPress={this.handleKeyPress}
           />
           <Modal.Footer>
             <Button
@@ -187,7 +222,7 @@ class PortfoliosCreated extends Component {
               text="Start Creating!"
               className="float-right medium buttonColor3 font-weight-bold btn active mr-1"
               onClick={this.newProfolio}
-            //href={this.state.profIdUrl}
+              //href={this.state.profIdUrl}
             />
             <Button
               variant="primary"

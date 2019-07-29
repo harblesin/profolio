@@ -10,7 +10,7 @@ class LandingPage1 extends Component {
   state = {
     email: "",
     password: "",
-    redirect: false
+    redirect: false,
   };
 
   renderRedirect = () => {
@@ -22,7 +22,7 @@ class LandingPage1 extends Component {
   handleInputChange = event => {
     const { name, value } = event.target;
     this.setState({
-      [name]: value
+      [name]: value,
     });
   };
 
@@ -32,20 +32,19 @@ class LandingPage1 extends Component {
     if (this.state.email && this.state.password) {
       let userInfo = {
         email: this.state.email,
-        password: this.state.password
+        password: this.state.password,
       };
-      console.log(userInfo)
-      API.loginUser(userInfo).then((data) => {
-        console.log(data)
-        console.log(data.auth)
-        console.log(data.user)
-        if(!data.data.user){
-          alert("Incorrect Email or Password!")
-        }else{
+      console.log(userInfo);
+      API.loginUser(userInfo).then(data => {
+        console.log(data);
+        console.log(data.auth);
+        console.log(data.user);
+        if (!data.data.user) {
+          alert("Incorrect Email or Password!");
+        } else {
           alert("Welcome back " + this.state.email + "!");
-        this.setState({ redirect: true });
+          this.setState({ redirect: true });
         }
-        
       });
     } else {
       alert("Must enter both a username and password");
@@ -54,7 +53,7 @@ class LandingPage1 extends Component {
 
   componentDidMount() {
     API.authCheck().then(data => {
-      console.log(data.data.auth)
+      console.log(data.data.auth);
       if (data.data.auth) {
         this.setState({ redirect: true });
       }
@@ -63,37 +62,41 @@ class LandingPage1 extends Component {
 
   render() {
     return (
-      <Container fluid={true} className="backgroundHead test">
+      <Container fluid={true} className="backgroundHead test overflow-auto">
         <Row>
-          <LargeLogo />
+          <Col>
+            <LargeLogo />
+          </Col>
         </Row>
         <br />
         <Row>
           <Col className="loginBox">
             <h3>Login</h3>
             <div className="rounded m-auto rounded-lg">
-              <Form
-                className="opacity form-control border border-dark"
-                id="userName"
-                name="email"
-                placeholder="Email"
-                onChange={this.handleInputChange}
-              />
-              <Form
-                className="opacity form-control border border-dark"
-                id="password"
-                type="password"
-                name="password"
-                placeholder="Password"
-                onChange={this.handleInputChange}
-              />
-              <Button
-                text="Login"
-                type="button"
-                onClick={this.login}
-                className="float-right medium teal btn"
-              />
-              {this.renderRedirect()}
+                <Form
+                  className="opacity form-control border border-dark"
+                  id="userName"
+                  type="email"
+                  name="email"
+                  placeholder="Email"
+                  onChange={this.handleInputChange}
+                />
+                <Form
+                  className="opacity form-control border border-dark"
+                  id="password"
+                  type="password"
+                  name="password"
+                  placeholder="Password"
+                  onChange={this.handleInputChange}
+                />
+                <Button
+                  id="enterAction"
+                  text="Login"
+                  type="submit"
+                  onClick={this.login}
+                  className="float-right medium teal btn"
+                />
+                {this.renderRedirect()}
             </div>
             <br />
             <br />

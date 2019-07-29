@@ -29,6 +29,9 @@ router.route("/getPortfolio").post(userController.getPortfolio);
 
 router.route("/saveProjectCard").post(userController.saveProjectCard);
 
-router.route("/deleteProfolio").post(userController.deleteProfolio)
+router.route("/deleteProfolio").post(userController.deleteProfolio);
+
+router.route("/final").post(userController.saveFinal);
+router.route("/finalget").post(userController.getFinal);
 
 module.exports = router;

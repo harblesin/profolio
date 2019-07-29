@@ -9,13 +9,7 @@ import CarouselImage from "./../components/SubComponents/CarouselImage/CarouselI
 
 export let Template1 = props => {
 
-  // const IndexLayout = ({location }) => {
-  //   if (location.pathname === ("/template1")){
-  //       require("./../components/SubComponents/Nav/main.css");
-  //   }
-  // }
-
-  require("./../components/SubComponents/Nav/main.css");
+require("./../components/SubComponents/Nav/main.css")
 
   const settings = {
     dots: false,
@@ -57,7 +51,6 @@ export let Template1 = props => {
 
   return (
     <div id="veryTop">
-      {/* {this.IndexLayout()} */}
       <nav className="navbar navbar-dark bg-secondary">
         <a className="navbar-brand" href="/">
           <SmallLogo

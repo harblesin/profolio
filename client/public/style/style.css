@@ -10,7 +10,7 @@ img {
 
 .imgSizeFixed {
   max-width: 352px;
-  max-height: 200px
+  max-height: 300px
 }
 
 .cardSize {
@@ -172,6 +172,7 @@ img {
 .userSplashFix {
   width: 100%;
   display: table;
+  color: palegoldenrod;
 }
 
 .test2 {
@@ -363,3 +364,6 @@ ul.social li a:hover:before {
 
 /* Table Changes */
 
+thead{
+  color:palegoldenrod;
+}
