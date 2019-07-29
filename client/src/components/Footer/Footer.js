@@ -116,6 +116,8 @@ export const Footer2 = props => {
                 Bootstrap
               </label>
             </div>
+          </Col>
+          <Col>
             <div className="form-check">
               <Checkbox
                 name="checkedValue"
@@ -136,8 +138,7 @@ export const Footer2 = props => {
                 Ajax
               </label>
             </div>
-          </Col>
-          <Col>
+
             <div className="form-check">
               <Checkbox
                 name="checkedValue"
@@ -158,6 +159,8 @@ export const Footer2 = props => {
                 API
               </label>
             </div>
+          </Col>
+          <Col>
             <div className="form-check">
               <Checkbox
                 name="checkedValue"
@@ -200,53 +203,50 @@ export const Footer2 = props => {
             </div>
           </Col>
           <Col>
-            <Row>
-              <Col>
-                <div className="form-check">
-                  <Checkbox
-                    name="checkedValue"
-                    value="./images/template1/fire.png"
-                    onClick={props.isChecked}
-                  />
-                  <label className="form-check-label font-weight-bolder skillsColor">
-                    Firebase
-                  </label>
-                </div>
-                <div className="form-check">
-                  <Checkbox
-                    name="checkedValue"
-                    value="./images/template1/materialize.png"
-                    onClick={props.isChecked}
-                  />
-                  <label className="form-check-label font-weight-bolder skillsColor">
-                    Materialize
-                  </label>
-                </div>
-              </Col>
-              <Col>
-                <div className="form-check">
-                  <Checkbox
-                    name="checkedValue"
-                    value="./images/template1/handlebars.png"
-                    onClick={props.isChecked}
-                  />
-                  <label className="form-check-label font-weight-bolder skillsColor">
-                    Handlebars.js
-                  </label>
-                </div>
-                <div className="form-check">
-                  <Checkbox
-                    name="checkedValue"
-                    value="./images/template1/sequelize.png"
-                    onClick={props.isChecked}
-                  />
-                  <label className="form-check-label font-weight-bolder skillsColor">
-                    Sequelize.js
-                  </label>
-                </div>
-              </Col>
-            </Row>
-            <Row>
+            <div className="form-check">
+              <Checkbox
+                name="checkedValue"
+                value="./images/template1/fire.png"
+                onClick={props.isChecked}
+              />
+              <label className="form-check-label font-weight-bolder skillsColor">
+                Firebase
+              </label>
+            </div>
+            <div className="form-check">
+              <Checkbox
+                name="checkedValue"
+                value="./images/template1/materialize.png"
+                onClick={props.isChecked}
+              />
+              <label className="form-check-label font-weight-bolder skillsColor">
+                Materialize
+              </label>
+            </div>
+
+            <div className="form-check">
+              <Checkbox
+                name="checkedValue"
+                value="./images/template1/handlebars.png"
+                onClick={props.isChecked}
+              />
+              <label className="form-check-label font-weight-bolder skillsColor">
+                Handlebars.js
+              </label>
+            </div>
+            <div className="form-check">
+              <Checkbox
+                name="checkedValue"
+                value="./images/template1/sequelize.png"
+                onClick={props.isChecked}
+              />
+              <label className="form-check-label font-weight-bolder skillsColor">
+                Sequelize.js
+              </label>
+            </div>
+          </Col>
+          {/* </Row> */}
+          {/* <Row>
               <Col>
                 <div className="text-white medium bg-dark mt-4">
                   Upload Image
@@ -259,8 +259,8 @@ export const Footer2 = props => {
                   />
                 </div>
               </Col>
-            </Row>
-          </Col>
+            </Row> */}
+          {/* </Col> */}
           <Col className="text-center">
             <Row>
               <Col className="text-center">

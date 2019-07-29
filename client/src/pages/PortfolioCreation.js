@@ -15,8 +15,8 @@ import API from "../utils/API";
 class PortfolioCreation extends Component {
   state = {
     profolioId: "",
-    fullName: "",
-    aboutMe: "",
+    fullName: "Full Name",
+    aboutMe: "About me.",
     contactNumber: "Phone Number",
     projectTitle: "Project Title",
     aboutProject: "About Project",
